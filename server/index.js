@@ -1,19 +1,20 @@
-console.log("server site...")
-const express  = require("express");
-
-var cors = require('cors') ;
-const dotenv = require("dotenv");
-dotenv.config({path:"./config/config.env"});
+const express = require("express");
+ require("dotenv").config();
 const app = express();
 app.use(express.json());
+const { route } = require("./route/route");
 const { Connection } = require("./Connection/Connetion");
-app.use(cors);
 
-app.listen(process.env.PROT, ()=>{
-    Connection();
-    console.log(`Listen At Port ${process.env.PROT}`);
+app.use("/" ,route);
+
+app.listen(process.env.PORT, () => {
+  Connection();
+  console.log(`Listen At Port ${process.env.PORT}`);
 });
 
 
-
+//  use of .env
+//  install
+// create .env file  -> creidetail  
+// dotenv (import) -> .method call -> dotenv.config (call) -> proesses.env.NAME
 

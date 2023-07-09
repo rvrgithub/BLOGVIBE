@@ -1,8 +1,11 @@
-const mongoose= require("mongoose");
+// const mongoose= require("mongoose");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-dotenv.config({ path: "../config/config.env" });
+// dotenv.config({ path: "../config/config.env" });
+dotenv.config();
+// console.log(process.env.MONGOOSE_URL)
 exports.Connection = ()=>{
-     mongoose.connect(process.env.MONGOOSE,{
+     mongoose.connect(process.env.MONGOOSE_URL,{
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
