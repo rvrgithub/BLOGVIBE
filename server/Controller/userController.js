@@ -55,7 +55,7 @@ exports.register = async (req, res) => {
 
     //  .......................chack user if alreay register ........
     if (checkPassword) {
-      return res.status(201).json({
+      return res.status(401).json({
         stauts: false,
         massage: "already register!!",
       });
@@ -136,7 +136,7 @@ exports.login = async (req, res) => {
         });
       } else {
         // ...........................create Token..................................
-        const token = await jwt.sign({ id: findUser._id }, "dsjglsdkjhgkldjfg");
+        const token = jwt.sign({ id: findUser._id }, "dsjglsdkjhgkldjfg");
         console.log("token", token);
         return res.status(201).json({
           stauts: true,
@@ -153,3 +153,62 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.getAll = async (req, res) => {
+  try {
+    // console.log("req.body")
+    const response = await User.find();
+    console.log("response", response);
+
+    // await response.save();
+    return res.status(201).send({
+      status: true,
+      massage: "data get",
+      response,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      massage: "data not get",
+    });
+  }
+};
+
+exports.profile = async (req, res) => {
+  try {
+    const getUserId = req.user ;
+    console.log("getUSer" , getUserId)
+    return res.status(201).send({
+      status: true,
+      massage: "data get",
+      getUserId,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      massage: "data not get",
+    });
+  }
+};
+
+
+exports.updateProfile = async (req,res) =>{
+  const {email,password}= req.body;
+const encryptPwd = await bcrypt.hash(password,10);
+
+  // console.log("req.user",req.user,req.body)
+  try {
+    const response =await User.updateOne({_id:req.user._id}, {$set :{email , password:encryptPwd}});
+
+    return res.status(201).send({
+      status: true,
+      massage: "data get",
+      response
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      massage: "data not get",
+    });
+  }
+}
