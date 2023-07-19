@@ -4,6 +4,7 @@ const { User } = require("../Model/userModel");
 const { isValidEmail, isValidPwd, isValidName } = require("../Util/validation");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { Admin } = require("../Model/adminModel");
 exports.register = async (req, res) => {
   const { email, name, password } = req.body;
   console.log("req.body ", req.body);
@@ -156,6 +157,80 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.loginBoth = async (req, res) => {
+  const { email, password } = req.body;
+  console.log("email,password", email, password);
+  try {
+
+    // ...................
+    if (!email || !password) {
+      return res.status(401).json({
+        stauts: false,
+        massage: "Fill All Credientials",
+      });
+    }
+
+ //  .......................error inside email .......................
+ if (!isValidEmail(email)) {
+  //   console.log("email is not valid");
+  return res.status(401).send({
+    stauts: false,
+    massage: "email is not valid !!",
+  });
+}
+  // ....................... error inside password .......................
+  if (!isValidPwd(password)) {
+    //   console.log("all are required");
+    return res.status(401).send({
+      stauts: false,
+      massage: "password is not valid !!",
+    });
+  }
+
+
+    // ....................
+    const findEmailAdmin = await Admin.findOne({ email, password });
+
+
+    
+    console.log("findemail", findEmailAdmin);
+    // if we want only admin  .. data ...
+    if (findEmailAdmin !== null) {
+      // const reposne = new Admin(req.body);
+      // console.log("reposne", reposne);
+      return res.status(201).send({
+        status: true,
+        findEmailAdmin,
+      });
+    } else if (findEmailAdmin === null) {
+      const findEmailUser = await User.findOne({ email, password });
+      if (findEmailUser !== null) {
+        const reposne = new User(req.body);
+        console.log("reposne", reposne);
+        return res.status(201).send({
+          status: true,
+          findEmailUser,
+        });
+      } else {
+        return res.status(401).send({
+          status: false,
+          message: "no found data",
+        });
+      }
+    } else {
+      return res.status(401).send({
+        status: false,
+        message: "no found data",
+      });
+    }
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      message: "something error",
+    });
+  }
+};
+
 exports.getAll = async (req, res) => {
   try {
     // console.log("req.body")
@@ -178,8 +253,8 @@ exports.getAll = async (req, res) => {
 
 exports.profile = async (req, res) => {
   try {
-    const getUserId = req.user ;
-    console.log("getUSer" , getUserId)
+    const getUserId = req.user;
+    console.log("getUSer", getUserId);
     return res.status(201).send({
       status: true,
       massage: "data get",
@@ -193,19 +268,21 @@ exports.profile = async (req, res) => {
   }
 };
 
-
-exports.updateProfile = async (req,res) =>{
-  const {email,password}= req.body;
-const encryptPwd = await bcrypt.hash(password,10);
+exports.updateProfile = async (req, res) => {
+  const { email, password } = req.body;
+  const encryptPwd = await bcrypt.hash(password, 10);
 
   // console.log("req.user",req.user,req.body)
   try {
-    const response =await User.updateOne({_id:req.user._id}, {$set :{email , password:encryptPwd}});
+    const response = await User.updateOne(
+      { _id: req.user._id },
+      { $set: { email, password: encryptPwd } }
+    );
 
     return res.status(201).send({
       status: true,
       massage: "data get",
-      response
+      response,
     });
   } catch (error) {
     return res.status(401).send({
@@ -213,27 +290,24 @@ const encryptPwd = await bcrypt.hash(password,10);
       massage: "data not get",
     });
   }
-}
-
+};
 
 // ..................  Blog Section...............................
 
-exports.createBlog = async(req,res)=>{
+exports.createBlog = async (req, res) => {
   // console.log("asfg l")
-try {
-  const user = req.user;
-  console.log("user",user._id);
-  const reponse = new Blog({
-    title:req.body.title,
-    image:req.body.image,
-    description:req.body.description,
-    user:req.user._id,
-  });
-  await reponse.save();
-   res.json(
-    reponse  
-   );
-} catch (error) {
-   res.json("false");
-}
-}
+  try {
+    const user = req.user;
+    console.log("user", user._id);
+    const reponse = new Blog({
+      title: req.body.title,
+      image: req.body.image,
+      description: req.body.description,
+      user: req.user._id,
+    });
+    await reponse.save();
+    res.json(reponse);
+  } catch (error) {
+    res.json("false");
+  }
+};
