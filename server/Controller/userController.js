@@ -1,3 +1,5 @@
+const { response } = require("express");
+const { Blog } = require("../Model/blogModel");
 const { User } = require("../Model/userModel");
 const { isValidEmail, isValidPwd, isValidName } = require("../Util/validation");
 const bcrypt = require("bcrypt");
@@ -211,4 +213,27 @@ const encryptPwd = await bcrypt.hash(password,10);
       massage: "data not get",
     });
   }
+}
+
+
+// ..................  Blog Section...............................
+
+exports.createBlog = async(req,res)=>{
+  // console.log("asfg l")
+try {
+  const user = req.user;
+  console.log("user",user._id);
+  const reponse = new Blog({
+    title:req.body.title,
+    image:req.body.image,
+    description:req.body.description,
+    user:req.user._id,
+  });
+  await reponse.save();
+   res.json(
+    reponse  
+   );
+} catch (error) {
+   res.json("false");
+}
 }
