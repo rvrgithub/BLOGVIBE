@@ -161,7 +161,6 @@ exports.loginBoth = async (req, res) => {
   const { email, password } = req.body;
   console.log("email,password", email, password);
   try {
-
     // ...................
     if (!email || !password) {
       return res.status(401).json({
@@ -170,29 +169,26 @@ exports.loginBoth = async (req, res) => {
       });
     }
 
- //  .......................error inside email .......................
- if (!isValidEmail(email)) {
-  //   console.log("email is not valid");
-  return res.status(401).send({
-    stauts: false,
-    massage: "email is not valid !!",
-  });
-}
-  // ....................... error inside password .......................
-  if (!isValidPwd(password)) {
-    //   console.log("all are required");
-    return res.status(401).send({
-      stauts: false,
-      massage: "password is not valid !!",
-    });
-  }
-
+    //  .......................error inside email .......................
+    if (!isValidEmail(email)) {
+      //   console.log("email is not valid");
+      return res.status(401).send({
+        stauts: false,
+        massage: "email is not valid !!",
+      });
+    }
+    // ....................... error inside password .......................
+    if (!isValidPwd(password)) {
+      //   console.log("all are required");
+      return res.status(401).send({
+        stauts: false,
+        massage: "password is not valid !!",
+      });
+    }
 
     // ....................
     const findEmailAdmin = await Admin.findOne({ email, password });
 
-
-    
     console.log("findemail", findEmailAdmin);
     // if we want only admin  .. data ...
     if (findEmailAdmin !== null) {
