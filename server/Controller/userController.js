@@ -157,47 +157,89 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.loginBoth = async (req, res) => {
+// exports.loginBoth = async (req, res) => {
+//   const { email, password } = req.body;
+//   // console.log("email,password", email, password);
+//   try {
+//     // ...................
+//     if (!email || !password) {
+//       return res.status(401).json({
+//         stauts: false,
+//         massage: "Fill All Credientials",
+//       });
+//     }
+
+//     //  .......................error inside email .......................
+//     if (!isValidEmail(email)) {
+//       //   console.log("email is not valid");
+//       return res.status(401).send({
+//         stauts: false,
+//         massage: "email is not valid !!",
+//       });
+//     }
+//     // ....................... error inside password .......................
+//     if (!isValidPwd(password)) {
+//       //   console.log("all are required");
+//       return res.status(401).send({
+//         stauts: false,
+//         massage: "password is not valid !!",
+//       });
+//     }
+//
+//     // .................... find user In Admin ..............
+//     const findEmailAdmin = await Admin.findOne({ email, password });
+
+//     console.log("findemail", findEmailAdmin);
+//     // if we want only admin  .. data ...
+//     if (findEmailAdmin !== null) {
+//       // const reposne = new Admin(req.body);
+//       console.log("reposne", reposne);
+
+//       // const matchPasswrodAdmin = await bcrypt.compare(password, findEmailAdmin.password);
+//       // console.log("passwordAdmin" ,matchPasswrodAdmin )
+//       return res.status(201).send({
+//         status: true,
+//         findEmailAdmin,
+//       });
+//     } else if (findEmailAdmin === null) {
+//       const findEmailUser = await User.findOne({ email, password });
+//       if (findEmailUser !== null) {
+//         const reposne = new User(req.body);
+//         console.log("reposne", reposne);
+//         return res.status(201).send({
+//           status: true,
+//           findEmailUser,
+//         });
+//       } else {
+//         return res.status(401).send({
+//           status: false,
+//           message: "no found data in user",
+//         });
+//       }
+//     } else {
+//       return res.status(401).send({
+//         status: false,
+//         message: "no found data in admin",
+//       });
+//     }
+//   } catch (error) {
+//     return res.status(401).send({
+//       status: false,
+//       message: "something error",
+//     });
+//   }
+// };
+
+exports.checkBoth = async (req, res) => {
   const { email, password } = req.body;
-  console.log("email,password", email, password);
+  // console.log("email,password", email, password);
   try {
-
-    // ...................
-    if (!email || !password) {
-      return res.status(401).json({
-        stauts: false,
-        massage: "Fill All Credientials",
-      });
-    }
-
- //  .......................error inside email .......................
- if (!isValidEmail(email)) {
-  //   console.log("email is not valid");
-  return res.status(401).send({
-    stauts: false,
-    massage: "email is not valid !!",
-  });
-}
-  // ....................... error inside password .......................
-  if (!isValidPwd(password)) {
-    //   console.log("all are required");
-    return res.status(401).send({
-      stauts: false,
-      massage: "password is not valid !!",
-    });
-  }
-
-
-    // ....................
-    const findEmailAdmin = await Admin.findOne({ email, password });
-
-
-    
-    console.log("findemail", findEmailAdmin);
-    // if we want only admin  .. data ...
+    const findEmailAdmin = await Admin.findOne({ email });
+    console.log("findemail", findEmailAdmin, findEmailUser);
+    // if we want only admin   .. data ...
     if (findEmailAdmin !== null) {
-      // const reposne = new Admin(req.body);
-      // console.log("reposne", reposne);
+      const reposne = new Admin(req.body);
+      console.log("reposne", reposne);
       return res.status(201).send({
         status: true,
         findEmailAdmin,
@@ -269,14 +311,14 @@ exports.profile = async (req, res) => {
 };
 
 exports.updateProfile = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, phoneNumber, name } = req.body;
   const encryptPwd = await bcrypt.hash(password, 10);
 
   // console.log("req.user",req.user,req.body)
   try {
     const response = await User.updateOne(
       { _id: req.user._id },
-      { $set: { email, password: encryptPwd } }
+      { $set: { email, password: encryptPwd, name, phoneNumber } }
     );
 
     return res.status(201).send({
@@ -309,5 +351,90 @@ exports.createBlog = async (req, res) => {
     res.json(reponse);
   } catch (error) {
     res.json("false");
+  }
+};
+
+exports.updateBlog = async (req, res) => {
+  const userFind = req.user;
+  console.log("userfind", userFind);
+
+  const id = req.params.id;
+  const findBlog = await Blog.findOne({ _id: id, user: req.user._id });
+  console.log("findblog", findBlog);
+
+  try {
+    return res.status(201).send({
+      status: true,
+      massage: "blog is updated",
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      massage: "blog error",
+    });
+  }
+};
+
+// _id
+// 64b6da9a25db8edfe53b6fce
+// title
+// "sdf as fas sad sdfsdf"
+// image
+// ""
+// user
+// 64b6d7c5c6488afa030a66e0
+// __v
+// 0
+
+exports.loginBoth = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    if (Object.keys(req.body).length === 0) {
+      return res.status(401).send({
+        status: false,
+        massage: "Fill All Credientials...",
+      });
+    } // all are empty..
+    if (!email || !password) {
+      return res.status(401).send({
+        status: false,
+        massage: "All Credientials are needed...",
+      }); // if any one is empty..
+    }
+    const userLogin = await User.findOne({ email });
+    if (userLogin && (await bcrypt.compare(password, userLogin.password))) {
+      let token = jwt.sign({ id: userLogin._id }, "radhika");
+      return res.status(200).send({
+        status: true,
+        massage: "Login Successfull !!",
+        token,
+        userLogin,
+      });
+    } else {
+      const adminLogin = await Admin.findOne({ email });
+      if (!adminLogin) {
+        return res.status(400).send({
+          status: false,
+          massage: "Please Register First !!",
+        });
+      }
+      if (adminLogin && (await bcrypt.compare(password, adminLogin.password))) {
+        let token = jwt.sign({ id: adminLogin._id }, "radhika");
+        return res.status(200).send({
+          status: true,
+          massage: "Login Successfull !!",
+          token,
+          adminLogin,
+        });
+      } else {
+        res.status(403).json("invalid credential");
+      }
+    }
+  } catch (error) {
+    return res.status(400).send({
+      status: false,
+      massage: "<h1>hello</h1>",
+      error,
+    });
   }
 };
