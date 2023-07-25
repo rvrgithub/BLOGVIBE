@@ -372,7 +372,7 @@ exports.createBlog = async (req, res) => {
     const reponse = new Blog({
       title: req.body.title,
       image: req.body.image,
-      description: req.body.description,
+      descriptions: req.body.descriptions,
       user: req.user._id,
     });
     await reponse.save();
@@ -384,15 +384,17 @@ exports.createBlog = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
   const userFind = req.user;
-  // console.log("userfind", userFind);
-  const { title, description, image } = req.body;
-  // console.log("title", title, description, image);
+  console.log("userfind", userFind);
+  const { title, descriptions, image } = req.body;
+  console.log("title", title, descriptions, image);
   const id = req.params.id;
   const findBlog = await Blog.findOne({ _id: id, user: req.user._id });
-  // console.log("findblog", findBlog.id);
+  // console.log("findblog", findBlog);
+
+  const checkValueImage = image ? image : findBlog.image
   const updatBlog = await Blog.updateOne(
-    { _id: findBlog.id },
-    { $set: { title, description, image } }
+    { _id: id ,user:req.user._id},
+    { $set: { title, descriptions, image:checkValueImage } }
   );
   try {
     return res.status(201).send({

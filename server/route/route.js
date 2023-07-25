@@ -35,3 +35,6 @@ route.post("/findBothLogin", loginBoth);
 route.put("/updateBlog/:id", auth, updateBlog);
 
 module.exports = { route };
+// get all user blog 
+// single blog / user
+// admin / update / userblog
