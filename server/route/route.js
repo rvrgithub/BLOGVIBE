@@ -9,6 +9,8 @@ const {
   loginBoth,
   checkBoth,
   updateBlog,
+  getAllBlog,
+  singleBlog,
 } = require("../Controller/userController");
 const { auth } = require("../middleware/middleware");
 const { adminRegister } = require("../Controller/adminController");
@@ -33,7 +35,8 @@ route.post("/findBothLogin", loginBoth);
 //  ............................ Blog Section......................
 
 route.put("/updateBlog/:id", auth, updateBlog);
-
+route.get("/getAllBlog", auth, getAllBlog);
+route.get("/single/blog/:id", singleBlog);
 module.exports = { route };
 // get all user blog 
 // single blog / user

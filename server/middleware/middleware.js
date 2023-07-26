@@ -6,11 +6,11 @@ exports.auth = async (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
   console.log("token", token);
   const decode = jwt.verify(token, "radhika");
-  console.log("decode" ,decode)
+  console.log("decode", decode);
   const findUser = await User.findOne({ _id: decode.id });
 
   if (findUser) {
-    console.log("userFind", findUser);
+    // console.log("userFind", findUser);
     req.user = findUser;
   } else {
     const findAdmin = await Admin.findOne({ _id: decode.id });
@@ -20,7 +20,7 @@ exports.auth = async (req, res, next) => {
         message: "Invalid Token",
       });
     } else {
-      console.log("findAdmin", findAdmin);
+      // console.log("findAdmin", findAdmin);
       req.user = findAdmin;
     }
   }

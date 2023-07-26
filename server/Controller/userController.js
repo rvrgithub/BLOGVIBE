@@ -391,10 +391,10 @@ exports.updateBlog = async (req, res) => {
   const findBlog = await Blog.findOne({ _id: id, user: req.user._id });
   // console.log("findblog", findBlog);
 
-  const checkValueImage = image ? image : findBlog.image
+  const checkValueImage = image ? image : findBlog.image;
   const updatBlog = await Blog.updateOne(
-    { _id: id ,user:req.user._id},
-    { $set: { title, descriptions, image:checkValueImage } }
+    { _id: id, user: req.user._id },
+    { $set: { title, descriptions, image: checkValueImage } }
   );
   try {
     return res.status(201).send({
@@ -410,16 +410,46 @@ exports.updateBlog = async (req, res) => {
   }
 };
 
-// _id
-// 64b6da9a25db8edfe53b6fce
-// title
-// "sdf as fas sad sdfsdf"
-// image
-// ""
-// user
-// 64b6d7c5c6488afa030a66e0
-// __v
-// 0
+exports.getAllBlog = async (req, res) => {
+  const getuser = req.user;
+  // console.log("getUSer", getuser);
+
+  try {
+    const allBlog = await Blog.find({ user: getuser.id });
+    console.log("allblog", allBlog);
+    return res.status(201).send({
+      status: true,
+      // data: allBlog[0].blogs,
+      allBlog,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      message: "Error in getting blog...",
+      error,
+    });
+  }
+};
+
+//  ........by id ....................
+exports.singleBlog = async (req, res) => {
+  const id = req.params.id;
+  console.log("id....", id);
+  try {
+    const singleBlog = await Blog.findOne({ _id: id });
+    console.log("singleBlog", singleBlog);
+    return res.status(201).send({
+      status: true,
+      singleBlog,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      message: "Error in getting blog...",
+      error,
+    });
+  }
+};
 
 exports.loginBoth = async (req, res) => {
   const { email, password } = req.body;
