@@ -1,4 +1,5 @@
 const { Admin } = require("../Model/adminModel");
+const { Blog } = require("../Model/blogModel");
 const { isValidName, isValidEmail, isValidPwd } = require("../Util/validation");
 const bcrypt = require("bcrypt")
 exports.adminRegister = async (req, res) => {
@@ -86,3 +87,27 @@ exports.adminRegister = async (req, res) => {
     });
   }
 };
+
+
+
+// ........................ update blog by admin..........................
+
+exports.updateBlogByA = async(req,res)=>{
+  console.log("res",req.user);
+  const blogId = req.params.id;
+const findBlog = await Blog.findOne({_id : blogId});
+console.log("findBlog",findBlog);
+
+  try {
+    return res.status(201).json({
+      stauts: true,
+      massage: "Something is Good !!"
+    });
+  } catch (error) {
+    return res.status(500).json({
+      stauts: false,
+      massage: "Something Wrong !!",
+      error,
+    });
+  }
+}
