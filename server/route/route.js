@@ -38,6 +38,6 @@ route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
 route.get("/single/blog/:id", singleBlog);
 module.exports = { route };
-// get all user blog 
-// single blog / user
+// get all user blog  //done
+// single blog / user  // done
 // admin / update / userblog
