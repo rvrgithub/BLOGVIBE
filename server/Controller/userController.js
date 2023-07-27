@@ -452,7 +452,25 @@ exports.singleBlog = async (req, res) => {
 };
 
 
+exports.deleteBlog= async(req, res) =>{
+  const blogId = req.params.id;
+  console.log("id" ,blogId);
+  try {
 
+    const blog= await Blog.deleteOne({_id:blogId})
+    return res.status(201).send({
+      status: true,
+      message: "delete blog...",
+      blog
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      message: "Error in deleting blog...",
+      error,
+    });
+  }
+}
 // ................
 
 exports.loginBoth = async (req, res) => {

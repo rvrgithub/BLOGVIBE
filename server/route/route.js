@@ -11,9 +11,10 @@ const {
   updateBlog,
   getAllBlog,
   singleBlog,
+  deleteBlog,
 } = require("../Controller/userController");
 const { auth, authAdmin } = require("../middleware/middleware");
-const { adminRegister, updateBlogByA } = require("../Controller/adminController");
+const { adminRegister, updateBlogByA, approve, approvAll } = require("../Controller/adminController");
 const route = express.Router();
 route.post("/register", register);
 
@@ -22,10 +23,12 @@ route.get("/getAll", auth, getAll);
 route.get("/profile", auth, profile);
 route.put("/updateProfile", auth, updateProfile);
 route.post("/create/blog", auth, createBlog);
-
+route.delete("/delete/blog/:id",deleteBlog)
 //..............................  Admin Section ......................
 
 route.post("/admin/register",authAdmin, adminRegister);
+route.put("/admin/approve/:id",authAdmin,approve);
+route.put("/approvAll",authAdmin,approvAll);
 
 // .............................. find both [admin and user] in login.............................
 
