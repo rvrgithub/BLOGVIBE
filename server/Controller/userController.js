@@ -436,7 +436,7 @@ exports.singleBlog = async (req, res) => {
   const id = req.params.id;
   console.log("id....", id);
   try {
-    const singleBlog = await Blog.findOne({ _id: id });
+    const singleBlog = await Blog.findOne({ _id: id ,user:req.user._id});
     console.log("singleBlog", singleBlog);
     return res.status(201).send({
       status: true,
@@ -450,6 +450,10 @@ exports.singleBlog = async (req, res) => {
     });
   }
 };
+
+
+
+// ................
 
 exports.loginBoth = async (req, res) => {
   const { email, password } = req.body;

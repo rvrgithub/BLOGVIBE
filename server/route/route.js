@@ -12,8 +12,8 @@ const {
   getAllBlog,
   singleBlog,
 } = require("../Controller/userController");
-const { auth } = require("../middleware/middleware");
-const { adminRegister } = require("../Controller/adminController");
+const { auth, authAdmin } = require("../middleware/middleware");
+const { adminRegister, updateBlogByA } = require("../Controller/adminController");
 const route = express.Router();
 route.post("/register", register);
 
@@ -25,7 +25,7 @@ route.post("/create/blog", auth, createBlog);
 
 //..............................  Admin Section ......................
 
-route.post("/admin/register", adminRegister);
+route.post("/admin/register",authAdmin, adminRegister);
 
 // .............................. find both [admin and user] in login.............................
 
@@ -36,8 +36,9 @@ route.post("/findBothLogin", loginBoth);
 
 route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
-route.get("/single/blog/:id", singleBlog);
+route.get("/single/blog/:id", auth,singleBlog);
+route.put("/update/blogBy/admin/:id",authAdmin,updateBlogByA)
 module.exports = { route };
-// get all user blog  //done
-// single blog / user  // done
+// get all user blog 
+// single blog / user
 // admin / update / userblog

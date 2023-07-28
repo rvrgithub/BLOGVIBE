@@ -5,6 +5,7 @@ const blogSchema = new mongoose.Schema({
   image: { type: String },
   descriptions: { type: String },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  status:{type:String ,default:"pending"}
 });
 
 const Blog = mongoose.model("Blog", blogSchema);
