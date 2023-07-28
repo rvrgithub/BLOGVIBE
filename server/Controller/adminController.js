@@ -93,9 +93,20 @@ exports.adminRegister = async (req, res) => {
 
 exports.updateBlogByA = async (req, res) => {
   const blogId = req.params.id;
-  // const findBlog = await Blog.findOne({ _id: blogId });
-  // console.log("findBlog", findBlog);
-  try {
+  const findBlog = await Blog.findOne({ _id: blogId });
+  console.log("findBlog", findBlog); 
+  try {  
+    const { title, image, descriptions } = req.body;
+    const checkValueImage = image ? image : findBlog.image; 
+    const checkValueTitle = title ? title : findBlog.title; 
+    const checkValueDescriptions = descriptions ? descriptions : findBlog.descriptions; 
+  
+    const updatBlog = await Blog.updateOne(
+      { _id: blogId },
+      { $set: { title:checkValueTitle, descriptions:checkValueDescriptions, image: checkValueImage } }
+    );
+
+
     // const response = await Blog.updateOne(
     //   { _id: blogId },
     //   { $set: { title, image, descriptions } }
@@ -103,7 +114,7 @@ exports.updateBlogByA = async (req, res) => {
     return res.status(201).json({
       stauts: true,
       massage: "Something is Good !!",
-      // response,
+      response,  
     });
   } catch (error) {
     return res.status(500).json({
@@ -161,22 +172,22 @@ exports.deleteBlogByA = async (req, res) => {
   try {
     const blogId = req.params.id;
     console.log("blog id", blogId);
-    const findBlog = await Blog.findOne({ _id: blogId });
-    console.log("findBlog", findBlog);
-    if (!findBlog) {
-      return res.status(500).json({
-        stauts: false,
-        massage: "No Blog found here !!",
-      });
-    } else {
+    // const findBlog = await Blog.findOne({ _id: blogId });
+    // console.log("findBlog", findBlog);
+    // if (!findBlog) {
+    //   return res.status(500).json({
+    //     stauts: false,
+    //     massage: "No Blog found here !!",
+    //   });
+    // } else {
       const deleteBlog = await Blog.deleteOne({ _id: blogId });
       console.log("delete blog", deleteBlog);
       return res.status(500).json({
         stauts: true,
         massage: "delete Blog Succesfully !!",
         deleteBlog,
-      });
-    }
+      });   
+    // }  
     // const
   } catch (error) {
     return res.status(500).json({

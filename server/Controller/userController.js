@@ -17,6 +17,7 @@ exports.register = async (req, res) => {
       });
     }
 
+
     // .......................All Credientials Are Required....................
     if (!name || !email || !password || !phoneNumber) {
       console.log("all are required");
@@ -181,10 +182,13 @@ exports.updateBlog = async (req, res) => {
   const findBlog = await Blog.findOne({ _id: id, user: req.user._id });
   // console.log("findblog", findBlog);
 
-  const checkValueImage = image ? image : findBlog.image;
+  const checkValueImage = image ? image : findBlog.image; 
+  const checkValueTitle = title ? title : findBlog.title; 
+  const checkValueDescriptions = descriptions ? descriptions : findBlog.descriptions; 
+
   const updatBlog = await Blog.updateOne(
     { _id: id, user: req.user._id },
-    { $set: { title, descriptions, image: checkValueImage } }
+    { $set: { title:checkValueTitle, descriptions:checkValueDescriptions, image: checkValueImage } }
   );
   try {
     return res.status(201).send({
@@ -292,9 +296,27 @@ exports.loginBoth = async (req, res) => {
       status: false,
       massage: "<h1>hello</h1>",
       error,
-    });
+    });  
   }
 };
+
+exports.approvalBlogs = async(req,res)=>{
+  try {
+    const blogs =await Blog.find({status:"approve"});
+    return res.status(200).send({
+      status: true,
+      massage: "approve blogs ",
+      blogs,
+    });
+  } catch (error) {
+    return res.status(400).send({
+      status: false,
+      massage: "something error",
+      error,
+    });
+  }
+}
+
 
 // ....................... extra code  ....
 

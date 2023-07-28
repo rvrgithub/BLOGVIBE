@@ -11,6 +11,7 @@ const {
   getAllBlog,
   singleBlog,
   deleteBlog,
+  approvalBlogs,
 } = require("../Controller/userController");
 const { auth, authAdmin } = require("../middleware/middleware");
 const {
@@ -35,8 +36,8 @@ route.delete("/delete/blog/:id", auth, deleteBlog);
 route.post("/admin/register", authAdmin, adminRegister);
 route.put("/admin/approve/:id", authAdmin, approve);
 route.put("/approvAll", authAdmin, approvAll);
-route.delete("/admin/delete/blog/:id", authAdmin, deleteBlogByA);
-route.put("/update/blogBy/admin/:id", authAdmin, updateBlogByA);
+route.delete("/admin/delete/blog/:id",authAdmin, deleteBlogByA);  
+route.put("/update/blogBy/admin/:id",authAdmin, updateBlogByA);
 route.delete("/admin/delete/user/:id", authAdmin, deleteUserByA);
 // .............................. find both [admin and user] in login.............................
 
@@ -48,5 +49,6 @@ route.post("/findBothLogin", loginBoth);
 route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
 route.get("/single/blog/:id", auth, singleBlog);
-
+route.get("/" , approvalBlogs) 
 module.exports = { route };
+
