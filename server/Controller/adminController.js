@@ -1,5 +1,6 @@
 const { Admin } = require("../Model/adminModel");
 const { Blog } = require("../Model/blogModel");
+const { User } = require("../Model/userModel");
 const { isValidName, isValidEmail, isValidPwd } = require("../Util/validation");
 const bcrypt = require("bcrypt");
 exports.adminRegister = async (req, res) => {
@@ -91,15 +92,18 @@ exports.adminRegister = async (req, res) => {
 // ........................ update blog by admin..........................
 
 exports.updateBlogByA = async (req, res) => {
-  console.log("res", req.user);
   const blogId = req.params.id;
-  const findBlog = await Blog.findOne({ _id: blogId });
-  console.log("findBlog", findBlog);
-
+  // const findBlog = await Blog.findOne({ _id: blogId });
+  // console.log("findBlog", findBlog);
   try {
+    // const response = await Blog.updateOne(
+    //   { _id: blogId },
+    //   { $set: { title, image, descriptions } }
+    // );
     return res.status(201).json({
       stauts: true,
       massage: "Something is Good !!",
+      // response,
     });
   } catch (error) {
     return res.status(500).json({
@@ -109,7 +113,6 @@ exports.updateBlogByA = async (req, res) => {
     });
   }
 };
-<<<<<<< Updated upstream
 
 exports.approve = async (req, res) => {
   const blogId = req.params.id;
@@ -136,11 +139,14 @@ exports.approve = async (req, res) => {
 
 exports.approvAll = async (req, res) => {
   try {
-    const updateAll = await Blog.updateMany({status:"pending"}, { $set: { status: "approve" } });
+    const updateAll = await Blog.updateMany(
+      { status: "pending" },
+      { $set: { status: "approve" } }
+    );
     return res.status(200).json({
       stauts: true,
       massage: "is good to know !!",
-      updateAll
+      updateAll,
     });
   } catch (error) {
     return res.status(500).json({
@@ -150,5 +156,63 @@ exports.approvAll = async (req, res) => {
     });
   }
 };
-=======
->>>>>>> Stashed changes
+
+exports.deleteBlogByA = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    console.log("blog id", blogId);
+    const findBlog = await Blog.findOne({ _id: blogId });
+    console.log("findBlog", findBlog);
+    if (!findBlog) {
+      return res.status(500).json({
+        stauts: false,
+        massage: "No Blog found here !!",
+      });
+    } else {
+      const deleteBlog = await Blog.deleteOne({ _id: blogId });
+      console.log("delete blog", deleteBlog);
+      return res.status(500).json({
+        stauts: true,
+        massage: "delete Blog Succesfully !!",
+        deleteBlog,
+      });
+    }
+    // const
+  } catch (error) {
+    return res.status(500).json({
+      stauts: false,
+      massage: "Something Wrong !!",
+      error,
+    });
+  }
+};
+
+exports.deleteUserByA = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    console.log("blog id", userId);
+    const findUser = await User.findOne({ _id: userId });
+    console.log("findUser", findUser);
+    if (!findUser) {
+      return res.status(500).json({
+        stauts: false,
+        massage: "No User found here !!",
+      });
+    } else {
+      const deleteUser = await User.deleteOne({ _id: userId });
+      console.log("delete blog", deleteUser);
+      return res.status(500).json({
+        stauts: true,
+        massage: "delete USer Succesfully !!",
+        deleteUser,
+      });
+    }
+    // const
+  } catch (error) {
+    return res.status(500).json({
+      stauts: false,
+      massage: "Something Wrong !!",
+      error,
+    });
+  }
+};

@@ -1,7 +1,6 @@
 const express = require("express");
 const {
   register,
-  login,
   getAll,
   profile,
   updateProfile,
@@ -14,33 +13,31 @@ const {
   deleteBlog,
 } = require("../Controller/userController");
 const { auth, authAdmin } = require("../middleware/middleware");
-<<<<<<< Updated upstream
-const { adminRegister, updateBlogByA, approve, approvAll } = require("../Controller/adminController");
-=======
 const {
   adminRegister,
   updateBlogByA,
+  approve,
+  approvAll,
+  deleteBlogByA,
+  deleteUserByA,
 } = require("../Controller/adminController");
->>>>>>> Stashed changes
 const route = express.Router();
 route.post("/register", register);
 
 // route.post("/login", login);
-route.get("/getAll", auth, getAll);
+route.get("/getAll/user", authAdmin, getAll);
 route.get("/profile", auth, profile);
 route.put("/updateProfile", auth, updateProfile);
 route.post("/create/blog", auth, createBlog);
-route.delete("/delete/blog/:id",deleteBlog)
+route.delete("/delete/blog/:id", auth, deleteBlog);
 //..............................  Admin Section ......................
 
-<<<<<<< Updated upstream
-route.post("/admin/register",authAdmin, adminRegister);
-route.put("/admin/approve/:id",authAdmin,approve);
-route.put("/approvAll",authAdmin,approvAll);
-=======
 route.post("/admin/register", authAdmin, adminRegister);
->>>>>>> Stashed changes
-
+route.put("/admin/approve/:id", authAdmin, approve);
+route.put("/approvAll", authAdmin, approvAll);
+route.delete("/admin/delete/blog/:id", authAdmin, deleteBlogByA);
+route.put("/update/blogBy/admin/:id", authAdmin, updateBlogByA);
+route.delete("/admin/delete/user/:id", authAdmin, deleteUserByA);
 // .............................. find both [admin and user] in login.............................
 
 route.post("/Check/login", checkBoth);
@@ -51,8 +48,5 @@ route.post("/findBothLogin", loginBoth);
 route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
 route.get("/single/blog/:id", auth, singleBlog);
-route.put("/update/blogBy/admin/:id", authAdmin, updateBlogByA);
+
 module.exports = { route };
-// get all user blog
-// single blog / user
-// admin / update / userblog
