@@ -1,7 +1,7 @@
 const { Admin } = require("../Model/adminModel");
 const { Blog } = require("../Model/blogModel");
 const { isValidName, isValidEmail, isValidPwd } = require("../Util/validation");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 exports.adminRegister = async (req, res) => {
   const { email, name, password, phoneNumber } = req.body;
   console.log("req.body ", req.body);
@@ -88,20 +88,18 @@ exports.adminRegister = async (req, res) => {
   }
 };
 
-
-
 // ........................ update blog by admin..........................
 
-exports.updateBlogByA = async(req,res)=>{
-  console.log("res",req.user);
+exports.updateBlogByA = async (req, res) => {
+  console.log("res", req.user);
   const blogId = req.params.id;
-const findBlog = await Blog.findOne({_id : blogId});
-console.log("findBlog",findBlog);
+  const findBlog = await Blog.findOne({ _id: blogId });
+  console.log("findBlog", findBlog);
 
   try {
     return res.status(201).json({
       stauts: true,
-      massage: "Something is Good !!"
+      massage: "Something is Good !!",
     });
   } catch (error) {
     return res.status(500).json({
@@ -110,4 +108,44 @@ console.log("findBlog",findBlog);
       error,
     });
   }
-}
+};
+
+exports.approve = async (req, res) => {
+  const blogId = req.params.id;
+  console.log("id", blogId);
+  const blog = await Blog.updateOne(
+    { _id: blogId },
+    { $set: { status: "approve" } }
+  );
+  console.log("req");
+  try {
+    return res.status(200).json({
+      stauts: true,
+      massage: "is good to know !!",
+      blog,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      stauts: false,
+      massage: "Something Wrong !!",
+      error,
+    });
+  }
+};
+
+exports.approvAll = async (req, res) => {
+  try {
+    const updateAll = await Blog.updateMany({status:"pending"}, { $set: { status: "approve" } });
+    return res.status(200).json({
+      stauts: true,
+      massage: "is good to know !!",
+      updateAll
+    });
+  } catch (error) {
+    return res.status(500).json({
+      stauts: false,
+      massage: "Something Wrong !!",
+      error,
+    });
+  }
+};
