@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const { User } = require("../Model/userModel");
 const { Admin } = require("../Model/adminModel");
 
-exports.auth = async (req, res, next) => {
+exports.authUser = async (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
   console.log("token", token);
   const decode = jwt.verify(token, "radhika");

@@ -14,7 +14,14 @@ const {
   deleteBlog,
 } = require("../Controller/userController");
 const { auth, authAdmin } = require("../middleware/middleware");
+<<<<<<< Updated upstream
 const { adminRegister, updateBlogByA, approve, approvAll } = require("../Controller/adminController");
+=======
+const {
+  adminRegister,
+  updateBlogByA,
+} = require("../Controller/adminController");
+>>>>>>> Stashed changes
 const route = express.Router();
 route.post("/register", register);
 
@@ -26,9 +33,13 @@ route.post("/create/blog", auth, createBlog);
 route.delete("/delete/blog/:id",deleteBlog)
 //..............................  Admin Section ......................
 
+<<<<<<< Updated upstream
 route.post("/admin/register",authAdmin, adminRegister);
 route.put("/admin/approve/:id",authAdmin,approve);
 route.put("/approvAll",authAdmin,approvAll);
+=======
+route.post("/admin/register", authAdmin, adminRegister);
+>>>>>>> Stashed changes
 
 // .............................. find both [admin and user] in login.............................
 
@@ -39,9 +50,9 @@ route.post("/findBothLogin", loginBoth);
 
 route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
-route.get("/single/blog/:id", auth,singleBlog);
-route.put("/update/blogBy/admin/:id",authAdmin,updateBlogByA)
+route.get("/single/blog/:id", auth, singleBlog);
+route.put("/update/blogBy/admin/:id", authAdmin, updateBlogByA);
 module.exports = { route };
-// get all user blog 
+// get all user blog
 // single blog / user
 // admin / update / userblog

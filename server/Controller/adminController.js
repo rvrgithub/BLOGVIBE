@@ -109,6 +109,7 @@ exports.updateBlogByA = async (req, res) => {
     });
   }
 };
+<<<<<<< Updated upstream
 
 exports.approve = async (req, res) => {
   const blogId = req.params.id;
@@ -149,3 +150,5 @@ exports.approvAll = async (req, res) => {
     });
   }
 };
+=======
+>>>>>>> Stashed changes
