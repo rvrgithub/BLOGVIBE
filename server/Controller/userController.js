@@ -156,18 +156,18 @@ exports.updateProfile = async (req, res) => {
 // ..................  Blog Section...............................
 
 exports.createBlog = async (req, res) => {
-  // console.log("asfg l")
+  console.log("asfg l",req.body,req.file)
   try {
     const user = req.user;
     console.log("user", user._id);
     const reponse = new Blog({
       title: req.body.title,
-      image: req.body.image,
+      image: req.file.filename,
       descriptions: req.body.descriptions,
       user: req.user._id,
     });
     await reponse.save();
-    res.json(reponse);
+    res.json(reponse );
   } catch (error) {
     res.json("false");
   }
@@ -176,13 +176,13 @@ exports.createBlog = async (req, res) => {
 exports.updateBlog = async (req, res) => {
   const userFind = req.user;
   console.log("userfind", userFind);
-  const { title, descriptions, image } = req.body;
-  console.log("title", title, descriptions, image);
+  const { title, descriptions } = req.body;
+  console.log("title", title, descriptions);
   const id = req.params.id;
   const findBlog = await Blog.findOne({ _id: id, user: req.user._id });
   // console.log("findblog", findBlog);
 
-  const checkValueImage = image ? image : findBlog.image; 
+  const checkValueImage = req.file.filename ? req.file.filename : findBlog.image; 
   const checkValueTitle = title ? title : findBlog.title; 
   const checkValueDescriptions = descriptions ? descriptions : findBlog.descriptions; 
 

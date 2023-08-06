@@ -96,8 +96,8 @@ exports.updateBlogByA = async (req, res) => {
   const findBlog = await Blog.findOne({ _id: blogId });
   console.log("findBlog", findBlog); 
   try {  
-    const { title, image, descriptions } = req.body;
-    const checkValueImage = image ? image : findBlog.image; 
+    const { title, descriptions } = req.body;
+    const checkValueImage = req.file.filename ? req.file.filename : findBlog.image; 
     const checkValueTitle = title ? title : findBlog.title; 
     const checkValueDescriptions = descriptions ? descriptions : findBlog.descriptions; 
   
