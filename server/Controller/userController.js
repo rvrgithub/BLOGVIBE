@@ -6,8 +6,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { Admin } = require("../Model/adminModel");
 exports.register = async (req, res) => {
+  console.log("req.body ",req.body);
+
   const { email, name, password, phoneNumber } = req.body;
-  console.log("req.body ", req.body, phoneNumber);
   try {
     if (Object.keys(req.body).length === 0) {
       console.log("req.body");
@@ -248,7 +249,9 @@ exports.singleBlog = async (req, res) => {
 // ................
 
 exports.loginBoth = async (req, res) => {
+  console.log("dfdfdf" , req.body)
   const { email, password } = req.body;
+  
   try {
     if (Object.keys(req.body).length === 0) {
       return res.status(401).send({

@@ -3,6 +3,8 @@ import "../Styles/login.css";
 import { Link } from "react-router-dom";
 export const Login = () => {
   const [logStyle, setLogStyle] = useState("container");
+  const [active, setActive] = useState(true);
+
   const toggleForm = () => {
     //   const container = document.querySelector(".container");
     // https://codepen.io/kh3996/pen/pojXrBj
@@ -10,7 +12,29 @@ export const Login = () => {
     setLogStyle(`${logStyle} + active}`);
   };
 
-  const [active, setActive] = useState(true);
+  const [inputValue, setInputValue] = useState({
+    name: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("inputvalue", inputValue);
+    fetch("http://localhost:4500/findBothLogin", {
+      method: "POST",
+      header: { "Content-Type": "application/json" },
+      body: JSON.stringify(inputValue),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("data", data))
+      .catch((error) => console.log("error", error));
+  };
+
   return (
     <div>
       <section className="login_section">
@@ -25,9 +49,26 @@ export const Login = () => {
             <div class="formBx">
               <form action="" onsubmit="return false;">
                 <h2>Sign In</h2>
-                <input type="text" name="" placeholder="Username" />
-                <input type="password" name="" placeholder="Password" />
-                <input type="submit" name="" value="Login" />
+                <input
+                  type="text"
+                  name="name"
+                  value={inputValue.name}
+                  placeholder="Username"
+                  onChange={(e) => handleChange(e)}
+                />
+                <input
+                  type="password"
+                  name="password"
+                  value={inputValue.password}
+                  onChange={(e) => handleChange(e)}
+                  placeholder="Password"
+                />
+                <input
+                  type="submit"
+                  name=""
+                  value="Login"
+                  onClick={(e) => handleSubmit(e)}
+                />
                 <p class="signup">
                   Don't have an account ?<Link to="/register">Sign Up.</Link>
                 </p>

@@ -18,8 +18,7 @@ export const Register = () => {
       ...inputValue,
       [name]: value,
     });
-  };
-
+  }; 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("input Value", inputValue);

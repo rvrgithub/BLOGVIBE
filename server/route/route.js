@@ -69,7 +69,7 @@ route.delete("/admin/delete/blog/:id",authAdmin, deleteBlogByA);
 route.delete("/admin/delete/user/:id", authAdmin, deleteUserByA);
 // .............................. find both [admin and user] in login.............................
 
-route.post("/Check/login", checkBoth);
+// route.post("/Check/login", checkBoth);
 route.post("/findBothLogin", loginBoth);
 
 //  ............................ Blog Section......................

@@ -45,7 +45,7 @@
 //   console.log(`Listen At Port ${process.env.PORT}`);
 // });
 
-
+const cores = require("cors");
 const express=require("express")
 const app=express()
 const path=require("path")
@@ -55,7 +55,8 @@ const { auth, authAdmin } = require("./middleware/middleware")
 const { createBlog, updateBlog } = require("./Controller/userController")
 const { Connection } = require("./Connection/Connetion")
 const { updateBlogByA } = require("./Controller/adminController")
-
+app.use(cores())
+app.use(express.json())
 const storage=multer.diskStorage({
 destination:(req,file,cb)=>{
 cb(null,"upload")
@@ -86,7 +87,7 @@ route.put("/update/blogBy/admin/:id",upload.single("image"),authAdmin, updateBlo
 route.put("/updateBlog/:id", upload.single("image"),auth, updateBlog);
 
 app.use('/',route)
-app.listen(5500,()=>{
+app.listen(4500,()=>{
   Connection();
 console.log("server")
 })
