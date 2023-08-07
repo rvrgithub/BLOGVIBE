@@ -82,39 +82,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Nav = styled.nav`
-  padding: 0 20px;
-  min-height: 15vh;
-  background: none;
-  position: fixed;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  /* border: 1px solid red; */
-  width:100% ;
-  background-color: rgba(250,250,250,0.15);
-  background-color: #1f272b;
-  `; 
-
-const Logo = styled.h1`
-  font-size: 25px;
-  color: white;
-`;
-
-const Menu = styled.ul`
-  list-style: none;
-  display: flex;
-  li {
-    margin: 0px 20px;
-    font-size: 22px;
-  }
-  
-  @media (max-width: 768px) {
-    display: none;
-    z-index: 2000;
-  }
-`;
+import "../../Styles/navbar.css"
 
 
 const Line = styled.span`
@@ -168,9 +136,11 @@ export const AdminNav = () => {
   const [toggle, toggleNav] = useState(false);
   return (
     <>
-     <Nav>
-        <Logo>BLOGVIVE /Admin</Logo>
-        <Menu>
+
+ 
+     <div className="navContainer">
+        <h1 className="logo">BLOGVIVE /Admin</h1>
+        <ul className="menuUi">
           <li>
             <Link target="#" to="/allblog">
               ALL Blogs
@@ -197,13 +167,13 @@ export const AdminNav = () => {
              logout
             </Link>
           </li>
-        </Menu>
+        </ul>
         <button className="navbtn" onClick={() => toggleNav(!toggle)}>
           <Line open={toggle} />
           <Line open={toggle} />
           <Line open={toggle} />
         </button>
-      </Nav>
+      </div>
       <Overlay open={toggle}>
         <OverlayMenu open={toggle}>
           <li>
