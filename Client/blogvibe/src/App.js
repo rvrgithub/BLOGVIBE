@@ -9,21 +9,9 @@ function App() {
     <div className="App">
     <AdminNav/>
     <AllRoutes/>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
   );  
 }
 
 export default App;
-
-
-
-// ........   target   ....... 
-//  - navbar 
-//  - footer  copy [docs]  : one secction done ->  now time is second section wytnow  done both 
-//  - register 
-//  - login 
-//  - admin all side  .... >
-//  - style merger 2 code 
-//  - create google docs for study -> done  
-//  - 

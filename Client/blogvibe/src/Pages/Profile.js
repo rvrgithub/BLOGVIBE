@@ -1,141 +1,77 @@
-import React from "react";
-import "../Styles/profile.css";
-import { BsFacebook, BsInstagram } from "react-icons/bs";
-import {
-  AiFillInstagram,
-  AiFillLinkedin,
-  AiOutlineArrowRight,
-} from "react-icons/ai";
-import { IoLogoWhatsapp } from "react-icons/io";
-import { Link } from "react-router-dom";
+import React from 'react'
 
 export const Profile = () => {
-  const profileData = [
-    {
-      title: "Lorem ipsum dolor sit amet",
-      time: "01-Jan-2045",
-      decription:
-        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-    },
-    {
-        title: "Lorem ipsum dolor sit amet",
-        time: "01-Jan-2045",
-        decription:
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet",
-        time: "01-Jan-2045",
-        decription:
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet",
-        time: "01-Jan-2045",
-        decription:
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet",
-        time: "01-Jan-2045",
-        decription:
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet",
-        time: "01-Jan-2045",
-        decription:
-          " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-      },
-  ];
   return (
-    <div className="wrapper">
-      <div className="sidebar">
-        <div className="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
-          <img
-            className="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-4 p-3"
-            src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
-            alt="img_error" />
-          <h1 className="font-weight-bold">Kate Glover</h1>
-          <p className="mb-4">
-            Justo stet no accusam stet invidunt sanctus magna clita vero eirmod,
-            sit sit labore dolores lorem. Lorem at sit dolor dolores sed diam
-            justo
-          </p>
-          <div className="d-flex justify-content-center mb-5">
-            <li
-              className="btn btn-outline-primary mr-2"
-              style={{ fontSize: "20px" }}
-            >
-              <BsFacebook />
-            </li>
-            <li
-              className="btn btn-outline-primary mr-2"
-              style={{ fontSize: "20px" }}
-            >
-              <AiFillInstagram />
-            </li>
-            <li
-              className="btn btn-outline-primary mr-2"
-              style={{ fontSize: "20px" }}
-            >
-              <AiFillLinkedin />
-            </li>
-            <li
-              className="btn btn-outline-primary mr-2"
-              style={{ fontSize: "20px" }}
-            >
-              <IoLogoWhatsapp />
-            </li>
+  <section style={{backgroundColor:"#eee" , marginTop:"85px" , position:"absolute" ,width:"100%" }}>
+  <div className="container py-5">
+    <div className="row">
+      <div className="col-lg-4">
+        <div className="card mb-4">
+          <div className="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              className="rounded-circle img-fluid" style={{width: "150px"}} />
+            <h5 className="my-3">John Smith</h5>
+            <p className="text-muted mb-1">Full Stack Developer</p>
+            <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
+            <div className="d-flex justify-content-center mb-2">
+              <button type="button" className="btn btn-primary">Follow</button>
+              <button type="button" className="btn btn-outline-primary ms-1">Message</button>
+            </div>
           </div>
-          <li className="btn btn-lg btn-block btn-primary mt-10px">Fowllow Me</li>
-        </div>
-        <div className="sidebar-icon d-flex flex-column h-100 justify-content-center text-right">
-          <i className="fas fa-2x fa-angle-double-right text-primary"></i>
         </div>
       </div>
-      <div className="content">
-        {/* <!-- Blog List Start --> */}
-        <div className="container bg-white pt-5">
-        {profileData?.map((el,index) => (
-          <div className="row blog-item px-3 pb-5" key={index}>
-            <div className="col-md-5">
-              <img
-                className="img-fluid mb-4 mb-md-0"
-                src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
-                alt="img_error"
-              />
-            </div>
-           
-              <div className="col-md-7">
-                <h3 className="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">
-                  {el.title}
-                </h3>
-                <div className="d-flex mb-3">
-                  <small className="mr-2 text-muted">
-                    <i className="fa fa-calendar-alt"></i> {el.time}
-                  </small>
-                  <small className="mr-2 text-muted">
-                    <i className="fa fa-folder"></i> Web Design
-                  </small>
-                  <small className="mr-2 text-muted">
-                    <i className="fa fa-comments"></i> 15 Comments
-                  </small>
-                </div>
-                <p>
-                {el.decription}
-                </p>
-                <Link className="btn btn-link p-0" to="/detail/Blog">
-                  Read More{" "}
-                  <span>
-                    <AiOutlineArrowRight />
-                  </span>
-                </Link>
+      <div className="col-lg-8">
+        <div className="card mb-4">
+          <div className="card-body">
+            <div className="row">
+              <div className="col-sm-3">
+                <p className="mb-0">Full Name</p>
               </div>
+              <div className="col-sm-9">
+                <p className="text-muted mb-0">Johnatan Smith</p>
+              </div>
+            </div>
+            <hr/>
+            <div className="row">
+              <div className="col-sm-3">
+                <p className="mb-0">Email</p>
+              </div>
+              <div className="col-sm-9">
+                <p className="text-muted mb-0">example@example.com</p>
+              </div>
+            </div>
+            <hr/>
+            <div className="row">
+              <div className="col-sm-3">
+                <p className="mb-0">Phone</p>
+              </div>
+              <div className="col-sm-9">
+                <p className="text-muted mb-0">(097) 234-5678</p>
+              </div>
+            </div>
+            <hr/>
+            <div className="row">
+              <div className="col-sm-3">
+                <p className="mb-0">Mobile</p>
+              </div>
+              <div className="col-sm-9">
+                <p className="text-muted mb-0">(098) 765-4321</p>
+              </div>
+            </div>
+            <hr/>
+            <div className="row">
+              <div className="col-sm-3">
+                <p className="mb-0">Address</p>
+              </div>
+              <div className="col-sm-9">
+                <p className="text-muted mb-0">Bay Area, San Francisco, CA</p>
+              </div>
+            </div>
           </div>
-          ))}
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+</section>
+  )
+}

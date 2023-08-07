@@ -5,7 +5,7 @@ import { RiWhatsappFill } from "react-icons/ri";
 
 export const Footer = () => {
     return (
-        <div className=" my-5" style={{ width: "100%", background: "red" }}>
+        <div className=" my-5" style={{ width: "100%", background: "red" ,position:"absolute" }}>
             <footer
                 className="text-center text-white"
                 style={{ backgroundColor: "#f1f1f1", width: "100%" }}

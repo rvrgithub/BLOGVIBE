@@ -1,12 +1,12 @@
 import React from 'react'
 import { HomeBaner } from './HomeBaner'
-import { ContactUs } from '../ContactUs'
+import { ContactForm } from '../ContactForm'
 
 export const Home = () => {
   return (
     <div>
-    <HomeBaner/>
-    <ContactUs/>
+      <HomeBaner />
+      <ContactForm />
     </div>
-  )
+  );
 }

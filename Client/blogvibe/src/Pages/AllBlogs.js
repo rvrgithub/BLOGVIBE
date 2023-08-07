@@ -1,299 +1,118 @@
-import React from 'react'
-import "../Styles/allBlog.css"
-import { Link } from 'react-router-dom'
+import React from "react";
+import "../Styles/allBlog.css";
+import { Link } from "react-router-dom";
+import { FaEdit, FaEye } from "react-icons/fa";
+import { AiTwotoneDelete } from "react-icons/ai";
+
 export const AllBlogs = () => {
   return (
-    <div>
-    <section class="dark">
-	<div class="container py-4">
-		<h1 class="h1 text-center" id="pageHeaderTitle">My Cards Dark</h1>
+    // <div>
 
-		<article class="postcard dark blue">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/1000/1000" alt="image_title" />
-			</a>
-			<div class="postcard__text">
-				<h1 class="postcard__title blue"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play blue">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-		<article class="postcard dark red">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/501/500" alt="image_title" />	
-			</a>
-			<div class="postcard__text">
-				<h1 class="postcard__title red"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play red">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-		<article class="postcard dark green">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/500/501" alt="image_title" />
-			</a>
-			<div class="postcard__text">
-				<h1 class="postcard__title green"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play green">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-		<article class="postcard dark yellow">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/501/501" alt="image_title" />
-			</a>
-			<div class="postcard__text">
-				<h1 class="postcard__title yellow"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play yellow">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-	</div>
-</section>
+      <div className="section_our_solution">
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12" style={{width:"100%"}}>
+            <div className="our_solution_category">
+              <div className="solution_cards_box">
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon">
+                    <img src="https://i.imgur.com/ZTkt4I5.jpg" />
+                  </div>
+                  <div className="solu_title">
+                    <h3>Demo 1</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its la yout.
+                    </p>
+                    <div
+                      className="row"
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <button type="button" className="read_more_btn">
+                        <FaEdit />
+                      </button>
 
-<section class="light">
-	<div class="container py-2">
-		<div class="h1 text-center text-dark" id="pageHeaderTitle">My Cards Light</div>
+                      <button type="button" className="read_more_btn">
+                        <FaEye />
+                      </button>
 
-		<article class="postcard light blue">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/1000/1000" alt="image_title" />
-			</a>
-			<div class="postcard__text t-dark">
-				<h1 class="postcard__title blue"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play blue">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-		<article class="postcard light red">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/501/500" alt="image_title" />	
-			</a>
-			<div class="postcard__text t-dark">
-				<h1 class="postcard__title red"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play red">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-		<article class="postcard light green">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/500/501" alt="image_title" />
-			</a>
-			<div class="postcard__text t-dark">
-				<h1 class="postcard__title green"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play green">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-		<article class="postcard light yellow">
-			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/501/501" alt="image_title" />
-			</a>
-			<div class="postcard__text t-dark">
-				<h1 class="postcard__title yellow"><a href="#">Podcast Title</a></h1>
-				<div class="postcard__subtitle small">
-					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
-					</time>
-				</div>
-				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
-				<ul class="postcard__tagbox">
-					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
-					<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
-					<li class="tag__item play yellow">
-						<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
-					</li>
-				</ul>
-			</div>
-		</article>
-	</div>
-</section>
-</div>
-
-
-// .........................
-
-  )
-}
-
-
-/*
-
-{/* <div className='col-12 ' style={{ marginTop: "100px",position:"absolute" ,padding:"20px" }}>
-<div className= "row">
-<div class="blog-card col-6">
-  <div class="meta">
-    <div
-      class="photo"
-      style={{
-        backgroundImage:
-          "url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)",
-      }}
-    ></div>
-    <ul class="details">
-      <li class="author">
-        <a href="#">John Doe</a>
-      </li>
-      <li class="date">Aug. 24, 2015</li>
-      <li class="tags">
-        <ul>
-          <li>
-            <a href="#">Learn</a>
-          </li>
-          <li>
-            <a href="#">Code</a>
-          </li>
-          <li>
-            <a href="#">HTML</a>
-          </li>
-          <li>
-            <a href="#">CSS</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="description">
-    <h1>Learning to Code</h1>
-    <h2>Opening a door to the future</h2>
-    <p>
-      {" "}
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum
-      dolorum architecto obcaecati enim dicta praesentium, quam nobis!
-      Neque ad aliquam facilis numquam. Veritatis, sit.
-    </p>
-    <p class="read-more">
-    <Link to={"/details/blog"} >Read More</Link>
-    </p>
-  </div>
-</div>
-<div class="blog-card alt col-6">
-  <div class="meta">
-    <div
-      class="photo"
-      style={{
-        backgroundImage:
-          "url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)",
-      }}
-    ></div>
-    <ul class="details">
-      <li class="author">
-        <a href="#">Jane Doe</a>
-      </li>
-      <li class="date">July. 15, 2015</li>
-      <li class="tags">
-        <ul>
-          <li>
-            <a href="#">Learn</a>
-          </li>
-          <li>
-            <a href="#">Code</a>
-          </li>
-          <li>
-            <a href="#">JavaScript</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <div class="description">
-    <h1>Mastering the Language</h1>
-    <h2>Java is not the same as JavaScript</h2>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum
-      dolorum architecto obcaecati enim dicta praesentium, quam nobis!
-      Neque ad aliquam facilis numquam. Veritatis, sit.
-    </p>
-    <p class="read-more">
-    <Link to={"/details/blog"} >Read More</Link>
-    </p>
-  </div>
-</div>
-</div>
-</div> 
-*/
+                      <button type="button" className="read_more_btn color_red">
+                        <AiTwotoneDelete />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon">
+                    <img src="https://i.imgur.com/ZTkt4I5.jpg" />
+                  </div>
+                  <div className="solu_title">
+                    <h3>Demo 2</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout.
+                    </p>
+                    <button type="button" className="read_more_btn">
+                      Read More
+                    </button>
+                  </div>
+                </div>
+              </div>
+              {/* <!--  --> */}
+              <div className="solution_cards_box sol_card_top_3">
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon">
+                    <img src="https://i.imgur.com/ZTkt4I5.jpg" />
+                  </div>
+                  <div className="solu_title">
+                    <h3>Demo 3</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout.
+                    </p>
+                    <button type="button" className="read_more_btn">
+                      Read More
+                    </button>
+                  </div>
+                </div>
+                <div className="solution_card">
+                  <div className="hover_color_bubble"></div>
+                  <div className="so_top_icon">
+                    <img src="https://i.imgur.com/ZTkt4I5.jpg" />
+                  </div>
+                  <div className="solu_title">
+                    <h3>Demo 4</h3>
+                  </div>
+                  <div className="solu_description">
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by the readable content of a page when looking
+                      at its layout.
+                    </p>
+                    <button type="button" className="read_more_btn">
+                      Read More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    // </div>
+  );
+};

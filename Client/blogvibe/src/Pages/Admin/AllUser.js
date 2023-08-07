@@ -47,21 +47,27 @@ export const AllUser = () => {
           <div className="col col-5">Delete</div>
         </li>
         {dataUser?.map((el, index) => (
-          <Link to="/profile">
-          <li className="table-row "  key={index}>
-         
-            <div className="col col-1" >
-              <img className="userImg" src={el.img} width={"20px"} height={"30px"} alt="logo _error" />
-            </div>
-            <div className="col col-2" data-label=" Name">{el.name} </div>
-            <div className="col col-3" data-label="Email Id">
-         {el.email}
-            </div>
-            <div className="col col-4">
-              <AiFillDelete/>
-            </div>
-            
-          </li>
+          <Link to="/user/profile">
+            <li className="table-row " key={index}>
+              <div className="col col-1">
+                <img
+                  className="userImg"
+                  src={el.img}
+                  width={"20px"}
+                  height={"30px"}
+                  alt="logo _error"
+                />
+              </div>
+              <div className="col col-2" data-label=" Name">
+                {el.name}{" "}
+              </div>
+              <div className="col col-3" data-label="Email Id">
+                {el.email}
+              </div>
+              <div className="col col-4" style={{ fontSize: "40px" }}>
+                <AiFillDelete />
+              </div>
+            </li>
           </Link>
         ))}
       </ul>
