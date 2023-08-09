@@ -2,6 +2,8 @@ import React from "react";
 import "../../Styles/allUser.css";
 import { Link } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
+import { FaSearch } from "react-icons/fa";
+
 export const AllUser = () => {
   const dataUser = [
     {
@@ -37,7 +39,31 @@ export const AllUser = () => {
   ];
   return (
     <div className="allUser_container">
-      <h2>All Blog User Here ...</h2>
+      <div
+        className="row"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          flexDirection: "row",
+        }}
+      >
+        <div>
+          <h2>All Blog User Here ...</h2>
+        </div>
+        <div class="search-box">
+          <button class="btn-search">
+            {/* <i class="fas fa-search"  style={{background:"red"}}></i> */}
+            <p className="">
+              <FaSearch style={{ position: "fixed" }} />
+            </p>
+          </button>
+          <input
+            type="text"
+            class="input-search"
+            placeholder="Type to Search..."
+          />
+        </div>
+      </div>
       <ul className="responsive-table">
         <li className="table-header">
           <div className="col col-1">User Name</div>
@@ -54,7 +80,7 @@ export const AllUser = () => {
                   className="userImg"
                   src={el.img}
                   width={"20px"}
-                  height={"30px"}
+                  height={"20px"}
                   alt="logo _error"
                 />
               </div>
