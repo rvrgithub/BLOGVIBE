@@ -19,6 +19,9 @@ const Line = styled.span`
   :nth-child(2) {
     width: ${props => (props.open ? "40%" : "70%")};
   }
+
+
+  // 
 `;
 
 const Overlay = styled.div`
