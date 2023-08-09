@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "../Styles/login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 export const Login = () => {
   const [logStyle, setLogStyle] = useState("container");
   const [active, setActive] = useState(true);
-
+const navigat = useNavigate()
   const toggleForm = () => {
     //   const container = document.querySelector(".container");
     // https://codepen.io/kh3996/pen/pojXrBj
@@ -13,7 +14,7 @@ export const Login = () => {
   };
 
   const [inputValue, setInputValue] = useState({
-    name: "",
+    email: "",
     password: "",
   });
 
@@ -27,14 +28,26 @@ export const Login = () => {
     console.log("inputvalue", inputValue);
     fetch("http://localhost:4500/findBothLogin", {
       method: "POST",
-      header: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(inputValue),
     })
       .then((res) => res.json())
-      .then((data) => console.log("data", data))
+      .then((data) => {console.log("data", data)
+    if(data.status===true){
+if(data.role==="admin"){
+  navigat("/admin/all-user")
+}else if(data.role==="user"){
+  navigat("/write/blog")
+
+}else{
+  navigat("/login")
+
+}
+    }else{
+alert(data.massage)
+    }})
       .catch((error) => console.log("error", error));
   };
-
   return (
     <div>
       <section className="login_section">
@@ -51,9 +64,9 @@ export const Login = () => {
                 <h2>Sign In</h2>
                 <input
                   type="text"
-                  name="name"
-                  value={inputValue.name}
-                  placeholder="Username"
+                  name="email"
+                  value={inputValue.email}
+                  placeholder="enter email"
                   onChange={(e) => handleChange(e)}
                 />
                 <input

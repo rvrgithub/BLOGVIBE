@@ -272,7 +272,8 @@ exports.loginBoth = async (req, res) => {
         status: true,
         massage: "Login Successfull !!",
         token,
-        userLogin,
+        // userLogin,
+        role:userLogin.role
       });
     } else {
       const adminLogin = await Admin.findOne({ email });
@@ -288,7 +289,7 @@ exports.loginBoth = async (req, res) => {
           status: true,
           massage: "Login Successfull !!",
           token,
-          adminLogin,
+          role:adminLogin.role,
         });
       } else {
         res.status(403).json("invalid credential");
@@ -297,7 +298,7 @@ exports.loginBoth = async (req, res) => {
   } catch (error) {
     return res.status(400).send({
       status: false,
-      massage: "<h1>hello</h1>",
+      massage:error.massege,
       error,
     });  
   }
