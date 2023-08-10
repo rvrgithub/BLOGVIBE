@@ -54,7 +54,9 @@ route.post("/register", register);
 //   });
 
 // route.post("/login", login);
-route.get("/getAll/user", authAdmin, getAll);
+route.get("/getAll/user", 
+// authAdmin, 
+getAll);
 route.get("/profile", auth, profile);
 route.put("/updateProfile", auth, updateProfile);
 // route.post("/create/blog", auth, createBlog);

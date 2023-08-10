@@ -3,7 +3,7 @@ import './App.css';
 import { AdminNav } from './Components/Navbar/AdminNav';
 import {Footer} from './Pages/Footer';
 import { AllRoutes } from './Routes/AllRoutes';
-
+export const apiurl ="http://localhost:4500"
 function App() {
   return (
     <div className="App">

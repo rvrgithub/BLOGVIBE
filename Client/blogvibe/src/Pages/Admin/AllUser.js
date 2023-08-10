@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../Styles/allUser.css";
 import { Link } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
+import { apiurl } from "../../App";
 
 export const AllUser = () => {
+  const [blogData, setBlogData] = useState([]);
+
   const dataUser = [
     {
       name: "Bhagwan Singh",
@@ -37,6 +40,18 @@ export const AllUser = () => {
       img: "https://imgv3.fotor.com/images/gallery/AI-3D-Female-Profile-Picture.jpg",
     },
   ];
+
+  const getData = () => {
+    fetch(`${apiurl}/getAll/user`)
+      .then((res) => res.json())
+      .then((data) => setBlogData(data.response))
+      .catch((error) => console.log("error", error));
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+  console.log("blogData",blogData)
+
   return (
     <div className="allUser_container">
       <div
@@ -72,7 +87,7 @@ export const AllUser = () => {
           <div className="col col-4">Phone Number</div>
           <div className="col col-5">Delete</div>
         </li>
-        {dataUser?.map((el, index) => (
+        {blogData?.map((el, index) => (
           <Link to="/user/profile">
             <li className="table-row " key={index}>
               <div className="col col-1">
@@ -90,7 +105,10 @@ export const AllUser = () => {
               <div className="col col-3" data-label="Email Id">
                 {el.email}
               </div>
-              <div className="col col-4" style={{ fontSize: "40px" }}>
+              <div className="col col-3" data-label="Email Id">
+                {el.phoneNumber ? (el.phoneNumber) : "No Number"}
+              </div>
+              <div className="col col-3" style={{ fontSize: "40px" }}>
                 <AiFillDelete />
               </div>
             </li>

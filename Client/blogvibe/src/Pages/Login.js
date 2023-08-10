@@ -48,6 +48,7 @@ export const Login = () => {
       })
       .catch((error) => console.log("error", error));
   };
+
   return (
     <div>
       <section className="login_section">
