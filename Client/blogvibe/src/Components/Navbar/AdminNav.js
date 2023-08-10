@@ -1,10 +1,8 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import "../../Styles/navbar.css"
-
+import "../../Styles/navbar.css";
 
 const Line = styled.span`
   display: block;
@@ -14,14 +12,13 @@ const Line = styled.span`
   margin: 5px;
   background-color: #fff;
   transition: width 0.4s ease-in-out;
-    color: white;
+  color: white;
 
   :nth-child(2) {
-    width: ${props => (props.open ? "40%" : "70%")};
+    width: ${(props) => (props.open ? "40%" : "70%")};
   }
 
-
-  // 
+  //
 `;
 
 const Overlay = styled.div`
@@ -54,7 +51,6 @@ const OverlayMenu = styled.ul`
   }
 `;
 
-
 export const AdminNav = () => {
   const [toggle, toggleNav] = useState(false);
   return (
@@ -74,6 +70,9 @@ export const AdminNav = () => {
             <Link target="#" to="admin/profile">
               Profile
             </Link>
+          </li>
+          <li>
+            <Link to="/admin/write/blog">Write Blog</Link>
           </li>
           <li>
             <Link target="#" to="/contactus">
@@ -101,9 +100,13 @@ export const AdminNav = () => {
             <Link to="/admin/all-user">All User</Link>
           </li>
           <li>
-            <Link target="#" to="admin/profile">
+            <Link target="#" to="/admin/profile">
               Profile
             </Link>
+          </li>
+
+          <li>
+            <Link to="/admin/write/blog">Write Blog</Link>
           </li>
           <li>
             <Link target="#" to="/contactus">
@@ -118,4 +121,3 @@ export const AdminNav = () => {
     </>
   );
 };
-

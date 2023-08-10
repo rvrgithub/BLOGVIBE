@@ -7,7 +7,7 @@
 - - style merg 2 code
 - - create google docs for study -> done
 - 
-
+- 
 ##  admin section :--
 
 - Home page =>contains navbar images all blogs with edit and delete option footer
@@ -25,3 +25,8 @@
 
 
 https://mail.google.com/chat/u/0/#chat/dm/9PtiiUAAAAE
+
+
+##   Task - 
+ - Section Admin -
+ - 

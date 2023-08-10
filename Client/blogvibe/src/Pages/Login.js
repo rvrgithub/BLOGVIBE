@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 export const Login = () => {
   const [logStyle, setLogStyle] = useState("container");
   const [active, setActive] = useState(true);
-const navigat = useNavigate()
+  const navigat = useNavigate();
   const toggleForm = () => {
     //   const container = document.querySelector(".container");
     // https://codepen.io/kh3996/pen/pojXrBj
@@ -32,20 +32,20 @@ const navigat = useNavigate()
       body: JSON.stringify(inputValue),
     })
       .then((res) => res.json())
-      .then((data) => {console.log("data", data)
-    if(data.status===true){
-if(data.role==="admin"){
-  navigat("/admin/all-user")
-}else if(data.role==="user"){
-  navigat("/write/blog")
-
-}else{
-  navigat("/login")
-
-}
-    }else{
-alert(data.massage)
-    }})
+      .then((data) => {
+        console.log("data", data);
+        if (data.status === true) {
+          if (data.role === "admin") {
+            navigat("/admin/all-user");
+          } else if (data.role === "user") {
+            navigat("/write/blog");
+          } else {
+            navigat("/login");
+          }
+        } else {
+          alert(data.massage);
+        }
+      })
       .catch((error) => console.log("error", error));
   };
   return (
