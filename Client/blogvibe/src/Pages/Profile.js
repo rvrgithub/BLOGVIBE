@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { apiurl } from '../App'
 
 export const Profile = () => {
+let token=localStorage.getItem("Token")
+  const getProfile=()=>{
+    fetch(`${apiurl}/admin/profile`,{
+      method:"GET",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+      }
+    })
+    .then((res)=>res.json())
+    .then((data)=>console.log("data",data))
+  }
+  useEffect(()=>{
+    getProfile()
+  },[])   
   return (
   <section style={{backgroundColor:"#eee" , marginTop:"85px" , position:"absolute" ,width:"100%" }}>
   <div className="container py-5">
