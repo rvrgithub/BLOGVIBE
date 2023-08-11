@@ -227,3 +227,21 @@ exports.deleteUserByA = async (req, res) => {
     });
   }
 };
+
+
+exports.adminProfile = async (req, res) => {
+  try {
+    const getUserId = req.user;
+    console.log("getUSer", getUserId);
+    return res.status(201).send({
+      status: true,
+      massage: "data get",
+      getUserId,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      massage: "data not get",
+    });
+  }
+};

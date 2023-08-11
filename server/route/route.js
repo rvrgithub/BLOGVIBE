@@ -24,6 +24,7 @@ const {
   approvAll,
   deleteBlogByA,
   deleteUserByA,
+  adminProfile,
 } = require("../Controller/adminController");
 const route = express.Router();
 // const app=express()
@@ -62,6 +63,7 @@ route.put("/updateProfile", auth, updateProfile);
 // route.post("/create/blog", auth, createBlog);
 route.delete("/delete/blog/:id", auth, deleteBlog);
 //..............................  Admin Section ......................
+route.get("/admin/profile", authAdmin, adminProfile);
 
 route.post("/admin/register", authAdmin, adminRegister);
 route.put("/admin/approve/:id", authAdmin, approve);
