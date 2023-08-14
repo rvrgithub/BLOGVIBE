@@ -3,12 +3,12 @@ const { User } = require("../Model/userModel");
 const { Admin } = require("../Model/adminModel");
 
 exports.auth = async (req, res, next) => {
-  if(!req.headers.authorization ){
+  if (!req.headers.authorization) {
     return res.status(400).json("Invalid token")
-      }
-      if(req.headers.authorization.startsWith("Bearer")==false ){
-        return res.status(400).json("Invalid token")
-          }
+  }
+  if (req.headers.authorization.startsWith("Bearer") == false) {
+    return res.status(400).json("Invalid token")
+  }
   const token = req.headers.authorization.split(" ")[1];
   console.log("token", token);
   const decode = jwt.verify(token, "radhika");
@@ -34,13 +34,12 @@ exports.auth = async (req, res, next) => {
 };
 
 exports.authAdmin = async (req, res, next) => {
-  if(!req.headers.authorization ){
+  if (!req.headers.authorization) {
     return res.status(400).json("Invalid token")
-      }
-      if(req.headers.authorization.startsWith("Bearer")==false ){
-        return res.status(400).json("Invalid token")
-          }
-
+  }
+  if (req.headers.authorization.startsWith("Bearer") == false) {
+    return res.status(400).json("Invalid token")
+  }
   const token = req.headers.authorization.split(" ")[1];
   console.log("token", token);
   const decode = jwt.verify(token, "radhika");
@@ -55,6 +54,5 @@ exports.authAdmin = async (req, res, next) => {
     console.log("findAdmin", findAdmin);
     req.user = findAdmin;
   }
-  // }
   next();
 };

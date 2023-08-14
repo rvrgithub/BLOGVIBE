@@ -51,7 +51,7 @@ const OverlayMenu = styled.ul`
   }
 `;
 
-export const AdminNav = () => {
+export const UserNav = () => {
   const [toggle, toggleNav] = useState(false);
   return (
     <>
@@ -61,11 +61,6 @@ export const AdminNav = () => {
           <li>
             <Link target="#" to="/allblog">
               ALL Blogs
-            </Link>
-          </li>
-          <li>
-            <Link target="#" to="/admin/profile">
-              Panding Blog 
             </Link>
           </li>
           <li>
@@ -107,11 +102,6 @@ export const AdminNav = () => {
           <li>
             <Link target="#" to="/admin/profile">
               Profile
-            </Link>
-          </li>
-          <li>
-            <Link target="#" to="/admin/profile">
-              Panding Blog 
             </Link>
           </li>
 
