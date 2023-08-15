@@ -148,6 +148,24 @@ exports.approve = async (req, res) => {
   }
 };
 
+exports.pendingBlog = async(req,res)=>{
+  console.log("jhsdfglsjkd")
+try{
+  const response =await Blog.find({status:"pending"})
+  // console.log("response",response);
+  return res.status(200).send({
+    status:true,
+    response
+  })
+}catch(error){
+return res.status(500).send({
+  status:false,
+  massage:"somthine wrong !!",
+  error
+})
+}
+}
+// ............. update state ...............
 exports.approvAll = async (req, res) => {
   try {
     const updateAll = await Blog.updateMany(

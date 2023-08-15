@@ -55,8 +55,8 @@ export const AdminNav = () => {
   const [toggle, toggleNav] = useState(false);
   return (
     <>
-      <div className="navContainer">
-        <h1 className="logo">BLOGVIVE /Admin</h1>
+      <div className="navContainer" style={{background:"#e5e5e5"}}>
+      <Link to="/">  <h1 className="logo" >BLOGVIVE /Admin</h1></Link>
         <ul className="menuUi">
           <li>
             <Link target="#" to="/allblog">
@@ -64,7 +64,7 @@ export const AdminNav = () => {
             </Link>
           </li>
           <li>
-            <Link target="#" to="/admin/profile">
+            <Link target="#" to="/admin/pending/blog">
               Panding Blog 
             </Link>
           </li>
@@ -110,7 +110,7 @@ export const AdminNav = () => {
             </Link>
           </li>
           <li>
-            <Link target="#" to="/admin/profile">
+            <Link target="#" to="/admin/pending/blog">
               Panding Blog 
             </Link>
           </li>

@@ -25,6 +25,7 @@ const {
   deleteBlogByA,
   deleteUserByA,
   adminProfile,
+  pendingBlog,
 } = require("../Controller/adminController");
 const route = express.Router();
 // const app=express()
@@ -81,6 +82,7 @@ route.post("/findBothLogin", loginBoth);
 // route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
 route.get("/single/blog/:id", auth, singleBlog);
-route.get("/" , approvalBlogs) 
+route.get("/" , approvalBlogs) ;
+route.get("/admin/pending/blog",pendingBlog)
 module.exports = { route };
 

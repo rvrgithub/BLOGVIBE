@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AiFillDelete } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import { apiurl } from "../../App";
+import { BsJustify } from "react-icons/bs";
 
 export const AllUser = () => {
   const [blogData, setBlogData] = useState([]);
@@ -50,42 +51,44 @@ export const AllUser = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log("blogData",blogData)
+  console.log("blogData", blogData);
 
   return (
     <div className="allUser_container">
+      {/* <div> */}
+      <div>
+        <h2>All Blog User Here ...</h2>
+      </div>
+
       <div
-        className="row"
+        className="searchInput"
         style={{
           display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "row",
+          justifyContent: "center",
         }}
       >
-        <div>
-          <h2>All Blog User Here ...</h2>
-        </div>
-        <div class="search-box">
-          <button class="btn-search">
-            {/* <i class="fas fa-search"  style={{background:"red"}}></i> */}
-            <p className="">
-              <FaSearch style={{ position: "fixed" }} />
-            </p>
-          </button>
-          <input
-            type="text"
-            class="input-search"
-            placeholder="Type to Search..."
-          />
-        </div>
+        <input
+          className="search"
+          id="search"
+          type="search"
+          placeholder="Search..."
+          autofocus
+          required
+        />
+        <button className="searchBtn" type="submit">
+          Go
+        </button>
       </div>
+
+      {/* .................... */}
+      {/* </div> */}
       <ul className="responsive-table">
         <li className="table-header">
-          <div className="col col-1">User Name</div>
-          <div className="col col-2">User Image</div>
-          <div className="col col-3">email Id</div>
-          <div className="col col-4">Phone Number</div>
-          <div className="col col-5">Delete</div>
+          <div className="col ">User Image</div>
+          <div className="col ">User Name</div>
+          <div className="col ">email Id</div>
+          <div className="col ">Phone Number</div>
+          <div className="col ">Delete</div>
         </li>
         {blogData?.map((el, index) => (
           <Link to="/user/profile">
@@ -93,7 +96,9 @@ export const AllUser = () => {
               <div className="col col-1">
                 <img
                   className="userImg"
-                  src={el.img}
+                  src={
+                    "https://wallpapers.com/images/hd/cool-profile-picture-87h46gcobjl5e4xu.jpg"
+                  }
                   width={"20px"}
                   height={"20px"}
                   alt="logo _error"
@@ -106,9 +111,9 @@ export const AllUser = () => {
                 {el.email}
               </div>
               <div className="col col-3" data-label="Email Id">
-                {el.phoneNumber ? (el.phoneNumber) : "No Number"}
+                {el.phoneNumber ? el.phoneNumber : "No Number"}
               </div>
-              <div className="col col-3" style={{ fontSize: "40px" }}>
+              <div className="col col-3" style={{ fontSize: "30px" }}>
                 <AiFillDelete />
               </div>
             </li>
