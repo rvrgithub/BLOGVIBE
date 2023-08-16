@@ -51,21 +51,16 @@ const OverlayMenu = styled.ul`
   }
 `;
 
-export const AdminNav = () => {
+export const UserNav = () => {
   const [toggle, toggleNav] = useState(false);
   return (
     <>
-      <div className="navContainer" style={{background:"#e5e5e5"}}>
-      <Link to="/">  <h1 className="logo" >BLOGVIVE /Admin</h1></Link>
+      <div className="navContainer">
+        <h1 className="logo">BLOGVIVE /Admin</h1>
         <ul className="menuUi">
           <li>
             <Link target="#" to="/allblog">
               ALL Blogs
-            </Link>
-          </li>
-          <li>
-            <Link target="#" to="/admin/pending/blog">
-              Panding Blog 
             </Link>
           </li>
           <li>
@@ -109,11 +104,6 @@ export const AdminNav = () => {
               Profile
             </Link>
           </li>
-          <li>
-            <Link target="#" to="/admin/pending/blog">
-              Panding Blog 
-            </Link>
-          </li>
 
           <li>
             <Link to="/admin/write/blog">Write Blog</Link>
@@ -128,8 +118,6 @@ export const AdminNav = () => {
           </li>
         </OverlayMenu>
       </Overlay>
-      <br />
-      <br />
     </>
   );
 };

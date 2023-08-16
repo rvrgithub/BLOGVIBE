@@ -20,3 +20,12 @@
 - delete user    //
 - profile
 
+
+
+
+** work ..
+
+<!-- all user -->
+- user porfile/
+- admin profile
+find single user/ all blog

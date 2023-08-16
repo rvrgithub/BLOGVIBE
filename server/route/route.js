@@ -24,6 +24,8 @@ const {
   approvAll,
   deleteBlogByA,
   deleteUserByA,
+  adminProfile,
+  pendingBlog,
 } = require("../Controller/adminController");
 const route = express.Router();
 // const app=express()
@@ -54,12 +56,15 @@ route.post("/register", register);
 //   });
 
 // route.post("/login", login);
-route.get("/getAll/user", authAdmin, getAll);
+route.get("/getAll/user", 
+// authAdmin, 
+getAll);
 route.get("/profile", auth, profile);
 route.put("/updateProfile", auth, updateProfile);
 // route.post("/create/blog", auth, createBlog);
 route.delete("/delete/blog/:id", auth, deleteBlog);
 //..............................  Admin Section ......................
+route.get("/admin/profile", authAdmin, adminProfile);
 
 route.post("/admin/register", authAdmin, adminRegister);
 route.put("/admin/approve/:id", authAdmin, approve);
@@ -77,6 +82,7 @@ route.post("/findBothLogin", loginBoth);
 // route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
 route.get("/single/blog/:id", auth, singleBlog);
-route.get("/" , approvalBlogs) 
+route.get("/" , approvalBlogs) ;
+route.get("/admin/pending/blog",pendingBlog)
 module.exports = { route };
 

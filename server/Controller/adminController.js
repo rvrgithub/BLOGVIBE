@@ -148,6 +148,24 @@ exports.approve = async (req, res) => {
   }
 };
 
+exports.pendingBlog = async(req,res)=>{
+  console.log("jhsdfglsjkd")
+try{
+  const response =await Blog.find({status:"pending"})
+  // console.log("response",response);
+  return res.status(200).send({
+    status:true,
+    response
+  })
+}catch(error){
+return res.status(500).send({
+  status:false,
+  massage:"somthine wrong !!",
+  error
+})
+}
+}
+// ............. update state ...............
 exports.approvAll = async (req, res) => {
   try {
     const updateAll = await Blog.updateMany(
@@ -224,6 +242,24 @@ exports.deleteUserByA = async (req, res) => {
       stauts: false,
       massage: "Something Wrong !!",
       error,
+    });
+  }
+};
+
+
+exports.adminProfile = async (req, res) => {
+  try {
+    const getUserId = req.user;
+    console.log("getUSer", getUserId);
+    return res.status(201).send({
+      status: true,
+      massage: "data get",
+      getUserId,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      massage: "data not get",
     });
   }
 };

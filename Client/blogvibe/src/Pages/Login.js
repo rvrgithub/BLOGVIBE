@@ -33,14 +33,17 @@ export const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data);
+        console.log("data", data); 
         if (data.status === true) {
           if (data.role === "admin") {
-            navigat("/admin/all-user");
+            localStorage.setItem("Token",data.token)
+            // navigat("/admin/all-user");
           } else if (data.role === "user") {
-            navigat("/write/blog");
+            localStorage.setItem("Token",data.token)
+
+            // navigat("/write/blog");
           } else {
-            navigat("/login");
+            // navigat("/login");
           }
         } else {
           alert(data.massage);
@@ -48,6 +51,7 @@ export const Login = () => {
       })
       .catch((error) => console.log("error", error));
   };
+
   return (
     <div>
       <section className="login_section">
@@ -57,10 +61,11 @@ export const Login = () => {
               <img
                 src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg"
                 alt=""
+                onClick={()=>console.log("image clicked")}
               />
             </div>
             <div class="formBx">
-              <form action="" onsubmit="return false;">
+              {/* <form  onSubmit={()=>console.log("dffdfd")}> */}
                 <h2>Sign In</h2>
                 <input
                   type="text"
@@ -80,12 +85,12 @@ export const Login = () => {
                   type="submit"
                   name=""
                   value="Login"
-                  onClick={(e) => handleSubmit(e)}
+                  onClick={(e) =>handleSubmit(e)}
                 />
                 <p class="signup">
                   Don't have an account ?<Link to="/register">Sign Up.</Link>
                 </p>
-              </form>
+              {/* </form> */} 
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ import { Profile } from "../Pages/Profile";
 import { Login } from "../Pages/Login";
 import { Register } from "../Pages/Register";
 import { CreateBlog } from "../Pages/Admin/CreateBlog";
+import { PendingBlog } from "../Pages/Admin/PendingBlog";
 // import { ExtraPage } from "../Pages/Admin/ExtraPage";
 
 export const AllRoutes = () => {
@@ -27,7 +28,12 @@ export const AllRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin/write/blog" element={<CreateBlog/>}/>
-      {/* <Route path="/extraBlog" element={<ExtraPage/>}/> */}
+      <Route path="/admin/pending/blog" element={<PendingBlog/>}/>
+
+      {/*  userRoute */}
+
+
+      
     </Routes>
   );
 };
