@@ -1,9 +1,4 @@
-.section_our_solution{
-  justify-content: center;
-  width: 100%;
-  margin-top: 50px;
-  position: absolute
-}
+
 
 .section_our_solution .row {
   align-items: center;
@@ -193,3 +188,12 @@ color: "#636363" !important;
   }
 }
 
+
+.section_our_solution{
+  justify-content: center;
+  width: 100%;
+  /* margin-top: 50px; */
+  
+  position: fixed;
+  top: 0;
+}
