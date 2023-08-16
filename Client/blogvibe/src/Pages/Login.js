@@ -37,13 +37,12 @@ export const Login = () => {
         if (data.status === true) {
           if (data.role === "admin") {
             localStorage.setItem("Token",data.token)
-            // navigat("/admin/all-user");
+            navigat("/");
           } else if (data.role === "user") {
             localStorage.setItem("Token",data.token)
-
-            // navigat("/write/blog");
+            navigat("/");
           } else {
-            // navigat("/login");
+            navigat("/register");
           }
         } else {
           alert(data.massage);
@@ -65,7 +64,7 @@ export const Login = () => {
               />
             </div>
             <div class="formBx">
-              {/* <form  onSubmit={()=>console.log("dffdfd")}> */}
+              <form>
                 <h2>Sign In</h2>
                 <input
                   type="text"
@@ -88,9 +87,10 @@ export const Login = () => {
                   onClick={(e) =>handleSubmit(e)}
                 />
                 <p class="signup">
-                  Don't have an account ?<Link to="/register">Sign Up.</Link>
+                  Don't have an account ?  
+                  <Link to="/register">Sign Up.</Link>
                 </p>
-              {/* </form> */} 
+              </form> 
             </div>
           </div>
         </div>

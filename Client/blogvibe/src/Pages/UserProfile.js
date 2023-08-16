@@ -7,9 +7,10 @@ import {
   AiOutlineArrowRight,
 } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const UserProfile = () => {
+  const {id} = useParams();
   const profileData = [
     {
       title: "Lorem ipsum dolor sit amet",

@@ -321,6 +321,43 @@ exports.approvalBlogs = async(req,res)=>{
   }
 }
 
+exports.singleUesr = async(req,res)=>{
+  try {
+    const {id} = req.params;
+    // console.log("id" ,id)
+    const response =await User.findOne({_id:id});
+    // console.log("response",response)
+    return res.status(200).send({
+      status: true,
+      massage: "approve response ",
+      response,
+    });
+  } catch (error) {
+    return res.status(400).send({
+      status: false,
+      massage: "something error",
+      error,
+    });
+  }
+}
+
+exports.getBlogBySingleUser= async(req,res)=>{
+  try{
+    const {id}= req.params;
+const response = await Blog.find({user:id});
+console.log("reposne" ,response);
+    return res.status(200).send({
+      status: true,
+      response
+    });
+  }catch(error){
+    return res.status(400).send({
+      status: false,
+      massage: "something error",
+      error,
+    });
+  }
+} 
 
 // ....................... extra code  ....
 

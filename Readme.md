@@ -29,3 +29,9 @@
 - user porfile/
 - admin profile
 find single user/ all blog
+
+
+
+login :- add image..  15min
+new navbar 30min
+home page 30min

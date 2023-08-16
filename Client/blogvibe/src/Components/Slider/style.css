@@ -1,0 +1,122 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-container {
+    width: 100%;
+    height: 500px;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  }
+  .swiper-slide img {
+    /* display: block; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sample-slider [class^="swiper-button-"] {
+    color: #ffff00 !important;
+    color:black
+  }
+  
+  .swiper-button-next {
+    margin-top: 0px;
+    position: absolute;
+    top: 45%;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    color: #a12c30;
+    padding: 10px;
+    background-color: white;
+    --swiper-navigation-size: 25px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 2px solid #a12c30;
+    /* transform: translateY(-50%); */
+  }
+  
+  .swiper-button-prev {
+      margin-top: 0px;
+    position: absolute;
+    top: 45%;
+    left: 10px;
+    width: 45px;
+    height: 45px;
+    color: #a12c30;
+    padding: 10px;
+    background-color: white;
+    --swiper-navigation-size: 25px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: 2px solid #a12c30;
+  }
+  /* ................... blog slider............ */
+  
+  .upcommingBlogContainer h2{
+    text-align: center;
+  }
+  .blogSlider {
+   margin-top: -435px;
+    /* position: absolute; */
+    width: 100%;
+    padding: 30px;
+    margin: auto;
+    background-color: transparent;
+  }
+  
+  .swiper-slide{
+      background-color: transparent;
+  }
+  
+  .item {
+    background-image: url("../../../public/assests/service-item-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 20px;
+    text-align: center;
+    /* color: #fff; */
+    padding: 40px;
+    background-color: transparent;
+  }
+  
+  .blogSlider .swiper-pagination-bullets {
+      display: none;
+  }
+  
+  
+   .item .icon {
+    max-width: 60px;
+    margin: 0 auto;
+  }
+  
+   .item h4 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .item p {
+    color: #fff;
+    font-size: 13px;
+  }
+   
+  
+  
+  
+  
