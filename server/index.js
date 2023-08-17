@@ -80,6 +80,8 @@ app.get("/images/:filename", (req, res) => {
 });
 
 app.post("/create/blog", upload.single("image"), auth, createBlog);
+app.post("/admin/create/blog", upload.single("image"), authAdmin, createBlog);
+
 route.put(
   "/update/blogBy/admin/:id",
   upload.single("image"),

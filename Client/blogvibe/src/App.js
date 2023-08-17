@@ -8,8 +8,8 @@ export const apiurl ="http://localhost:4500"
 function App() {
   return (
     <div className="App">
-    <AdminNav/>
-    {/* <UserNav/> */}
+    {/* <AdminNav/> */}
+    <UserNav/>
     <AllRoutes/>
     <Footer/>
     </div>

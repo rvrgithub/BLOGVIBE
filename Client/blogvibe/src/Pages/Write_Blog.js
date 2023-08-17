@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/write_blog.css";
 export const Write_Blog = () => {
+  const [indeputValue, setInputValue] = useState({
+    description:"",
+    title:"",
+    image:""
+  });
+  const handleInput =(e)=>{
+const {name,value} = e.target;
+console.log("name",name,value);
+  }
   return (
     <div
       class="container"
@@ -28,6 +37,8 @@ export const Write_Blog = () => {
                           id="form_name"
                           type="text"
                           name="title"
+                          value={indeputValue.title}
+                          onChange={(e)=>handleInput(e)}
                           class="form-control"
                           placeholder="Write Your Title*"
                           required="required"
@@ -43,7 +54,9 @@ export const Write_Blog = () => {
                           alt="Submit"
                           id="form_lastname"
                           name="image"
+                          value={indeputValue.image}
                           class="form-control"
+                          onChange={(e)=>handleInput(e)}
                           placeholder="select any file*"
                           required="required"
                           data-error="Lastname is required."
@@ -61,6 +74,8 @@ export const Write_Blog = () => {
                             class="form-control"
                             placeholder="Write your message here."
                             rows="4"
+                            value={indeputValue.description}
+                            onChange={(e)=>handleInput(e)}
                             required="required"
                             data-error="Please, leave us a message."
                           />

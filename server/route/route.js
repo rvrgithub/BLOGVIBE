@@ -63,7 +63,7 @@ route.get("/getAll/user",
 getAll);
 route.get("/profile", auth, profile);
 route.put("/updateProfile", auth, updateProfile);
-// route.post("/create/blog", auth, createBlog);
+route.post("/create/blog", auth, createBlog);
 route.delete("/delete/blog/:id", auth, deleteBlog);
 //..............................  Admin Section ......................
 route.get("/admin/profile", authAdmin, adminProfile);

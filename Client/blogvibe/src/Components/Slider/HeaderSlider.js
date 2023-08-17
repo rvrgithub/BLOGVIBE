@@ -1,15 +1,16 @@
 
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./style.css";
-import { Autoplay, Pagination, Navigation } from "swiper";
-
+// import {  Pagination } from 'swiper';
+// import SwiperCore, { Autoplay } from 'swiper';
 export const HeaderSlider = () => {
   return (
     <>

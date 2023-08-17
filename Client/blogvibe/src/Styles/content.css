@@ -1,0 +1,26 @@
+section.content {
+    background-image: url("../../public/assests/content.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 140px 0px ;
+  }
+
+  section.content .heading {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    color: black;
+  }
+
+  
+  section.content .heading h2 {
+    text-transform: uppercase;
+    color: #1f272b;
+     font-style: normal;
+   
+    padding-bottom: 20px;
+    font-size: 15px;
+    font-weight: 300;
+  }
