@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/profile.css";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import {
@@ -8,8 +8,16 @@ import {
 } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { apiurl } from "../App";
+
+
 
 export const UserProfile = () => {
+
+
+
+
+
   const profileData = [
     {
       title: "Lorem ipsum dolor sit amet",

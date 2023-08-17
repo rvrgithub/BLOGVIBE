@@ -84,5 +84,9 @@ route.get("/getAllBlog", auth, getAllBlog);
 route.get("/single/blog/:id", auth, singleBlog);
 route.get("/" , approvalBlogs) ;
 route.get("/admin/pending/blog",pendingBlog)
+
+
+// route.get("/getAdmin" ,)
+route.get("/single/user/:id",)
 module.exports = { route };
 

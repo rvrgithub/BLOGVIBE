@@ -165,6 +165,8 @@ return res.status(500).send({
 })
 }
 }
+
+
 // ............. update state ...............
 exports.approvAll = async (req, res) => {
   try {

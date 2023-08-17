@@ -33,19 +33,19 @@ export const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data); 
+        console.log("data", data);
         if (data.status === true) {
           if (data.role === "admin") {
-            localStorage.setItem("Token",data.token)
-            // navigat("/admin/all-user");
+            localStorage.setItem("Token", data.token);
+            navigat("/admin/all-user");
           } else if (data.role === "user") {
-            localStorage.setItem("Token",data.token)
-
+            localStorage.setItem("Token", data.token);
             // navigat("/write/blog");
           } else {
-            // navigat("/login");
+            navigat("/login");
           }
         } else {
+          console.log("error")
           alert(data.massage);
         }
       })
@@ -61,36 +61,36 @@ export const Login = () => {
               <img
                 src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg"
                 alt=""
-                onClick={()=>console.log("image clicked")}
+                onClick={() => console.log("image clicked")}
               />
             </div>
             <div class="formBx">
-              {/* <form  onSubmit={()=>console.log("dffdfd")}> */}
-                <h2>Sign In</h2>
-                <input
-                  type="text"
-                  name="email"
-                  value={inputValue.email}
-                  placeholder="enter email"
-                  onChange={(e) => handleChange(e)}
-                />
-                <input
-                  type="password"
-                  name="password"
-                  value={inputValue.password}
-                  onChange={(e) => handleChange(e)}
-                  placeholder="Password"
-                />
-                <input
-                  type="submit"
-                  name=""
-                  value="Login"
-                  onClick={(e) =>handleSubmit(e)}
-                />
-                <p class="signup">
-                  Don't have an account ?<Link to="/register">Sign Up.</Link>
-                </p>
-              {/* </form> */} 
+              <form>
+              <h2>Sign In</h2>
+              <input
+                type="text"
+                name="email"
+                value={inputValue.email}
+                placeholder="enter email"
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                type="password"
+                name="password"
+                value={inputValue.password}
+                onChange={(e) => handleChange(e)}
+                placeholder="Password"
+              />
+              <input
+                type="submit"
+                name=""
+                value="Login"
+                onClick={(e) => handleSubmit(e)}
+              />
+              <p class="signup">
+                Don't have an account ?<Link to="/register">Sign Up.</Link>
+              </p>
+              </form>
             </div>
           </div>
         </div>
