@@ -12,6 +12,7 @@ import { Login } from "../Pages/Login";
 import { Register } from "../Pages/Register";
 import { CreateBlog } from "../Pages/Admin/CreateBlog";
 import { PendingBlog } from "../Pages/Admin/PendingBlog";
+import { UserHomePage } from "../Pages/Home/UserHomePage";
 // import { ExtraPage } from "../Pages/Admin/ExtraPage";
 
 export const AllRoutes = () => {
@@ -19,21 +20,18 @@ export const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/admin/all-user" element={<AllUser />} />
-      <Route path="/user/profile" element={<UserProfile />} />
+      <Route path="/user/profile/:id" element={<UserProfile />} />
       <Route path="/detail/Blog" element={<DetailBlog />} />
       <Route path="/allblog" element={<AllBlogs />} />
       <Route path="/write/blog" element={<Write_Blog />} />
       <Route path="/contactus" element={<ContactUs />} />
-      <Route path="/admin/profile" element={<Profile />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin/write/blog" element={<CreateBlog/>}/>
       <Route path="/admin/pending/blog" element={<PendingBlog/>}/>
-
+<Route path="/user" element={<UserHomePage/>} />
       {/*  userRoute */}
-
-
-      
     </Routes>
   );
 };

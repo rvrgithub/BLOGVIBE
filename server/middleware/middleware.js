@@ -1,7 +1,6 @@
-const jwt = require("jsonwebtoken");
 const { User } = require("../Model/userModel");
 const { Admin } = require("../Model/adminModel");
-
+const jwt=require("jsonwebtoken")
 exports.auth = async (req, res, next) => {
   if (!req.headers.authorization) {
     return res.status(400).json("Invalid token")

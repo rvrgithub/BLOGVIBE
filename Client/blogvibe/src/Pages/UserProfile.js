@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/profile.css";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import {
@@ -7,16 +7,35 @@ import {
   AiOutlineArrowRight,
 } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { apiurl } from "../App";
 
-
-
 export const UserProfile = () => {
+  const [getUser, setGetUser] = useState("");
+  const [getBlog, setGetBlog]= useState([]);
+  const { id } = useParams();
 
+  const getDataById = () => {
+    fetch(`${apiurl}/sinlgeUser/blog/${id}`)
+      .then((res) => res.json())
+      .then((data) => setGetBlog(data.response))
+      .catch((error) => console.log("error", error));
+  };
+  console.log("getBlog", getBlog);
 
+  const getSngleUSerByd = () => {
+    fetch(`${apiurl}/single/uesr/${id}`)
+      .then((res) => res.json())
+      .then((data) => setGetUser(data.response))
+      .catch((error) => console.log("error", error));
+  };
 
-
+  useEffect(() => {
+    getDataById();
+    getSngleUSerByd();
+  }, []);
+  console.log("id", id);
+  console.log("udar Data", getUser);
 
   const profileData = [
     {
@@ -65,8 +84,9 @@ export const UserProfile = () => {
             src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
             alt="img_error"
           />
-          <h1 className="font-weight-bold">Kate Glover</h1>
+          <h1 className="font-weight-bold">_{getUser.name}</h1>
           <p className="mb-4">
+            <p>{getUser.email}</p>
             Justo stet no accusam stet invidunt sanctus magna clita vero eirmod,
             sit sit labore dolores lorem. Lorem at sit dolor dolores sed diam
             justo
@@ -108,7 +128,7 @@ export const UserProfile = () => {
       <div className="content">
         {/* <!-- Blog List Start --> */}
         <div className="container bg-white pt-5">
-          {profileData?.map((el, index) => (
+          {getBlog?.map((el, index) => (
             <div className="row blog-item px-3 pb-5" key={index}>
               <div className="col-md-5">
                 <img
@@ -124,7 +144,7 @@ export const UserProfile = () => {
                 </h3>
                 <div className="d-flex mb-3">
                   <small className="mr-2 text-muted">
-                    <i className="fa fa-calendar-alt"></i> {el.time}
+                    <i className="fa fa-calendar-alt"></i> {el.title}
                   </small>
                   <small className="mr-2 text-muted">
                     <i className="fa fa-folder"></i> Web Design

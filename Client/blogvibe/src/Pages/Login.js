@@ -36,13 +36,13 @@ export const Login = () => {
         console.log("data", data);
         if (data.status === true) {
           if (data.role === "admin") {
-            localStorage.setItem("Token", data.token);
-            navigat("/admin/all-user");
+            localStorage.setItem("Token",data.token)
+            navigat("/");
           } else if (data.role === "user") {
-            localStorage.setItem("Token", data.token);
-            // navigat("/write/blog");
+            localStorage.setItem("Token",data.token)
+            navigat("/");
           } else {
-            navigat("/login");
+            navigat("/register");
           }
         } else {
           console.log("error")
@@ -66,31 +66,32 @@ export const Login = () => {
             </div>
             <div class="formBx">
               <form>
-              <h2>Sign In</h2>
-              <input
-                type="text"
-                name="email"
-                value={inputValue.email}
-                placeholder="enter email"
-                onChange={(e) => handleChange(e)}
-              />
-              <input
-                type="password"
-                name="password"
-                value={inputValue.password}
-                onChange={(e) => handleChange(e)}
-                placeholder="Password"
-              />
-              <input
-                type="submit"
-                name=""
-                value="Login"
-                onClick={(e) => handleSubmit(e)}
-              />
-              <p class="signup">
-                Don't have an account ?<Link to="/register">Sign Up.</Link>
-              </p>
-              </form>
+                <h2>Sign In</h2>
+                <input
+                  type="text"
+                  name="email"
+                  value={inputValue.email}
+                  placeholder="enter email"
+                  onChange={(e) => handleChange(e)}
+                />
+                <input
+                  type="password"
+                  name="password"
+                  value={inputValue.password}
+                  onChange={(e) => handleChange(e)}
+                  placeholder="Password"
+                />
+                <input
+                  type="submit"
+                  name=""
+                  value="Login"
+                  onClick={(e) =>handleSubmit(e)}
+                />
+                <p class="signup">
+                  Don't have an account ?  
+                  <Link to="/register">Sign Up.</Link>
+                </p>
+              </form> 
             </div>
           </div>
         </div>

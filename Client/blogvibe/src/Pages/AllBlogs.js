@@ -11,7 +11,7 @@ export const AllBlogs = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setVlaue] = useState("");
   // .........................modal ................
-  const [blogData, setBlogData] = useState({});
+  const [blogData, setBlogData] = useState([]);
   // const data = [
   //   {
   //     name: "Mailchimp",

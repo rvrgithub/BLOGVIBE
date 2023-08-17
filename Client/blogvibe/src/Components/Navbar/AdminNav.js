@@ -56,7 +56,7 @@ export const AdminNav = () => {
   return (
     <>
       <div className="navContainer" style={{background:"#e5e5e5"}}>
-      <Link to="/">  <h1 className="logo" >BLOGVIVE /Admin</h1></Link>
+      <Link to="/">  <h1 className="logo" >Video</h1></Link>
         <ul className="menuUi">
           <li>
             <Link target="#" to="/allblog">
@@ -72,7 +72,7 @@ export const AdminNav = () => {
             <Link to="/admin/all-user">All User</Link>
           </li>
           <li>
-            <Link target="#" to="admin/profile">
+            <Link target="#" to="/profile">
               Profile
             </Link>
           </li>
@@ -85,7 +85,7 @@ export const AdminNav = () => {
             </Link>
           </li>
           <li>
-            <Link>logout</Link>
+            <Link to="/register">Register</Link>
           </li>
         </ul>
         <button className="navbtn" onClick={() => toggleNav(!toggle)}>
