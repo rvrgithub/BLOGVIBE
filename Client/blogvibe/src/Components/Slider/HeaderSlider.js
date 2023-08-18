@@ -1,24 +1,18 @@
-
 import React from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper";
-
+import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from "swiper/modules";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./style.css";
-// import {  Pagination } from 'swiper';
-// import SwiperCore, { Autoplay } from 'swiper';
 export const HeaderSlider = () => {
   return (
     <>
-      <section class="services">
-        <div class="container">
+      <section className="services">
+        <div className="container">
           <div className="upcommingBlogContainer">
             {/* <h2>Upcommming Blogs</h2> */}
-
             <Swiper
               slidesPerView={1}
               spaceBetween={40}
@@ -64,14 +58,15 @@ export const HeaderSlider = () => {
               className="mySwiper blogSlider"
             >
               <SwiperSlide>
-                <div class="item">
-                  <div class="icon">
+                <div className="swiper_div">
+                  <div className="icon">
                     <img
+                      className="switper_img"
                       // src="\assets\image\service-icon-01.png"
                       alt="adjasnd"
                     />
                   </div>
-                  <div class="down-content">
+                  <div className="down-content">
                     <h4>Best Education</h4>
                     <p>
                       Suspendisse tempor mauris a sem elementum bibendum.
@@ -81,14 +76,15 @@ export const HeaderSlider = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div class="item">
-                  <div class="icon">
+                <div className="swiper_div">
+                  <div className="icon">
                     <img
+                      className="switper_img"
                       // src="\assets\image\service-icon-03.png"
                       alt="adjasnd"
                     />
                   </div>
-                  <div class="down-content">
+                  <div className="down-content">
                     <h4>Best Education-3</h4>
                     <p>
                       Suspendisse tempor mauris a sem elementum bibendum.
@@ -98,14 +94,15 @@ export const HeaderSlider = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div class="item">
-                  <div class="icon">
+                <div className="swiper_div">
+                  <div className="icon">
                     <img
+                      className="switper_img"
                       // src="\assets\image\service-icon-03.png"
                       alt="adjasnd"
                     />
                   </div>
-                  <div class="down-content">
+                  <div className="down-content">
                     <h4>Best Education-2</h4>
                     <p>
                       Suspendisse tempor mauris a sem elementum bibendum.
@@ -115,14 +112,15 @@ export const HeaderSlider = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                <div class="item">
-                  <div class="icon">
+                <div className="swiper_div">
+                  <div className="icon">
                     <img
-                      // src="\assets\image\service-icon-03.png"
+                      className="switper_img"
+                      src="https://img.freepik.com/premium-vector/creative-hand-chinese-coin-shape-abstract-logo-design_695965-4.jpg?w=2000"
                       alt="adjasnd"
                     />
                   </div>
-                  <div class="down-content">
+                  <div className="down-content">
                     <h4>Best Education-2</h4>
                     <p>
                       Suspendisse tempor mauris a sem elementum bibendum.
@@ -132,15 +130,16 @@ export const HeaderSlider = () => {
                 </div>
               </SwiperSlide>{" "}
               <SwiperSlide>
-                <div class="item">
-                  <div class="icon">
+                <div className="swiper_div">
+                  <div className="icon">
                     <img
-                      // src="\assets\image\service-icon-03.png"
+                      className="switper_img"
+                      src="https://w7.pngwing.com/pngs/80/950/png-transparent-computer-icons-foodie-blog-categories-miscellaneous-food-logo.png"
                       alt="adjasnd"
                     />
                   </div>
-                  <div class="down-content">
-                    <h4>Best Education-2</h4>
+                  <div className="down-content">
+                    <h4>Best Education-last</h4>
                     <p>
                       Suspendisse tempor mauris a sem elementum bibendum.
                       Praesent facilisis massa non vestibulum.

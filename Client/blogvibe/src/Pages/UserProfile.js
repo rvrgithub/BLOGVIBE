@@ -22,7 +22,6 @@ export const UserProfile = () => {
       .catch((error) => console.log("error", error));
   };
   console.log("getBlog", getBlog);
-
   const getSngleUSerByd = () => {
     fetch(`${apiurl}/single/uesr/${id}`)
       .then((res) => res.json())

@@ -1,0 +1,81 @@
+.review_img {
+  height: 100px;
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: -39px;
+  z-index: 100;
+  transform-style: preserve-3d;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+#customer-testimonoals {
+  padding: 10% 0 ;
+    background-image: url("../../../public//assests/content.jpg");
+}
+
+.review_imgBox {
+  border-radius: 12px;
+  position: relative;
+  margin-top: 40px !important;
+  margin: auto;
+  width: 70%;
+  padding-top: 20px;
+  transform: translateY(-50px);
+  z-index: 199;
+  border: 1px solid red;
+  box-shadow: 0px 9px 18px rgba(0, 0, 0, 0.12), 0px 5px 7px rgba(0, 0, 0, 0.5);
+}
+
+.review_card {
+  position: relative;
+  width: 90%;
+  height: 220px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.review_content {
+  text-align: center;
+  transform: translateY(-450px);
+  opacity: 0;
+  transition: 0.3s;
+  margin-top: 150px;
+}
+
+.review_content {
+  opacity: 1;
+  transform: translateY(-180px);
+}
+
+.review_content > h2 {
+  color: #5c8da5;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0 0 17px 0;
+  font-weight: 600;
+}
+
+.review_content > h3 {
+  color: #7f9ead;
+  font-family: inherit;
+  font-size: 17px;
+  line-height: 1.5;
+  margin: -20px 0 17px 0;
+  font-weight: 300;
+}
+
+#customer-testimonoals .review_card {
+  text-align: center;
+  margin: auto;
+  margin-bottom: 0px;
+  /* opacity: 0.2; */
+  transform: scale3d(0.8, 0.8, 1);
+  transition: all 0.3s ease-in-out;
+}
+

@@ -3,7 +3,6 @@ import "../Styles/contactus.css";
 import { BsWhatsapp } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
-// import { API_URL } from "../../App";
 export const ContactForm = () => {
   const [contactValue, setContactValue] = useState({
     name: "",
@@ -55,7 +54,7 @@ export const ContactForm = () => {
   }
   return (
     <>
-      <div style={{ height: "10vh" }}></div>
+      <div style={{ height: "10vh" , marginTop:"0" }}></div>
       <div className="contact-page main">
         <h2>Get in touch</h2>
         <div className="contact-info">

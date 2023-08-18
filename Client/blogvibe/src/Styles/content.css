@@ -4,7 +4,7 @@ section.content {
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 140px 0px ;
+    padding: 400px 0px 200px 0 ;
   }
 
   section.content .heading {
@@ -14,7 +14,7 @@ section.content {
     color: black;
   }
 
-  
+
   section.content .heading h2 {
     text-transform: uppercase;
     color: #1f272b;

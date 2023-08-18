@@ -13,7 +13,7 @@
     background: #fff;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-swiper_divs: center;
   }
   
   .swiper-slide {
@@ -35,7 +35,7 @@
   .swiper-button-next {
     margin-top: 0px;
     position: absolute;
-    top: 45%;
+    top: 23%;
     right: 10px;
     width: 45px;
     height: 45px;
@@ -52,7 +52,7 @@
   .swiper-button-prev {
       margin-top: 0px;
     position: absolute;
-    top: 45%;
+    top: 23%;
     left: 10px;
     width: 45px;
     height: 45px;
@@ -70,11 +70,13 @@
     text-align: center;
   }
   .blogSlider {
-   margin-top: -435px;
-    /* position: absolute; */
+   /* margin-top: -435px; */
+    position: absolute;
     width: 100%;
     padding: 30px;
     margin: auto;
+    top: 550px;
+    left: 0;
     background-color: transparent;
   }
   
@@ -82,7 +84,7 @@
       background-color: transparent;
   }
   
-  .item {
+  .swiper_div {
     background-image: url("../../../public/assests/service-item-bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -98,20 +100,23 @@
       display: none;
   }
   
+.switper_img{
+  border-radius: 50%;
   
-   .item .icon {
+}
+   .swiper_div .icon {
     max-width: 60px;
     margin: 0 auto;
   }
   
-   .item h4 {
+   .swiper_div>h4 {
     margin-top: 25px;
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: 600;
   }
   
-  .item p {
+  .swiper_div>p {
     color: #fff;
     font-size: 13px;
   }

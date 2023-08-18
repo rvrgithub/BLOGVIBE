@@ -5,12 +5,12 @@ import { RiWhatsappFill } from "react-icons/ri";
 
 export const Footer = () => {
     return (
-        <div className=" my-5" style={{ width: "100%", background: "red" ,position:"absolute" }}>
+        <div className="" style={{ width: "100%", background: "red"  }}>
             <footer
                 className="text-center text-white"
                 style={{ backgroundColor: "#f1f1f1", width: "100%" }}
             >
-                <div className="container pt-1" style={{ width: "100%" }}>
+                <div className="container " style={{ width: "100%" }}>
                     <section className="mb-4">
                         <a
                             className="btn btn-link btn-floating btn-lg text-dark m-2"
