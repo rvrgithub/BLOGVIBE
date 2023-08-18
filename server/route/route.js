@@ -17,6 +17,7 @@ const {
   approvalBlogs,
   singleUesr,
   getBlogBySingleUser,
+  getSelfBlog,
 } = require("../Controller/userController");
 const { auth, authAdmin } = require("../middleware/middleware");
 const {
@@ -87,6 +88,7 @@ route.get("/single/blog/:id", auth, singleBlog);
 route.get("/", approvalBlogs) ;
 route.get("/admin/pending/blog",pendingBlog);
 route.get("/single/uesr/:id",singleUesr);
-route.get("/sinlgeUser/blog/:id", getBlogBySingleUser)
+route.get("/sinlgeUser/blog/:id", getBlogBySingleUser);
+route.get("/getself/blog", auth, getSelfBlog);
 module.exports = { route };
 

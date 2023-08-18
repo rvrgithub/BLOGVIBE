@@ -3,10 +3,11 @@ const { Blog } = require("../Model/blogModel");
 const { User } = require("../Model/userModel");
 const { isValidEmail, isValidPwd, isValidName } = require("../Util/validation");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
+var jwt = require("jsonwebtoken");
 const { Admin } = require("../Model/adminModel");
 exports.register = async (req, res) => {
-  console.log("req.body ",req.body);
+  console.log("req.body ", req.body);
 
   const { email, name, password, phoneNumber } = req.body;
   try {
@@ -17,7 +18,6 @@ exports.register = async (req, res) => {
         massage: "All Credientials Are Required 1.. !!",
       });
     }
-
 
     // .......................All Credientials Are Required....................
     if (!name || !email || !password || !phoneNumber) {
@@ -157,7 +157,7 @@ exports.updateProfile = async (req, res) => {
 // ..................  Blog Section...............................
 
 exports.createBlog = async (req, res) => {
-  console.log("asfg l",req.body,req.file)
+  console.log("asfg l", req.body, req.file);
   try {
     const user = req.user;
     console.log("user", user._id);
@@ -168,7 +168,7 @@ exports.createBlog = async (req, res) => {
       user: req.user._id,
     });
     await reponse.save();
-    res.json(reponse );
+    res.json(reponse);
   } catch (error) {
     res.json("false");
   }
@@ -183,13 +183,23 @@ exports.updateBlog = async (req, res) => {
   const findBlog = await Blog.findOne({ _id: id, user: req.user._id });
   // console.log("findblog", findBlog);
 
-  const checkValueImage = req.file.filename ? req.file.filename : findBlog.image; 
-  const checkValueTitle = title ? title : findBlog.title; 
-  const checkValueDescriptions = descriptions ? descriptions : findBlog.descriptions; 
+  const checkValueImage = req.file.filename
+    ? req.file.filename
+    : findBlog.image;
+  const checkValueTitle = title ? title : findBlog.title;
+  const checkValueDescriptions = descriptions
+    ? descriptions
+    : findBlog.descriptions;
 
   const updatBlog = await Blog.updateOne(
     { _id: id, user: req.user._id },
-    { $set: { title:checkValueTitle, descriptions:checkValueDescriptions, image: checkValueImage } }
+    {
+      $set: {
+        title: checkValueTitle,
+        descriptions: checkValueDescriptions,
+        image: checkValueImage,
+      },
+    }
   );
   try {
     return res.status(201).send({
@@ -226,6 +236,22 @@ exports.getAllBlog = async (req, res) => {
   }
 };
 
+exports.getSelfBlog = async (req, res) => {
+  const findUser = req.user;
+  console.log("findUser",findUser);
+  try {
+    return res.status(201).send({
+      status: true,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      message: "Error in getting blog...",
+      error,
+    });
+  }
+};
+
 //  ........by id ....................
 exports.singleBlog = async (req, res) => {
   const id = req.params.id;
@@ -249,9 +275,9 @@ exports.singleBlog = async (req, res) => {
 // ................
 
 exports.loginBoth = async (req, res) => {
-  console.log("dfdfdf" , req.body)
+  console.log("dfdfdf", req.body);
   const { email, password } = req.body;
-  
+
   try {
     if (Object.keys(req.body).length === 0) {
       return res.status(401).send({
@@ -273,7 +299,7 @@ exports.loginBoth = async (req, res) => {
         massage: "Login Successfull !!",
         token,
         // userLogin,
-        role:userLogin.role
+        role: userLogin.role,
       });
     } else {
       const adminLogin = await Admin.findOne({ email });
@@ -289,7 +315,7 @@ exports.loginBoth = async (req, res) => {
           status: true,
           massage: "Login Successfull !!",
           token,
-          role:adminLogin.role,
+          role: adminLogin.role,
         });
       } else {
         res.status(403).json("invalid credential");
@@ -298,15 +324,15 @@ exports.loginBoth = async (req, res) => {
   } catch (error) {
     return res.status(400).send({
       status: false,
-      massage:error.massege,
+      massage: error.massege,
       error,
-    });  
+    });
   }
 };
 
-exports.approvalBlogs = async(req,res)=>{
+exports.approvalBlogs = async (req, res) => {
   try {
-    const blogs =await Blog.find({status:"approve"});
+    const blogs = await Blog.find({ status: "approve" });
     return res.status(200).send({
       status: true,
       massage: "approve blogs ",
@@ -319,13 +345,13 @@ exports.approvalBlogs = async(req,res)=>{
       error,
     });
   }
-}
+};
 
-exports.singleUesr = async(req,res)=>{
+exports.singleUesr = async (req, res) => {
   try {
-    const {id} = req.params;
+    const { id } = req.params;
     // console.log("id" ,id)
-    const response =await User.findOne({_id:id});
+    const response = await User.findOne({ _id: id });
     // console.log("response",response)
     return res.status(200).send({
       status: true,
@@ -339,25 +365,25 @@ exports.singleUesr = async(req,res)=>{
       error,
     });
   }
-}
+};
 
-exports.getBlogBySingleUser= async(req,res)=>{
-  try{
-    const {id}= req.params;
-const response = await Blog.find({user:id});
-console.log("reposne" ,response);
+exports.getBlogBySingleUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await Blog.find({ user: id });
+    console.log("reposne", response);
     return res.status(200).send({
       status: true,
-      response
+      response,
     });
-  }catch(error){
+  } catch (error) {
     return res.status(400).send({
       status: false,
       massage: "something error",
       error,
     });
   }
-} 
+};
 
 // ....................... extra code  ....
 
@@ -590,10 +616,6 @@ exports.getAll = async (req, res) => {
     });
   }
 };
-
-
-
-
 
 // ..................  Blog Section...............................
 

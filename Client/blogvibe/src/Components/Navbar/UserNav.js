@@ -12,6 +12,7 @@ export const UserNav = () => {
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
 
+
   return (
     <div>
       <div className={click ? "main-container" : ""} onClick={() => Close()} />
@@ -39,7 +40,7 @@ export const UserNav = () => {
             <li className="nav-item">
               <Link
                 exact
-                to="/about"
+                to="/myblog"
                 activeClassName="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
@@ -55,7 +56,7 @@ export const UserNav = () => {
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
-            Write Blog
+                Write Blog
               </Link>
             </li>
             <li className="nav-item">

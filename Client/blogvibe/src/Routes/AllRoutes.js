@@ -13,6 +13,7 @@ import { Register } from "../Pages/Register";
 import { CreateBlog } from "../Pages/Admin/CreateBlog";
 import { PendingBlog } from "../Pages/Admin/PendingBlog";
 import { UserHomePage } from "../Pages/Home/UserHomePage";
+import { MyBlog } from "../Pages/MyBlog";
 // import { ExtraPage } from "../Pages/Admin/ExtraPage";
 
 export const AllRoutes = () => {
@@ -31,6 +32,7 @@ export const AllRoutes = () => {
       <Route path="/admin/write/blog" element={<CreateBlog/>}/>
       <Route path="/admin/pending/blog" element={<PendingBlog/>}/>
 <Route path="/user" element={<UserHomePage/>} />
+<Route  path="/myblog"  element={<MyBlog/>}/>
       {/*  userRoute */}
     </Routes>
   );
