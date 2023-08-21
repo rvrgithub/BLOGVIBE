@@ -8,6 +8,7 @@ export const Display = ({ open, setIsOpen, data }) => {
     title: data.title,
     // Image: "",
   });
+  let token = localStorage.getItem("Token");
 
   console.log("data", data);
   console.log("updateValue", updateValue);
@@ -18,8 +19,11 @@ export const Display = ({ open, setIsOpen, data }) => {
   const handleUpdate = (e) => {
     fetch(`${apiurl}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({updateValue}),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ updateValue }),
     })
       .then((res) => res.json())
       .then((data) => console.log("data from update", data))
