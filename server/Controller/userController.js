@@ -218,7 +218,7 @@ exports.updateBlog = async (req, res) => {
 exports.getAllBlog = async (req, res) => {
   const getuser = req.user;
   // console.log("getUSer", getuser);
-
+  
   try {
     const allBlog = await Blog.find({ user: getuser.id });
     console.log("allblog", allBlog);
@@ -238,9 +238,9 @@ exports.getAllBlog = async (req, res) => {
 
 exports.getSelfBlog = async (req, res) => {
   const findUser = req.user;
-  console.log("findUser",findUser);
+  console.log("findUser", findUser);
   try {
-    let response=await Blog.find({"user":req.user._id})
+    let response = await Blog.find({ user: req.user._id });
     return res.status(201).send({
       status: true,
       response,
@@ -709,6 +709,7 @@ exports.getAll = async (req, res) => {
 // };
 
 exports.deleteBlog = async (req, res) => {
+  console.log("qjdnaw");
   try {
     const blogId = req.params.id;
     console.log("id", blogId);

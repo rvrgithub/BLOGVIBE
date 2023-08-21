@@ -1,25 +1,37 @@
 import React, { useState } from "react";
 import "./display.css";
 import { useTheme } from "styled-components";
-export const Display = ({ open, onClose, data }) => {
-  const [ updateValue, setUpdateValue ] = useState({
-    descriptions: data.descriptions ,
+import { apiurl } from "../../App";
+export const Display = ({ open, setIsOpen, data }) => {
+  const [updateValue, setUpdateValue] = useState({
+    descriptions: data.descriptions,
     title: data.title,
     // Image: "",
   });
 
-  console.log("data",data)
+  console.log("data", data);
   console.log("updateValue", updateValue);
-  const handleInput=(e)=>{
-const {name, value} = e.target;
-setUpdateValue({...updateValue,[name]:value})
-  }
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setUpdateValue({ ...updateValue, [name]: value });
+  };
+  const handleUpdate = (e) => {
+    fetch(`${apiurl}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({updateValue}),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("data from update", data))
+      .catch((error) => console.log("error", error));
+    setIsOpen(false);
+  };
 
-  console.log("update",updateValue);
+  console.log("update", updateValue);
   if (!open) return null;
   return (
     <>
-      <div class="row " style={{marginTop:"100px", position:"absolute"}}>
+      <div class="row " style={{ marginTop: "100px", position: "absolute" }}>
         {/* <div class="col-lg-7 mx-auto"> */}
         <div class="card mt-2 mx-auto p-4 bg-light">
           <div class="card-body bg-light">
@@ -33,7 +45,7 @@ setUpdateValue({...updateValue,[name]:value})
                         id="form_name"
                         type="text"
                         name="title"
-                        onChange={(e)=>handleInput(e)}
+                        onChange={(e) => handleInput(e)}
                         value={updateValue.title}
                         class="form-control"
                         placeholder="Write Your Title*"
@@ -51,7 +63,7 @@ setUpdateValue({...updateValue,[name]:value})
                         id="form_lastname"
                         name="image"
                         value={updateValue.image}
-                        onChange={(e)=>handleInput(e)}
+                        onChange={(e) => handleInput(e)}
                         class="form-control"
                         placeholder="select any file*"
                         required="required"
@@ -68,7 +80,7 @@ setUpdateValue({...updateValue,[name]:value})
                           id="form_message"
                           name="descriptions"
                           value={updateValue.descriptions}
-                          onChange={(e)=>handleInput(e)}
+                          onChange={(e) => handleInput(e)}
                           class="form-control"
                           placeholder="Write your message here."
                           rows="4"
@@ -81,10 +93,9 @@ setUpdateValue({...updateValue,[name]:value})
                     <div class="col-md-12">
                       <input
                         type="submit"
-                        class="btn btn-success btn-send  pt-2 btn-block
-                        "
+                        class="btn btn-success btn-send  pt-2 btn-block"
                         value="Update Message"
-                        onClick={onClose}
+                        onClick={handleUpdate}
                       />
                     </div>
                   </div>

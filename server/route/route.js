@@ -33,7 +33,6 @@ const route = express.Router();
 
 // ..............................
 
-
 // const path = require("path");
 // const multer = require("multer");
 
@@ -57,20 +56,22 @@ route.post("/register", register);
 //   });
 
 // route.post("/login", login);
-route.get("/getAll/user", 
-// authAdmin, 
-getAll);
+route.get(
+  "/getAll/user",
+  // authAdmin,
+  getAll
+);
 route.get("/profile", auth, profile);
 route.put("/updateProfile", auth, updateProfile);
 route.post("/create/blog", auth, createBlog);
-route.delete("/delete/blog/:id", auth, deleteBlog);
+route.delete("/delete/blog/:id", auth,deleteBlog);
 //..............................  Admin Section ......................
 route.get("/admin/profile", authAdmin, adminProfile);
 
 route.post("/admin/register", authAdmin, adminRegister);
 route.put("/admin/approve/:id", authAdmin, approve);
 route.put("/approvAll", authAdmin, approvAll);
-route.delete("/admin/delete/blog/:id",authAdmin, deleteBlogByA);  
+route.delete("/admin/delete/blog/:id", authAdmin, deleteBlogByA);
 // route.put("/update/blogBy/admin/:id",authAdmin, updateBlogByA);
 route.delete("/admin/delete/user/:id", authAdmin, deleteUserByA);
 // .............................. find both [admin and user] in login.............................
@@ -83,11 +84,10 @@ route.post("/findBothLogin", loginBoth);
 // route.put("/updateBlog/:id", auth, updateBlog);
 route.get("/getAllBlog", auth, getAllBlog);
 route.get("/single/blog/:id", auth, singleBlog);
-route.get("/", approvalBlogs) ;
-route.get("/admin/pending/blog",pendingBlog);
-route.get("/single/uesr/:id",singleUesr);
+route.get("/", approvalBlogs);
+route.get("/admin/pending/blog", pendingBlog);
+route.get("/single/uesr/:id", singleUesr);
 route.get("/sinlgeUser/blog/:id", getBlogBySingleUser);
 route.get("/getself/blog", auth, getSelfBlog);
-route.get("/admin/getself/blog", authAdmin, );
+route.get("/admin/getself/blog", authAdmin);
 module.exports = { route };
-

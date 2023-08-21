@@ -12,7 +12,7 @@ export const AllBlogs = () => {
   const [value, setVlaue] = useState("");
   // .........................modal ................
   const [blogData, setBlogData] = useState([]);
-  
+  let token = localStorage.getItem("Token")
   const getData = () => {
     fetch(apiurl)
       .then((res) => res.json())
@@ -23,23 +23,19 @@ export const AllBlogs = () => {
     getData();
   }, []);
 
-  const handleDeleteFunc =(e)=>{
-console.log("e",e._id)
-fetch(`${apiurl}/admin/delete/blog/${e._id}`, {
-  method: "DELETE",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(e), //if you do not want to send any addional data,  replace the complete JSON.stringify(YOUR_ADDITIONAL_DATA) with null
-})
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) =>
-    // this is the data we get after doing the delete request, do whatever you want with this data
-    console.log("data delete ", data)
-  );
-  }
+  const handleDeleteFunc = (e) => {
+    console.log("e", e._id);
+    fetch(`${apiurl}/admin/delete/blog/${e._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => getData())
+      .catch((error) => console.log("error", error));
+  };
   // console.log("blogData", blogData.blogs);
   return (
     <>
