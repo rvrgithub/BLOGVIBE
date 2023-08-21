@@ -54,7 +54,7 @@ export const ContactForm = () => {
   }
   return (
     <>
-      <div style={{ height: "10vh" , marginTop:"0" }}></div>
+      {/* <div style={{ height: "10vh" , marginTop:"0" , border: "5px solid red"}}></div> */}
       <div className="contact-page main">
         <h2>Get in touch</h2>
         <div className="contact-info">

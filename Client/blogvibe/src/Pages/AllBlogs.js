@@ -12,51 +12,7 @@ export const AllBlogs = () => {
   const [value, setVlaue] = useState("");
   // .........................modal ................
   const [blogData, setBlogData] = useState([]);
-  // const data = [
-  //   {
-  //     name: "Mailchimp",
-  //     day: "1 days ago",
-  //     work: "Design",
-  //     work2: " Senior Product",
-  //     work3: " Designer-Singapore",
-  //   },
-  //   {
-  //     name: "Mailchimp",
-  //     day: "1 days ago",
-  //     work: "Design",
-  //     work2: " Senior Product",
-  //     work3: " Designer-Singapore",
-  //   },
-  //   {
-  //     name: "Mailchimp",
-  //     day: "1 days ago",
-  //     work: "Design",
-  //     work2: " Senior Product",
-  //     work3: " Designer-Singapore",
-  //   },
-  //   {
-  //     name: "Mailchimp",
-  //     day: "1 days ago",
-  //     work: "Design",
-  //     work2: " Senior Product",
-  //     work3: " Designer-Singapore",
-  //   },
-  //   {
-  //     name: "Mailchimp",
-  //     day: "1 days ago",
-  //     work: "Design",
-  //     work2: " Senior Product",
-  //     work3: " Designer-Singapore",
-  //   },
-  //   {
-  //     name: "Mailchimp",
-  //     day: "1 days ago",
-  //     work: "Design",
-  //     work2: " Senior Product",
-  //     work3: " Designer-Singapore",
-  //   },
-  // ];
-
+  
   const getData = () => {
     fetch(apiurl)
       .then((res) => res.json())
@@ -67,74 +23,95 @@ export const AllBlogs = () => {
     getData();
   }, []);
 
-  console.log("blogData", blogData.blogs);
+  const handleDeleteFunc =(e)=>{
+console.log("e",e._id)
+fetch(`${apiurl}/admin/delete/blog/${e._id}`, {
+  method: "DELETE",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(e), //if you do not want to send any addional data,  replace the complete JSON.stringify(YOUR_ADDITIONAL_DATA) with null
+})
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) =>
+    // this is the data we get after doing the delete request, do whatever you want with this data
+    console.log("data delete ", data)
+  );
+  }
+  // console.log("blogData", blogData.blogs);
   return (
     <>
-    {isOpen ?( <Display
-        data={value}
-        open={isOpen}
-        onClose={() => {
-          setIsOpen(false);
-        }}
-      />) :(
-    
-      <div className="section_our_solution">
-        <div class="container mt-5 mb-3">
-          <div class="row">
-            {blogData?.blogs?.map((el) => (
-              <div class="col-md-4">
-                <div className="our_solution_category">
-                  <div className="solution_cards_box">
-                    <div className="solution_card">
-                      <div className="hover_color_bubble"></div>
-                      <div className="so_top_icon">
-                        <img src={`${apiurl}/images/${el.image}`}  alt=""/>
-                      </div>
-                      <div className="solu_title">
-                        <h3>{el.title}</h3>
-                      </div>
-                      <div className="solu_description">
-                        <p>{el.descriptions}</p>
-                        <div
-                          className="row"
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                          }}
-                        >
-                          <button
-                            type="button"
-                            className="read_more_btn"
-                            value="Open modal"
-                            onClick={() => {
-                              setIsOpen(true);
-                              setVlaue(el);
+      {isOpen ? (
+        <Display
+          data={value}
+          open={isOpen}
+          // onClose={() => {
+          //   setIsOpen(false);
+          // }}
+
+          setIsOpen={setIsOpen}
+        />
+      ) : (
+        <div className="section_our_solution">
+          <div class="container mt-5 mb-3">
+            <div class="row">
+              {blogData?.blogs?.map((el, index) => (
+                <div class="col-md-4" key={index}>
+                  <div className="our_solution_category">
+                    <div className="solution_cards_box">
+                      <div className="solution_card">
+                        <div className="hover_color_bubble"></div>
+                        <div className="so_top_icon">
+                          <img src={`${apiurl}/images/${el.image}`} alt="" />
+                        </div>
+                        <div className="solu_title">
+                          <h3>{el.title}</h3>
+                        </div>
+                        <div className="solu_description">
+                          <p>{el.descriptions}</p>
+                          <div
+                            className="row"
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
                             }}
                           >
-                            <FaEdit />
-                          </button>
-                          <button type="button" className="read_more_btn">
-                            <Link to="/detail/Blog" className="link">
-                              <FaEye />
-                            </Link>
-                          </button>
-                          <button
-                            type="button"
-                            className="read_more_btn color_red"
-                          >
-                            <AiTwotoneDelete />
-                          </button>
+                            <button
+                              type="button"
+                              className="read_more_btn"
+                              value="Open modal"
+                              onClick={() => {
+                                setIsOpen(true);
+                                setVlaue(el);
+                              }}
+                            >
+                              <FaEdit />
+                            </button>
+                            <button type="button" className="read_more_btn">
+                              <Link to="/detail/Blog" className="link">
+                                <FaEye />
+                              </Link>
+                            </button>
+                            <button
+                              type="button"
+                              className="read_more_btn color_red"
+                              onClick={() => handleDeleteFunc(el)}
+                            >
+                              <AiTwotoneDelete />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+          {/* <input type="button" value="Open modal" onClick={openModal} /> */}
         </div>
-        {/* <input type="button" value="Open modal" onClick={openModal} /> */}
-      </div>
       )}
       {/* ..........................modal................ */}
     </>

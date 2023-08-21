@@ -264,4 +264,27 @@ exports.adminProfile = async (req, res) => {
       massage: "data not get",
     });
   }
+
+
+
+};
+
+
+
+exports.getAdminBlog = async (req, res) => {
+  const findUser = req.user;
+  console.log("findUser", findUser);
+  try {
+    let response = await Blog.find({ user: req.user._id });
+    return res.status(201).send({
+      status: true,
+      response,
+    });
+  } catch (error) {
+    return res.status(401).send({
+      status: false,
+      message: "Error in getting blog...",
+      error,
+    });
+  }
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import {Home} from "../Pages/Home/Home";
+import { Home } from "../Pages/Home/Home";
 import { AllUser } from "../Pages/Admin/AllUser";
-import {  UserProfile } from "../Pages/UserProfile";
+import { UserProfile } from "../Pages/UserProfile";
 import { DetailBlog } from "../Pages/DetailBlog";
 import { AllBlogs } from "../Pages/AllBlogs";
 import { Write_Blog } from "../Pages/Write_Blog";
@@ -29,10 +29,10 @@ export const AllRoutes = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/admin/write/blog" element={<CreateBlog/>}/>
-      <Route path="/admin/pending/blog" element={<PendingBlog/>}/>
-<Route path="/user" element={<UserHomePage/>} />
-<Route  path="/myblog"  element={<MyBlog/>}/>
+      <Route path="/admin/write/blog" element={<CreateBlog />} />
+      <Route path="/admin/pending/blog" element={<PendingBlog />} />
+      <Route path="/user" element={<UserHomePage />} />
+      <Route path="/myblog" element={<MyBlog />} />
       {/*  userRoute */}
     </Routes>
   );

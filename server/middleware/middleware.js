@@ -1,12 +1,12 @@
 const { User } = require("../Model/userModel");
 const { Admin } = require("../Model/adminModel");
-const jwt=require("jsonwebtoken")
+var jwt = require("jsonwebtoken");
 exports.auth = async (req, res, next) => {
-  if (!req.headers.authorization) {
-    return res.status(400).json("Invalid token")
+  if (!req.headers.authorization || !req.headers.authorization.startsWith("Bearer")) {
+    return res.status(400).json("Invalid token");
   }
   if (req.headers.authorization.startsWith("Bearer") == false) {
-    return res.status(400).json("Invalid token")
+    return res.status(400).json("Invalid token");
   }
   const token = req.headers.authorization.split(" ")[1];
   console.log("token", token);
@@ -34,10 +34,10 @@ exports.auth = async (req, res, next) => {
 
 exports.authAdmin = async (req, res, next) => {
   if (!req.headers.authorization) {
-    return res.status(400).json("Invalid token")
+    return res.status(400).json("Invalid token");
   }
   if (req.headers.authorization.startsWith("Bearer") == false) {
-    return res.status(400).json("Invalid token")
+    return res.status(400).json("Invalid token");
   }
   const token = req.headers.authorization.split(" ")[1];
   console.log("token", token);

@@ -10,6 +10,7 @@ export const Write_Blog = () => {
 const {name,value} = e.target;
 console.log("name",name,value);
   }
+  
   return (
     <div
       class="container"

@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 // const {upload}=resquire("../index")
 const {
@@ -90,5 +88,6 @@ route.get("/admin/pending/blog",pendingBlog);
 route.get("/single/uesr/:id",singleUesr);
 route.get("/sinlgeUser/blog/:id", getBlogBySingleUser);
 route.get("/getself/blog", auth, getSelfBlog);
+route.get("/admin/getself/blog", authAdmin, );
 module.exports = { route };
 
