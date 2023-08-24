@@ -98,7 +98,6 @@ exports.getAllUser = async (req, res) => {
     // console.log("req.body")
     const response = await User.find();
     console.log("response", response);
- 
     // await response.save();
     return res.status(201).send({
       status: true,
