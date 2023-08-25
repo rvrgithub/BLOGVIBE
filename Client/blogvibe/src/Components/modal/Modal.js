@@ -17,13 +17,19 @@ export const Display = ({ open, setIsOpen, data }) => {
     setUpdateValue({ ...updateValue, [name]: value });
   };
   const handleUpdate = (e) => {
-    fetch(`${apiurl}`, {
+const updateData = new FormData();
+updateData.set("title", updateValue.title);
+    updateData.set("image", updateValue.image);
+    updateData.set("descriptions", updateValue.description);
+    // console.log("data", data);
+
+    fetch(`${apiurl}/update/blogBy/admin/${data._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ updateValue }),
+      body: updateData
     })
       .then((res) => res.json())
       .then((data) => console.log("data from update", data))
@@ -66,8 +72,15 @@ export const Display = ({ open, setIsOpen, data }) => {
                         alt="Submit"
                         id="form_lastname"
                         name="image"
-                        value={updateValue.image}
-                        onChange={(e) => handleInput(e)}
+                        // value={updateValue.image}
+           
+                        onChange={(e) =>
+                          setUpdateValue({
+                            ...updateValue,
+                            image: e.target.files[0],
+                          })
+                        }
+                    
                         class="form-control"
                         placeholder="select any file*"
                         required="required"

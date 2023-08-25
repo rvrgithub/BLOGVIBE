@@ -14,7 +14,7 @@ const [myblog,setMyblog] = useState([]);
   const getMyBlog = () => {
     fetch(`${apiurl}/admin/getself/blog`, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
