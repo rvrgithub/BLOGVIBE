@@ -18,7 +18,9 @@ const [myblog,setMyblog] = useState([]);
       },
     })
       .then((res) => res.json())
-      .then((data) => setMyblog( data.response))
+      .then((data) => {
+        console.log("data jbjbjkb ", data)
+        setMyblog( data)})
       .catch((error) => console.log("error", error));
   };
   console.log("myblog",myblog)
