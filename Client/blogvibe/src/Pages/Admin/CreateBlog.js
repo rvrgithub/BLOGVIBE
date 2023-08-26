@@ -38,92 +38,89 @@ export const CreateBlog = () => {
       .catch((error) => console.log("error", error));
   };
   return (
-    <div class="container mt-5 mb-3" style={{}}>
-      {/* <div class="text-center">
-        <h1>Write Your Blog</
-        h1>
-      </div> */}
-      <div class="row">
-        {/* <div class="col-lg-7 mx-auto"> */}
-        <div class="card mt-2 mx-auto p-4 bg-light">
-          <div class="card-body bg-light">
-            <div class="container">
-              <form id="contact-form">
-                <div class="controls">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      {/* <label for="form_name">Title *</label> */}
-                      <input
-                        id="form_name"
-                        type="text"
-                        name="title"
-                        value={inputValue.title}
-                        onChange={(e) => handleInput(e)}
-                        class="form-control"
-                        placeholder="Write Your Title*"
-                        required="required"
-                        data-error="Firstname is required."
-                      />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="form-group" style={{ margin: "20px 0" }}>
-                      <input
-                        type="file"
-                        src="img_submit.gif"
-                        alt="Submit"
-                        id="form_lastname"
-                        name="image"
-                        // value={inputValue.image}
-                        class="form-control"
-                        onChange={(e) =>
-                          setInputValue({
-                            ...inputValue,
-                            image: e.target.files[0],
-                          })
-                        }
-                        placeholder="select any file*"
-                        required="required"
-                        data-error="Lastname is required."
-                      />
-                    </div>
-                  </div>
-
-                  <div class="row">
+    <div className="container">
+      <div class="row p-5" style={{ marginTop: "85px" }}>
+        <div class="col-lg-7 mx-auto">
+          <div class="card mx-auto bg-light">
+            <div class="card-body bg-light">
+              <div class="container">
+                <form id="contact-form">
+                  <div class="controls">
                     <div class="col-md-12">
                       <div class="form-group">
-                        {/* <label for="form_message">Message *</label> */}
-                        <textarea
-                          id="form_message"
-                          name="description"
-                          class="form-control"
-                          placeholder="Write your message here."
-                          rows="4"
-                          value={inputValue.description}
+                        {/* <label for="form_name">Title *</label> */}
+                        <input
+                          id="form_name"
+                          type="text"
+                          name="title"
+                          value={inputValue.title}
                           onChange={(e) => handleInput(e)}
+                          class="form-control"
+                          placeholder="Write Your Title*"
                           required="required"
-                          data-error="Please, leave us a message."
+                          data-error="Firstname is required."
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group" style={{ margin: "20px 0" }}>
+                        <input
+                          type="file"
+                          src="img_submit.gif"
+                          alt="Submit"
+                          id="form_lastname"
+                          name="image"
+                          // value={inputValue.image}
+                          class="form-control"
+                          onChange={(e) =>
+                            setInputValue({
+                              ...inputValue,
+                              image: e.target.files[0],
+                            })
+                          }
+                          placeholder="select any file*"
+                          required="required"
+                          data-error="Lastname is required."
                         />
                       </div>
                     </div>
 
-                    <div class="col-md-12">
-                      <input
-                        type="submit"
-                        class="btn btn-success btn-send  pt-2 btn-block
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          {/* <label for="form_message">Message *</label> */}
+                          <textarea
+                            id="form_message"
+                            name="description"
+                            class="form-control"
+                            placeholder="Write your message here."
+                            rows="4"
+                            value={inputValue.description}
+                            onChange={(e) => handleInput(e)}
+                            required="required"
+                            data-error="Please, leave us a message."
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <input 
+                        style={{width:"100%", margin:"10px 0"}}
+                          type="submit"
+                          class="btn btn-success btn-send   pt-2 btn-block
                         "
-                        onClick={(e) => handleSubmit(e)}
-                        value="Send Message"
-                      />
+                          onClick={(e) => handleSubmit(e)}
+                          value="Send Message"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };

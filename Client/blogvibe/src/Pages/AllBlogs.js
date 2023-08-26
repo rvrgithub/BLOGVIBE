@@ -10,9 +10,10 @@ export const AllBlogs = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [value, setVlaue] = useState("");
+  let role=localStorage.getItem("role")
   // .........................modal ................
   const [blogData, setBlogData] = useState([]);
-  let token = localStorage.getItem("Token")
+  let token = localStorage.getItem("Token");
   const getData = () => {
     fetch(apiurl)
       .then((res) => res.json())
@@ -29,7 +30,7 @@ export const AllBlogs = () => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -41,20 +42,20 @@ export const AllBlogs = () => {
     <>
       {isOpen ? (
         <Display
+          func={getData}
           data={value}
           open={isOpen}
           // onClose={() => {
           //   setIsOpen(false);
           // }}
-
           setIsOpen={setIsOpen}
         />
       ) : (
-        <div className="section_our_solution">
-          <div class="container mt-5 mb-3">
-            <div class="row">
+        <div className="section_our_solution" style={{ marginTop: "80px" }}>
+          <div className="container mt-5 mb-3">
+            <div className="row">
               {blogData?.blogs?.map((el, index) => (
-                <div class="col-md-4" key={index}>
+                <div className="col-md-4" key={index}>
                   <div className="our_solution_category">
                     <div className="solution_cards_box">
                       <div className="solution_card">
@@ -74,29 +75,34 @@ export const AllBlogs = () => {
                               justifyContent: "space-between",
                             }}
                           >
-                            <button
-                              type="button"
-                              className="read_more_btn"
-                              value="Open modal"
-                              onClick={() => {
-                                setIsOpen(true);
-                                setVlaue(el);
-                              }}
-                            >
-                              <FaEdit />
-                            </button>
+                            {role != "user" && (
+                              <button
+                                type="button"
+                                className="read_more_btn"
+                                value="Open modal"
+                                onClick={() => {
+                                  setIsOpen(true);
+                                  setVlaue(el);
+                                }}
+                              >
+                                <FaEdit />
+                              </button>
+                            )}
+
                             <button type="button" className="read_more_btn">
                               <Link to="/detail/Blog" className="link">
                                 <FaEye />
                               </Link>
                             </button>
-                            <button
-                              type="button"
-                              className="read_more_btn color_red"
-                              onClick={() => handleDeleteFunc(el)}
-                            >
-                              <AiTwotoneDelete />
-                            </button>
+                            {role != "user" && (
+                              <button
+                                type="button"
+                                className="read_more_btn color_red"
+                                onClick={() => handleDeleteFunc(el)}
+                              >
+                                <AiTwotoneDelete />
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -109,7 +115,6 @@ export const AllBlogs = () => {
           {/* <input type="button" value="Open modal" onClick={openModal} /> */}
         </div>
       )}
-      {/* ..........................modal................ */}
     </>
   );
 };

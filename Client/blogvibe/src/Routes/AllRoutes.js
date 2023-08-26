@@ -18,11 +18,12 @@ import { MyBlog } from "../Pages/MyBlog";
 
 export const AllRoutes = () => {
   return (
+    
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/admin/all-user" element={<AllUser />} />
       <Route path="/user/profile/:id" element={<UserProfile />} />
-      <Route path="/detail/Blog" element={<DetailBlog />} />
+      <Route path="/detail/Blog/:id" element={<DetailBlog />} />
       <Route path="/allblog" element={<AllBlogs />} />
       <Route path="/write/blog" element={<Write_Blog />} />
       <Route path="/contactus" element={<ContactUs />} />

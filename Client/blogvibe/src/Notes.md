@@ -28,5 +28,15 @@ https://mail.google.com/chat/u/0/#chat/dm/9PtiiUAAAAE
 
 
 ##   Task - 
- - Section Admin -
+ - navbar :- fixed done 
+ - footer  // done
+ - allblog page // done  
+ - edit page ?
+ - category :-  sset cards , then fetch  data , create new cards -> to redirect to new page.  [at last]
+ - header
+ - cards
+ - Authur
+ - slider
+ - extra
  - 
+ 

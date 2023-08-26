@@ -1,19 +1,25 @@
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 // import { Navbar } from './Components/Navbar';
-import { AdminNav } from './Components/Navbar/AdminNav';
-import { UserNav } from './Components/Navbar/UserNav';
-import {Footer} from './Pages/Footer';
-import { AllRoutes } from './Routes/AllRoutes';
-export const apiurl ="http://localhost:4500"
+import { AdminNav } from "./Components/Navbar/AdminNav";
+import { UserNav } from "./Components/Navbar/UserNav";
+import { Footer } from "./Pages/Footer";
+import { AllRoutes } from "./Routes/AllRoutes";
+export const apiurl = "http://localhost:4500";
 function App() {
+  const [routeName, setRouteName] = useState();
+  useEffect(() => {
+    setRouteName(window.location.href.split("/")[3]);
+  });
+  console.log(routeName);
   return (
     <div className="App">
-    {/* <AdminNav/> */}
-    <UserNav/>
-    <AllRoutes/>
-    {/* <Footer/> */}
+      {/* <AdminNav/> */}
+      {routeName != "login" && <UserNav /> }
+      <AllRoutes />
+      {routeName != "login"  != "login" && <Footer />}
     </div>
-  );  
+  );
 }
 
 export default App;

@@ -14,15 +14,15 @@ export const UserNav = () => {
 
 
   return (
-    <div>
+    <div class=" fixed-top">
       <div className={click ? "main-container" : ""} onClick={() => Close()} />
       <nav className="navbar" onClick={(e) => e.stopPropagation()}>
         <div className="nav-container">
           <Link exact to="/" className="nav-logo">
             <h1 className="logo">
               {" "}
-              BLOGVIDE
-              <LiaBlogSolid />
+              BLOGVIBE
+              <LiaBlogSolid style={{marginBottom:"10px" ,fontSize:"30px"}} />
             </h1>
           </Link>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -48,6 +48,7 @@ export const UserNav = () => {
                 My Blog
               </Link>
             </li>
+            
             <li className="nav-item">
               <Link
                 exact
@@ -59,6 +60,7 @@ export const UserNav = () => {
                 Write Blog
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 exact

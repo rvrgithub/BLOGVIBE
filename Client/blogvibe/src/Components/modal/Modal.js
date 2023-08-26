@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./display.css";
 import { useTheme } from "styled-components";
 import { apiurl } from "../../App";
-export const Display = ({ open, setIsOpen, data }) => {
+export const Display = ({ open, setIsOpen, data, func }) => {
   const [updateValue, setUpdateValue] = useState({
     descriptions: data.descriptions,
     title: data.title,
@@ -17,22 +17,25 @@ export const Display = ({ open, setIsOpen, data }) => {
     setUpdateValue({ ...updateValue, [name]: value });
   };
   const handleUpdate = (e) => {
-const updateData = new FormData();
-updateData.set("title", updateValue.title);
+    const updateData = new FormData();
+    updateData.set("title", updateValue.title);
     updateData.set("image", updateValue.image);
-    updateData.set("descriptions", updateValue.description);
+    updateData.set("descriptions", updateValue.descriptions);
     // console.log("data", data);
 
     fetch(`${apiurl}/update/blogBy/admin/${data._id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: updateData
+      body: updateData,
     })
       .then((res) => res.json())
-      .then((data) => console.log("data from update", data))
+      .then((data) => {
+        console.log("data from update", data);
+        func();
+      })
       .catch((error) => console.log("error", error));
     setIsOpen(false);
   };
@@ -41,15 +44,18 @@ updateData.set("title", updateValue.title);
   if (!open) return null;
   return (
     <>
-      <div class="row " style={{ marginTop: "100px", position: "absolute" }}>
-        {/* <div class="col-lg-7 mx-auto"> */}
-        <div class="card mt-2 mx-auto p-4 bg-light">
-          <div class="card-body bg-light">
-            <div class="container">
+      <div
+        className="row "
+        style={{ marginTop: "100px", position: "absolute" }}
+      >
+        {/* <div className="col-lg-7 mx-auto"> */}
+        <div className="card mt-2 mx-auto p-4 bg-light">
+          <div className="card-body bg-light">
+            <div className="container">
               <form id="contact-form">
-                <div class="controls">
-                  <div class="col-md-12">
-                    <div class="form-group">
+                <div className="controls">
+                  <div className="col-md-12">
+                    <div className="form-group">
                       {/* <label for="form_name">Title *</label> */}
                       <input
                         id="form_name"
@@ -57,15 +63,15 @@ updateData.set("title", updateValue.title);
                         name="title"
                         onChange={(e) => handleInput(e)}
                         value={updateValue.title}
-                        class="form-control"
+                        className="form-control"
                         placeholder="Write Your Title*"
                         required="required"
                         data-error="Firstname is required."
                       />
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <div class="form-group" style={{ margin: "20px 0" }}>
+                  <div className="col-md-12">
+                    <div className="form-group" style={{ margin: "20px 0" }}>
                       <input
                         type="file"
                         src="img_submit.gif"
@@ -73,15 +79,14 @@ updateData.set("title", updateValue.title);
                         id="form_lastname"
                         name="image"
                         // value={updateValue.image}
-           
+
                         onChange={(e) =>
                           setUpdateValue({
                             ...updateValue,
                             image: e.target.files[0],
                           })
                         }
-                    
-                        class="form-control"
+                        className="form-control"
                         placeholder="select any file*"
                         required="required"
                         data-error="Lastname is required."
@@ -89,16 +94,16 @@ updateData.set("title", updateValue.title);
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="form-group">
                         {/* <label for="form_message">Message *</label> */}
                         <textarea
                           id="form_message"
                           name="descriptions"
                           value={updateValue.descriptions}
                           onChange={(e) => handleInput(e)}
-                          class="form-control"
+                          className="form-control"
                           placeholder="Write your message here."
                           rows="4"
                           required="required"
@@ -107,10 +112,10 @@ updateData.set("title", updateValue.title);
                       </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div className="col-md-12">
                       <input
                         type="submit"
-                        class="btn btn-success btn-send  pt-2 btn-block"
+                        className="btn btn-success btn-send  pt-2 btn-block"
                         value="Update Message"
                         onClick={handleUpdate}
                       />

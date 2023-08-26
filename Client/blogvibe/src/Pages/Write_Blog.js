@@ -16,16 +16,16 @@ console.log("name",name,value);
       class="container"
       style={{
         margin: "100px auto",
-        position: "absolute",
+        // position: "absolute",
+        background:'red',
         justifyContent: "center",
       }}
     >
-
       <div class="text-center">
         <h1>Write Your Blog</h1>
       </div>
       <div class="row ">
-        {/* <div class="col-lg-7 mx-auto"> */}
+        <div class="col-lg-7 mx-auto">
           <div class="card mt-2 mx-auto p-4 bg-light">
             <div class="card-body bg-light">
               <div class="container">
@@ -33,7 +33,7 @@ console.log("name",name,value);
                   <div class="controls">
                     <div class="col-md-12">
                       <div class="form-group">
-                        {/* <label for="form_name">Title *</label> */}
+                        <label for="form_name">Title *</label>
                         <input
                           id="form_name"
                           type="text"
@@ -68,7 +68,7 @@ console.log("name",name,value);
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label for="form_message">Message *</label>
+                          {/* <label for="form_message">Message *</label> */}
                           <textarea
                             id="form_message"
                             name="message"
@@ -98,7 +98,7 @@ console.log("name",name,value);
             </div>
           </div>
         </div>
-      {/* </div> */}
+      </div>
     </div>
   );
 };
