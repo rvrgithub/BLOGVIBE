@@ -11,7 +11,7 @@ function App() {
     {/* <AdminNav/> */}
     <UserNav/>
     <AllRoutes/>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
   );  
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 import "./style.css";
 import "./user.css";
 import { OurPopularUserCards } from "./OurPopularUserCards";
+import { apiurl } from "../../App";
 
 export const OurPopularUserSlider = () => {
   const cardDetails = [
@@ -49,7 +50,9 @@ export const OurPopularUserSlider = () => {
     },
   ];
 
-  console.log("cardedails", cardDetails);
+
+
+  // console.log("cardedails", cardDetails);
   return (
     <>
       <div className="row">
@@ -68,7 +71,6 @@ export const OurPopularUserSlider = () => {
             pagination={{
               clickable: true,
             }}
-         
             breakpoints={{
               // when window width is >= 320px
               320: {
@@ -128,7 +130,7 @@ export const OurPopularUserSlider = () => {
                     className="switper_img"
                     src="https://w7.pngwing.com/pngs/80/950/png-transparent-computer-icons-foodie-blog-categories-miscellaneous-food-logo.png"
                     alt="adjasnd"
-                  />    
+                  />
                 </div>
                 <div className="down-content">
                   <h4>Best Education-last</h4>
