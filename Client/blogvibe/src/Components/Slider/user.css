@@ -6,12 +6,14 @@
   margin-top: -39px;
   z-index: 100;
   transform-style: preserve-3d;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 20px #00000080;
 }
 
 #customer-testimonoals {
   padding: 10% 0 ;
     background-image: url("../../../public//assests/content.jpg");
+      /* border: 10px solid red; */
+      height: 400px;
 }
 
 .review_imgBox {

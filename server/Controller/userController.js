@@ -98,7 +98,6 @@ exports.getAllUser = async (req, res) => {
     // console.log("req.body")
     const response = await User.find();
     console.log("response", response);
-
     // await response.save();
     return res.status(201).send({
       status: true,
@@ -161,14 +160,26 @@ exports.createBlog = async (req, res) => {
   try {
     const user = req.user;
     console.log("user", user._id);
-    const reponse = new Blog({
-      title: req.body.title,
-      image: req.file.filename,
-      descriptions: req.body.descriptions,
-      user: req.user._id,
-    });
-    await reponse.save();
-    res.json(reponse);
+    if (user.role == "admin") {
+      const reponse = new Blog({
+        title: req.body.title,
+        image: req.file.filename,
+        descriptions: req.body.descriptions,
+        user: req.user._id,
+        status: "approve",
+      });
+      await reponse.save();
+      res.json(reponse);
+    } else {
+      const reponse = new Blog({
+        title: req.body.title,
+        image: req.file.filename,
+        descriptions: req.body.descriptions,
+        user: req.user._id,
+      });
+      await reponse.save();
+      res.json(reponse);
+    }
   } catch (error) {
     res.json("false");
   }
@@ -218,7 +229,7 @@ exports.updateBlog = async (req, res) => {
 exports.getAllBlog = async (req, res) => {
   const getuser = req.user;
   // console.log("getUSer", getuser);
-  
+
   try {
     const allBlog = await Blog.find({ user: getuser.id });
     console.log("allblog", allBlog);

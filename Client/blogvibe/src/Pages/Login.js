@@ -37,9 +37,11 @@ export const Login = () => {
         if (data.status === true) {
           if (data.role === "admin") {
             localStorage.setItem("Token",data.token)
+            localStorage.setItem("role", data.role);
             navigat("/");
           } else if (data.role === "user") {
             localStorage.setItem("Token",data.token)
+            localStorage.setItem("role", data.role);
             navigat("/");
           } else {
             navigat("/register");

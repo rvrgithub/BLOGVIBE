@@ -103,6 +103,7 @@ export const AllUser = () => {
                   height={"20px"}
                   alt="logo _error"
                 />
+                {/* <img src={`${apiurl}/images/${el.image}`} alt="" /> */}
               </div>
               <div className="col col-2" data-label=" Name">
                 {el.name}{" "}
@@ -115,7 +116,7 @@ export const AllUser = () => {
               </div>
               <div className="col col-3" style={{ fontSize: "30px" }}>
                 <AiFillDelete />
-              </div>    
+              </div>
             </li>
           </Link>
         ))}

@@ -130,10 +130,15 @@ export const UserProfile = () => {
           {getBlog?.map((el, index) => (
             <div className="row blog-item px-3 pb-5" key={index}>
               <div className="col-md-5">
-                <img
+                {/* <img
                   className="img-fluid mb-4 mb-md-0"
                   src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
                   alt="img_error"
+                /> */}
+                <img
+                  className="img-fluid mb-4 mb-md-0"
+                  src={`${apiurl}/images/${el.image}`}
+                  alt="error"
                 />
               </div>
 
@@ -153,7 +158,9 @@ export const UserProfile = () => {
                   </small>
                 </div>
                 <p>{el.decription}</p>
-                <Link className="btn btn-link p-0" to="/detail/Blog">
+                <Link className="btn btn-link p-0" 
+                to={`/detail/Blog/${el._id}`}
+                >
                   Read More{" "}
                   <span>
                     <AiOutlineArrowRight />

@@ -6,6 +6,8 @@ h1 {
 
 label {
     color: #333;
+
+    background-color: red;
 }
 
 .btn-send {

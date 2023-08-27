@@ -92,12 +92,13 @@ exports.adminRegister = async (req, res) => {
 // ........................ update blog by admin..........................
 
 exports.updateBlogByA = async (req, res) => {
+  console.log(req.body,req.file)
   const blogId = req.params.id;
   const findBlog = await Blog.findOne({ _id: blogId });
   console.log("findBlog", findBlog); 
   try {  
     const { title, descriptions } = req.body;
-    const checkValueImage = req.file.filename ? req.file.filename : findBlog.image; 
+    const checkValueImage = req.file ? req.file.filename : findBlog.image; 
     const checkValueTitle = title ? title : findBlog.title; 
     const checkValueDescriptions = descriptions ? descriptions : findBlog.descriptions; 
   
@@ -114,9 +115,10 @@ exports.updateBlogByA = async (req, res) => {
     return res.status(201).json({
       stauts: true,
       massage: "Something is Good !!",
-      response,  
+      
     });
   } catch (error) {
+    console.log(error)
     return res.status(500).json({
       stauts: false,
       massage: "Something Wrong !!",

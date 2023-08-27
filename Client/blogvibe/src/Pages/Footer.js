@@ -6,15 +6,19 @@ import { RiWhatsappFill } from "react-icons/ri";
 export const Footer = () => {
   return (
     <div
-      className=""
-      style={{
-        width: "100%",
-        background: "red",
-      }}
+      // className=""
+      // style={{
+      //   width: "100%",
+      //   background: "red",
+      // }}
     >
       <footer
         className="text-center text-white"
-        style={{ backgroundColor: "#f1f1f1", width: "100%" }}
+        style={{
+          backgroundColor: "#f1f1f1",
+          borderTop: "1px solid #e5e5e5",
+          width: "100%",
+        }}
       >
         <div className="container " style={{ width: "100%" }}>
           <section className="mb-4">
