@@ -129,7 +129,7 @@ else{
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
-                Register
+                Logout
               </Link>
             </li></>
           ):
@@ -199,7 +199,7 @@ else{
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
-                Register
+                Logout
               </Link>
             </li></>)}
           

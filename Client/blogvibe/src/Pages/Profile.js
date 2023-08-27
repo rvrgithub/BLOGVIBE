@@ -24,7 +24,7 @@ export const Profile = () => {
     getProfile();
   }, []);
   return (
-    <section style={{ backgroundColor: "#eee", width: "100%" }}>
+    <section style={{ backgroundColor: "#eee", width: "100%" , marginTop:"85px"}}>
       <div className="container py-5">
         <div className="row">
           <div className="col-lg-4">

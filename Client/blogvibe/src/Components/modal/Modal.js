@@ -44,12 +44,10 @@ export const Display = ({ open, setIsOpen, data, func }) => {
   if (!open) return null;
   return (
     <>
-      <div
-        className="row "
-        style={{ marginTop: "100px", position: "absolute" }}
-      >
-        {/* <div className="col-lg-7 mx-auto"> */}
-        <div className="card mt-2 mx-auto p-4 bg-light">
+       <div className="container">
+      <div class="row p-5" style={{ marginTop: "85px" }}>
+        <div class="col-lg-7 mx-auto">
+        <div className="card  mx-auto bg-light">
           <div className="card-body bg-light">
             <div className="container">
               <form id="contact-form">
@@ -126,6 +124,8 @@ export const Display = ({ open, setIsOpen, data, func }) => {
             </div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </>
   );

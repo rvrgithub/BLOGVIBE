@@ -75,7 +75,7 @@ export const AllBlogs = () => {
                               justifyContent: "space-between",
                             }}
                           >
-                            {role != "user" && (
+                            {role !== "user" && (
                               <button
                                 type="button"
                                 className="read_more_btn"
@@ -90,11 +90,11 @@ export const AllBlogs = () => {
                             )}
 
                             <button type="button" className="read_more_btn">
-                              <Link to="/detail/Blog" className="link">
+                              <Link to={`/detail/Blog/${el._id}`} className="link">
                                 <FaEye />
                               </Link>
                             </button>
-                            {role != "user" && (
+                            {role !== "user" && (
                               <button
                                 type="button"
                                 className="read_more_btn color_red"

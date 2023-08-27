@@ -28,7 +28,7 @@ export const DetailBlog = () => {
   return (
     <div
       className="container"
-      style={{ marginTop: "100px", width: "100%", position: "absolute" }}
+      style={{ marginTop: "100px", width: "100%",}}
     >
       <div className="col-12">
         <div

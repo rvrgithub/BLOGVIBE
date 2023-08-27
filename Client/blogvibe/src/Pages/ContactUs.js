@@ -3,7 +3,10 @@ import { ContactForm } from './ContactForm'
 
 export const ContactUs = () => {
   return (
-    <div>
+    <div style={{
+    marginTop: "80px"
+
+    }}>
         <ContactForm/>
     </div>
   )
