@@ -20,13 +20,13 @@ export const Display = ({ open, setIsOpen, data }) => {
 const updateData = new FormData();
 updateData.set("title", updateValue.title);
     updateData.set("image", updateValue.image);
-    updateData.set("descriptions", updateValue.description);
+    updateData.set("descriptions", updateValue.descriptions);
     // console.log("data", data);
 
     fetch(`${apiurl}/update/blogBy/admin/${data._id}`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: updateData
