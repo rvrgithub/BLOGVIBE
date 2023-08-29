@@ -12,8 +12,16 @@ export const MyBlog = () => {
   const token = localStorage.getItem("Token");
   // console.log("token", token);
   const [myblog, setMyblog] = useState([]);
+     let getBlogApi;
+     let role = localStorage.getItem("role");
+     if (role === "user") {
+       getBlogApi = "getself/blog";
+     } else if (role === "admin") {
+       getBlogApi = "admin/getself/blog";
+     } else {
+     }
   const getMyBlog = () => {
-    fetch(`${apiurl}/admin/getself/blog`, {
+    fetch(`${apiurl}/${getBlogApi}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -46,6 +54,9 @@ export const MyBlog = () => {
   };
 
   // .........................................
+
+
+
 
   const handleState = (id) => {
     fetch(`${apiurl}/admin/approve/${id._id}`, {

@@ -4,9 +4,9 @@
   font-size: calc(1.4rem + 1vw);
   /* margin-top: 10%; */
 }
-
+/* #787b8e */
 .navbar {
-  background-color: #313030;
+  background-color: #323233;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -16,6 +16,8 @@
   /* position: fixed; */
   /* top: 0; */
   /* z-index: 20; */
+   box-shadow: 0px 15px 10px -15px #3f3b3b; 
+  /* border-bottom: 1px solid rgb(160, 155, 155) ; */
 }
 
 .nav-container {

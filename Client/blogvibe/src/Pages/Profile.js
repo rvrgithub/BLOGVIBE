@@ -5,8 +5,18 @@ export const Profile = () => {
   const [data, setData] = useState("");
 
   let token = localStorage.getItem("Token");
+
+  let profileApi;
+  let role = localStorage.getItem("role");
+  if (role === "user") {
+    profileApi = "profile";
+  } else if (role === "admin") {
+    profileApi = "admin/profile";
+  } else {
+  }
+
   const getProfile = () => {
-    fetch(`${apiurl}/admin/profile`, {
+    fetch(`${apiurl}/${profileApi}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +34,9 @@ export const Profile = () => {
     getProfile();
   }, []);
   return (
-    <section style={{ backgroundColor: "#eee", width: "100%" , marginTop:"85px"}}>
+    <section
+      style={{ backgroundColor: "#eee", width: "100%", marginTop: "85px" }}
+    >
       <div className="container py-5">
         <div className="row">
           <div className="col-lg-4">
@@ -45,7 +57,8 @@ export const Profile = () => {
                   </button>
                   <button
                     type="button"
-                    className="btn btn-outline-primary ms-1">
+                    className="btn btn-outline-primary ms-1"
+                  >
                     Message
                   </button>
                 </div>

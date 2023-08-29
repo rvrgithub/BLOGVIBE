@@ -77,7 +77,7 @@ header, nav, section, article, aside, footer, hgroup {
 }
 
 a:hover {
-	color: #FC3;
+	color: orange;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -112,7 +112,7 @@ body {
 }
 
 ::selection {
-  background: #f5a425;
+  background: orange;
   color: #fff;
 }
 
@@ -156,7 +156,7 @@ body {
 .main-button-yellow a {
   font-size: 13px;
   color: #fff;
-  background-color: #f5a425;
+  background-color: orange;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 22px;

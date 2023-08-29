@@ -31,17 +31,13 @@ const {
 } = require("../Controller/adminController");
 const route = express.Router();
 
-
 // ...............................
 route.post("/register", register);
-route.get(
-  "/getAll/user",
-  getAll
-);
+route.get("/getAll/user", getAll);
 route.get("/profile", auth, profile);
 route.put("/updateProfile", auth, updateProfile);
 route.post("/create/blog", auth, createBlog);
-route.delete("/delete/blog/:id", auth,deleteBlog);
+route.delete("/delete/blog/:id", auth, deleteBlog);
 //..............................  Admin Section ......................
 route.get("/admin/profile", authAdmin, adminProfile);
 
@@ -57,11 +53,11 @@ route.post("/findBothLogin", loginBoth);
 //  ............................ Blog Section......................
 
 route.get("/getAllBlog", auth, getAllBlog);
-route.get("/single/blog/:id", auth, singleBlog);
+route.get("/single/blog/:id", singleBlog);
 route.get("/", approvalBlogs);
 route.get("/admin/pending/blog", pendingBlog);
 route.get("/single/uesr/:id", singleUesr);
 route.get("/sinlgeUser/blog/:id", getBlogBySingleUser);
 route.get("/getself/blog", auth, getSelfBlog);
-route.get("/admin/getself/blog", authAdmin,getAdminBlog);   
+route.get("/admin/getself/blog", authAdmin, getAdminBlog);
 module.exports = { route };

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "../../Styles/write_blog.css";
 import { apiurl } from "../../App";
 export const CreateBlog = () => {
-
-  const token= localStorage.getItem("Token");
+  const token = localStorage.getItem("Token");
 
   const [inputValue, setInputValue] = useState({
     description: "",
@@ -17,6 +16,17 @@ export const CreateBlog = () => {
   };
   console.log("input _ image", inputValue);
 
+  
+
+  let writeBlogApi;
+  let role = localStorage.getItem("role");
+  if (role == "user") {
+    writeBlogApi = "create/blog";
+  } else if (role == "admin") {
+    writeBlogApi = "admin/create/blog";
+  } else {
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -25,11 +35,14 @@ export const CreateBlog = () => {
     data.set("descriptions", inputValue.description);
     console.log("data", data);
 
-    fetch(`${apiurl}/admin/create/blog`, {
+
+
+
+    fetch(`${apiurl}/${writeBlogApi}`, {
       method: "POST",
       headers: {
         // "Content-Type":"application/json",
-        "Authorization":`Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       body: data,
     })
@@ -104,8 +117,8 @@ export const CreateBlog = () => {
                       </div>
 
                       <div class="col-md-12">
-                        <input 
-                        style={{width:"100%", margin:"10px 0"}}
+                        <input
+                          style={{ width: "100%", margin: "10px 0" }}
                           type="submit"
                           class="btn btn-success btn-send   pt-2 btn-block
                         "

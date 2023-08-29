@@ -243,7 +243,7 @@ exports.getAllBlog = async (req, res) => {
       status: false,
       message: "Error in getting blog...",
       error,
-    });
+    });  
   }
 };
 
@@ -270,7 +270,7 @@ exports.singleBlog = async (req, res) => {
   const id = req.params.id;
   console.log("id....", id);
   try {
-    const singleBlog = await Blog.findOne({ _id: id, user: req.user._id });
+    const singleBlog = await Blog.findOne({ _id: id });
     console.log("singleBlog", singleBlog);
     return res.status(201).send({
       status: true,

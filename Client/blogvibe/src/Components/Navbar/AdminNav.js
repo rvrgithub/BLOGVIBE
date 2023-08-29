@@ -40,169 +40,171 @@ else{
             </h1>
           </Link>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-          {adminTime ? (
-            <>  <li className="nav-item">
-              <Link
-                exact
-                to="/allblog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                All Blog
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                exact
-                to="/myblog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                My Blog
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link
-                exact
-                to="/admin/pending/blog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Pending Blog
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                exact
-                to="/admin/all-user"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                AUTHORS
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                exact
-                to="/admin/write/blog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Write Blog
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link
-                exact
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-                target="#"
-                to="/profile"
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                exact
-                to="/contactus"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Contact Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/register"
-                exact
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Logout
-              </Link>
-            </li></>
-          ):
-          (<> <li className="nav-item">
-              <Link
-                exact
-                to="/allblog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                All Blog
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                exact
-                to="/myblog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                My Blog
-              </Link>
-            </li>
-            
-            <li className="nav-item">
-              <Link
-                exact
-                to="/admin/write/blog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Write Blog
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link
-                exact
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-                target="#"
-                to="/profile"
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                exact
-                to="/contactus"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Contact Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                to="/register"
-                exact
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Logout
-              </Link>
-            </li></>)}
-          
+            {adminTime ? (
+              <>
+                {" "}
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/allblog"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    All Blog
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/myblog"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    My Blog
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/admin/pending/blog"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Pending Blog
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/admin/all-user"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    AUTHORS
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/write/blog"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Write Blog
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                   
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/contactus"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/login"
+                    exact
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={() => localStorage.clear()}
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                {" "}
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/allblog"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    All Blog
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/myblog"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    My Blog
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/write/blog"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Write Blog
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                   
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    exact
+                    to="/contactus"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={click ? handleClick : null}
+                  >
+                    Contact Us
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/login"
+                    exact
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={() => localStorage.clear()}
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
           <div className="nav-icon" onClick={handleClick}>
             <h1 className="logo">

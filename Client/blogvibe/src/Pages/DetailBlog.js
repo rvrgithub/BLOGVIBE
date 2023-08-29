@@ -13,7 +13,7 @@ export const DetailBlog = () => {
 
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+       
       },
     })
       .then((res) => res.json())
