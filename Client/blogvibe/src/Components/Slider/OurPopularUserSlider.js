@@ -50,8 +50,6 @@ export const OurPopularUserSlider = () => {
     },
   ];
 
-
-
   // console.log("cardedails", cardDetails);
   return (
     <>

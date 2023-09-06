@@ -19,7 +19,7 @@ export const OurPopularUserCards = ({ cardDetails, imageData }) => {
       <div class="review_content">
         <h2>{name}</h2>
         <h3>{email}</h3>
-        {/* <p>{"hbdhdfbjdfjdfjhdfjdfhddjdhdhdh"}</p> */}
+        <p>{"hbdhdfbjdfjdfjhdfjdfhddjdhdhdh"}</p>
       </div>
     </div>
   );
