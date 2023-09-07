@@ -38,6 +38,7 @@ export const Display = ({ open, setIsOpen, data, func }) => {
       })
       .catch((error) => console.log("error", error));
     setIsOpen(false);
+    alert("Your Blog Post Has Been Successfully Edited");
   };
 
   console.log("update", updateValue);

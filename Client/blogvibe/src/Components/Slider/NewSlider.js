@@ -76,7 +76,7 @@ export const NewSlider = () => {
         pagination={{
           clickable: true,
         }}
-        // freeMode={true}
+        freeMode={true}
         autoplay={{
           delay: 1000,
           disableOnInteraction: false,

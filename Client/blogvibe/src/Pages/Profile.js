@@ -35,7 +35,7 @@ export const Profile = () => {
   }, []);
   return (
     <section
-      style={{ backgroundColor: "#eee", width: "100%", marginTop: "85px" }}
+      style={{ backgroundColor: "#eee", width: "100%", marginTop: "60px" }}
     >
       <div className="container py-5">
         <div className="row">
@@ -70,19 +70,19 @@ export const Profile = () => {
               <div className="card-body">
                 <div className="row">
                   <div className="col-sm-3">
-                    <p className="mb-0">{data.name}</p>
+                    <p className="mb-0">Name </p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">{}</p>
+                    <p className="text-muted mb-0">{data.name}</p>
                   </div>
                 </div>
                 <hr />
                 <div className="row">
                   <div className="col-sm-3">
-                    <p className="mb-0">{data.email}</p>
+                    <p className="mb-0">Email </p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0"></p>
+                    <p className="text-muted mb-0">{data.email}</p>
                   </div>
                 </div>
                 <hr />

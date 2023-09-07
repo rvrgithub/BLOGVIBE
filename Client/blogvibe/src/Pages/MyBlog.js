@@ -9,17 +9,21 @@ export const MyBlog = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setVlaue] = useState("");
 
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+  }
+
   const token = localStorage.getItem("Token");
   // console.log("token", token);
   const [myblog, setMyblog] = useState([]);
-     let getBlogApi;
-     let role = localStorage.getItem("role");
-     if (role === "user") {
-       getBlogApi = "getself/blog";
-     } else if (role === "admin") {
-       getBlogApi = "admin/getself/blog";
-     } else {
-     }
+  let getBlogApi;
+  let role = localStorage.getItem("role");
+  if (role === "user") {
+    getBlogApi = "getself/blog";
+  } else if (role === "admin") {
+    getBlogApi = "admin/getself/blog";
+  } else {
+  }
   const getMyBlog = () => {
     fetch(`${apiurl}/${getBlogApi}`, {
       headers: {
@@ -51,12 +55,10 @@ export const MyBlog = () => {
       .then((res) => res.json())
       .then((data) => getMyBlog())
       .catch((error) => console.log("error", error));
+      alert("Success: Your Blog Post Has Been Deleted!");
   };
 
   // .........................................
-
-
-
 
   const handleState = (id) => {
     fetch(`${apiurl}/admin/approve/${id._id}`, {
@@ -100,7 +102,10 @@ export const MyBlog = () => {
                             <h3>{el.title}</h3>
                           </div>
                           <div className="solu_description">
-                            <p>{el.descriptions}</p>
+                            <p>{truncate(el.descriptions,30)}</p>
+                            {/* <p>{truncate("ghfytf yufuyfy")}</p> */}
+
+                            {/*  <Card.Text>{truncate(data.summary, 30)}</Card.Text> */}
                             <button
                               onClick={() => handleState(el)}
                               style={{ background: "#e5e5e5" }}

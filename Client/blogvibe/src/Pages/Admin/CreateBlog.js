@@ -16,8 +16,6 @@ export const CreateBlog = () => {
   };
   console.log("input _ image", inputValue);
 
-  
-
   let writeBlogApi;
   let role = localStorage.getItem("role");
   if (role == "user") {
@@ -35,9 +33,6 @@ export const CreateBlog = () => {
     data.set("descriptions", inputValue.description);
     console.log("data", data);
 
-
-
-
     fetch(`${apiurl}/${writeBlogApi}`, {
       method: "POST",
       headers: {
@@ -49,6 +44,17 @@ export const CreateBlog = () => {
       .then((res) => res.json())
       .then((data) => console.log(data))
       .catch((error) => console.log("error", error));
+    // if (data === "") {
+    //   alert("Congratulations, Your Blog Post is Live!");
+    // } else {
+    //   alert("Let Your Thoughts Flow - Start Writing Your Blog!");
+    // }
+
+    setInputValue({
+      description: "",
+      title: "",
+      image: "",
+    });
   };
   return (
     <div className="container">

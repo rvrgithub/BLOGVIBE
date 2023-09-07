@@ -10,7 +10,7 @@
 }
 
 #customer-testimonoals {
-  padding: 10% 0 ;
+  padding: 7% 0 ;
     background-image: url("../../../public//assests/content.jpg");
       /* border: 10px solid red; */
       height: 400px;
@@ -25,15 +25,15 @@
   padding-top: 20px;
   transform: translateY(-50px);
   z-index: 199;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   box-shadow: 0px 9px 18px rgba(0, 0, 0, 0.12), 0px 5px 7px rgba(0, 0, 0, 0.5);
 }
 
 .review_card {
   /* position: absolute; */
-  width: 90%;
+  /* width: 90%; */
   height: 220px !important;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
@@ -48,9 +48,9 @@
   transform: translateY(-450px);
   opacity: 0;
   transition: 0.3s;
-  /* margin-top: 150px; */
+  margin-top: 150px;
     z-index: 1111;
-  border: 1px solid red ;
+  /* border: 1px solid red ; */
 }
 
 .review_content {
