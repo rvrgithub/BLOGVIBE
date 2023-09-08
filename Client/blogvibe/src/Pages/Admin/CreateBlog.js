@@ -27,6 +27,14 @@ export const CreateBlog = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (
+      inputValue.title == "" ||
+      inputValue.image == " " ||
+      inputValue.description == ""
+    ) {
+      alert("Requireds All fields");
+      return;
+    }
     const data = new FormData();
     data.set("title", inputValue.title);
     data.set("image", inputValue.image);
@@ -35,6 +43,7 @@ export const CreateBlog = () => {
 
     fetch(`${apiurl}/${writeBlogApi}`, {
       method: "POST",
+
       headers: {
         // "Content-Type":"application/json",
         Authorization: `Bearer ${token}`,
@@ -42,13 +51,14 @@ export const CreateBlog = () => {
       body: data,
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.status == true) {
+          alert("Congratulations, Your Blog Post is Live!");
+        } else {
+          alert("Let Your Thoughts Flow - Start Writing Your Blog!");
+        }
+      })
       .catch((error) => console.log("error", error));
-    // if (data === "") {
-    //   alert("Congratulations, Your Blog Post is Live!");
-    // } else {
-    //   alert("Let Your Thoughts Flow - Start Writing Your Blog!");
-    // }
 
     setInputValue({
       description: "",

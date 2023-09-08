@@ -169,7 +169,7 @@ exports.createBlog = async (req, res) => {
         status: "approve",
       });
       await reponse.save();
-      res.json(reponse);
+      res.json({ status: true, message: reponse });
     } else {
       const reponse = new Blog({
         title: req.body.title,
@@ -178,7 +178,7 @@ exports.createBlog = async (req, res) => {
         user: req.user._id,
       });
       await reponse.save();
-      res.json(reponse);
+      res.json({ status: true, message: reponse });
     }
   } catch (error) {
     res.json("false");
