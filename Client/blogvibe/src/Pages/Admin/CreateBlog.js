@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import "../../Styles/write_blog.css";
 import { apiurl } from "../../App";
 export const CreateBlog = () => {
   const token = localStorage.getItem("Token");
-
+const fileInputRef = useRef(null); 
   const [inputValue, setInputValue] = useState({
     description: "",
     title: "",
@@ -65,6 +65,7 @@ export const CreateBlog = () => {
       title: "",
       image: "",
     });
+     fileInputRef.current.value = "";
   };
   return (
     <div className="container">
@@ -99,6 +100,7 @@ export const CreateBlog = () => {
                           alt="Submit"
                           id="form_lastname"
                           name="image"
+ ref={fileInputRef}
                           // value={inputValue.image}
                           class="form-control"
                           onChange={(e) =>
