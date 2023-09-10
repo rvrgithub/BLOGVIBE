@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiurl } from "../App";
+import "../Styles/write_blog.css";
+import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";
 
 export const DetailBlog = () => {
   const token = localStorage.getItem("Token");
@@ -13,7 +15,6 @@ export const DetailBlog = () => {
 
       headers: {
         "Content-Type": "application/json",
-       
       },
     })
       .then((res) => res.json())
@@ -24,42 +25,35 @@ export const DetailBlog = () => {
   useEffect(() => {
     hanldeData();
   }, []);
-  console.log("singleData", singleData.image);
+  console.log("singleData", singleData);
   return (
-    <div
-      className="container"
-      style={{ marginTop: "100px", width: "100%",}}
-    >
-      <div className="col-12">
-        <div
-          className="col-md-12"
-          style={{ width: "100%", height: "300px", border: "1px solid red" }}
-        >
-          {/* <img
-            className="img-fluid mb-4 mb-md-0"
-            src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
-            style={{
-              height: "200px !important",
-            }}
-            width={"100%"}
-            // height={"50% !important" }
-            alt="img_error"
-          /> */}
-          <img
-            src={`${apiurl}/images/${singleData.image}`}
-            style={{
-              height: "200px !important",
-            }}
-            width={"100%"}
-            // height={"50% !important" }
-            alt="img_error"
-          />
-        </div>
-        <div className="row">
-          <p> {singleData.descriptions}</p>
-        </div>
-        <div className="row">
-          <p> {singleData.title}</p>
+    <div className="container" style={{ marginTop: "100px", width: "100%" }}>
+      <h1 className="detailTitle">{singleData.title}</h1>
+      <div className="col-12 detailDiv">
+        <img
+          className="img-fluid "
+          src={`${apiurl}/images/${singleData.image}`}
+          style={{}}
+          alt="img_error"
+        />
+      </div>
+      <div className="row mt-5">
+        <p className="detailDesc"> {singleData.descriptions}</p>
+      </div>
+      <div className="DetailFeedback">
+        <p className="">
+          <BiSolidQuoteAltLeft /> {"  "} We value your thoughts and opinions! If
+          you have any suggestions, questions, or ideas on how we can improve
+          your experience on our blog, please don't hesitate to reach out. Your
+          feedback is incredibly important to us. {"  "}
+          <BiSolidQuoteAltRight />
+        </p>
+        <div className="detailsUser">
+          <img src="https://w7.pngwing.com/pngs/886/300/png-transparent-user-other-furniture-child-thumbnail.png" />
+          <div>
+            <p>Radhika Verma</p>
+            <p>RV@gmail.com</p>
+          </div>
         </div>
       </div>
     </div>

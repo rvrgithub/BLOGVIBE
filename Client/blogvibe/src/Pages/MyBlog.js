@@ -55,7 +55,7 @@ export const MyBlog = () => {
       .then((res) => res.json())
       .then((data) => getMyBlog())
       .catch((error) => console.log("error", error));
-      alert("Success: Your Blog Post Has Been Deleted!");
+    alert("Success: Your Blog Post Has Been Deleted!");
   };
 
   // .........................................
@@ -99,19 +99,23 @@ export const MyBlog = () => {
                             <img src={`${apiurl}/images/${el.image}`} alt="" />
                           </div>
                           <div className="solu_title">
-                            <h3>{el.title}</h3>
+                            <h3>{truncate(el.title, 25)}...</h3>
                           </div>
                           <div className="solu_description">
-                            <p>{truncate(el.descriptions,30)}</p>
-                            {/* <p>{truncate("ghfytf yufuyfy")}</p> */}
-
-                            {/*  <Card.Text>{truncate(data.summary, 30)}</Card.Text> */}
-                            <button
-                              onClick={() => handleState(el)}
-                              style={{ background: "#e5e5e5" }}
-                            >
-                              {el.status}
-                            </button>
+                            <p>{truncate(el.descriptions, 30)} ...</p>
+                            <p>
+                              {" "}
+                              Status:
+                              <span
+                                style={
+                                  `${el.status}` === "approve"
+                                    ? { color: "orange" }
+                                    : { color: "red" }
+                                }
+                              >
+                                {el.status}
+                              </span>
+                            </p>
                             <div
                               className="row"
                               style={{

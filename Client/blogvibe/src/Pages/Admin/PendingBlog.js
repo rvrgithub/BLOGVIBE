@@ -1,6 +1,3 @@
-
-
-
 import React, { useEffect, useState } from "react";
 import "../../Styles/allBlog.css";
 import { Link } from "react-router-dom";
@@ -10,66 +7,56 @@ import { apiurl } from "../../App";
 // import { apiurl } from "../App";
 
 export const PendingBlog = () => {
-  const [blogData ,setBlogData] = useState([]);
-  const data = [
-    {
-      name: "Mailchimp",
-      day: "1 days ago",
-      work: "Design",
-      work2: " Senior Product",
-      work3: " Designer-Singapore",
-    },
-    {
-      name: "Mailchimp",
-      day: "1 days ago",
-      work: "Design",
-      work2: " Senior Product",
-      work3: " Designer-Singapore",
-    },
-    {
-      name: "Mailchimp",
-      day: "1 days ago",
-      work: "Design",
-      work2: " Senior Product",
-      work3: " Designer-Singapore",
-    },
-    {
-      name: "Mailchimp",
-      day: "1 days ago",
-      work: "Design",
-      work2: " Senior Product",
-      work3: " Designer-Singapore",
-    },
-    {
-      name: "Mailchimp",
-      day: "1 days ago",
-      work: "Design",
-      work2: " Senior Product",
-      work3: " Designer-Singapore",
-    },
-    {
-      name: "Mailchimp",
-      day: "1 days ago",
-      work: "Design",
-      work2: " Senior Product",
-      work3: " Designer-Singapore",
-    },
-  ];
+  const Token = localStorage.getItem("Token");
+  console.log("token", Token);
+  const [blogData, setBlogData] = useState([]);
 
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+  }
   const getData = () => {
     fetch(`${apiurl}/admin/pending/blog`)
       .then((res) => res.json())
       .then((data) => setBlogData(data.response))
       .catch((error) => console.log("error", error));
   };
-useEffect(()=>{
-  getData();
-},[])
 
+  const handleStatus = (id) => {
+    console.log("id", id);
+    fetch(`${apiurl}/admin/approve/${id._id} `, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${Token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => getData())
+      .catch((error) => console.log("error", error));
+  };
+  // ..........  delete function ..............
+  const handleDelete = (e) => {
+    console.log("e", e._id);
+    fetch(`${apiurl}/delete/blog/${e._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${Token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => getData())
+      .catch((error) => console.log("error", error));
+    alert("Success: Your Blog Post Has Been Deleted!");
+  };
 
-console.log("blogData",blogData)
-  return (   
-    <div className="section_our_solution">
+  useEffect(() => {
+    getData();
+  }, []);
+
+  console.log("blogData", blogData);
+  return (
+    <div className="section_our_solution mt-5">
       <div class="container mt-5 mb-3">
         <div class="row">
           {blogData?.map((e) => (
@@ -82,12 +69,10 @@ console.log("blogData",blogData)
                       <img src={`${apiurl}/images/${e.image}`} />
                     </div>
                     <div className="solu_title">
-                      <h3>{e.title}</h3>
+                      <h3>{truncate(e.title, 27)} ...</h3>
                     </div>
                     <div className="solu_description">
-                      <p>
-                        {e.descriptions}
-                      </p>
+                      <p>{truncate(e.descriptions, 30)} ...</p>
                       <div
                         className="row"
                         style={{
@@ -95,12 +80,22 @@ console.log("blogData",blogData)
                           justifyContent: "space-between",
                         }}
                       >
+                        <button
+                          onClick={() => handleStatus(e)}
+                          style={{
+                            background: "#e5e5e5",
+                            padding: "10px 5px",
+                            color: "#cf837e",
+                          }}
+                        >
+                          {e.status}
+                        </button>
                         <button type="button" className="read_more_btn">
                           <FaEdit />
                         </button>
 
                         <button type="button" className="read_more_btn">
-                          <Link to="/detail/Blog" className="link">
+                          <Link to={`/detail/Blog/${e._id}`} className="link">
                             <FaEye />
                           </Link>
                         </button>
@@ -108,6 +103,7 @@ console.log("blogData",blogData)
                         <button
                           type="button"
                           className="read_more_btn color_red"
+                          onClick={() => handleDelete(e)}
                         >
                           <AiTwotoneDelete />
                         </button>

@@ -14,6 +14,9 @@ export const AllBlogs = () => {
   // .........................modal ................
   const [blogData, setBlogData] = useState([]);
   let token = localStorage.getItem("Token");
+    function truncate(string, n) {
+      return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+    }
   const getData = () => {
     fetch(apiurl)
       .then((res) => res.json())
@@ -64,10 +67,12 @@ export const AllBlogs = () => {
                           <img src={`${apiurl}/images/${el.image}`} alt="" />
                         </div>
                         <div className="solu_title">
-                          <h3>{el.title}</h3>
+                         
+                          <h3>{truncate(el.title, 30)} ...</h3>
                         </div>
                         <div className="solu_description">
-                          <p>{el.descriptions}</p>
+                          {/* <p>{el.descriptions}</p> */}
+                          <p>{truncate(el.descriptions, 30)} ...</p>
                           <div
                             className="row"
                             style={{
@@ -90,7 +95,10 @@ export const AllBlogs = () => {
                             )}
 
                             <button type="button" className="read_more_btn">
-                              <Link to={`/detail/Blog/${el._id}`} className="link">
+                              <Link
+                                to={`/detail/Blog/${el._id}`}
+                                className="link"
+                              >
                                 <FaEye />
                               </Link>
                             </button>
