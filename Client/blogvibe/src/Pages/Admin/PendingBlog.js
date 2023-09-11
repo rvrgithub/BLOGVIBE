@@ -56,66 +56,71 @@ export const PendingBlog = () => {
 
   console.log("blogData", blogData);
   return (
-    <div className="section_our_solution mt-5">
-      <div class="container mt-5 mb-3">
-        <div class="row">
-          {blogData?.map((e) => (
-            <div class="col-md-4">
-              <div className="our_solution_category">
-                <div className="solution_cards_box">
-                  <div className="solution_card">
-                    <div className="hover_color_bubble"></div>
-                    <div className="so_top_icon">
-                      <img src={`${apiurl}/images/${e.image}`} />
-                    </div>
-                    <div className="solu_title">
-                      <h3>{truncate(e.title, 27)} ...</h3>
-                    </div>
-                    <div className="solu_description">
-                      <p>{truncate(e.descriptions, 30)} ...</p>
-                      <div
-                        className="row"
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <button
-                          onClick={() => handleStatus(e)}
-                          style={{
-                            background: "#e5e5e5",
-                            padding: "10px 5px",
-                            color: "#cf837e",
-                          }}
-                        >
-                          {e.status}
-                        </button>
-                        <button type="button" className="read_more_btn">
-                          <FaEdit />
-                        </button>
-
-                        <button type="button" className="read_more_btn">
-                          <Link to={`/detail/Blog/${e._id}`} className="link">
-                            <FaEye />
-                          </Link>
-                        </button>
-
-                        <button
-                          type="button"
-                          className="read_more_btn color_red"
-                          onClick={() => handleDelete(e)}
-                        >
-                          <AiTwotoneDelete />
-                        </button>
+    <>
+      {!blogData?.length==0 ? (
+        <div
+          class="row d-flex justify-content-center"
+          style={{ marginTop: "100px" }}
+        >
+          <div class="col-md-8 col-lg-6">
+            <div
+              class="card shadow-0 border"
+              style={{ backgroundColor: "#f0f2f5" }}
+            >
+              <div class="card-body p-4">
+                {blogData.map((el) => (
+                  // <Link to={`/detail/Blog/${el._id}`} className="link">
+                    <div class="card mb-4">
+                      <div class="card-body">
+                        <p>{el.title}</p>
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <img
+                              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
+                              alt="avatar"
+                              width="25"
+                              height="25"
+                            />
+                            <p class="small mb-0 ms-2">Name</p>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <p
+                              class="small text-muted mb-0"
+                              style={{
+                                backgroundColor: "red",
+                                padding: "5px",
+                                borderRadius: "10px",
+                                marginLeft: "5px",
+                              }}
+                              onClick={() => handleStatus(el)}
+                            >
+                              Approve?
+                            </p>
+                            <p
+                              class="small text-muted mb-0"
+                              style={{
+                                backgroundColor: "blue",
+                                padding: "5px",
+                                borderRadius: "10px",
+                                marginLeft: "5px",
+                              }}
+                            >
+                              Decline?
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  // </Link>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <img src="https://media.tenor.com/_u06pCtKHVkAAAAj/content-box.gif"  
+        style={{width:"100px",height:"200px" , margin:"auto"}}/>
+      )}
+    </>
   );
 };

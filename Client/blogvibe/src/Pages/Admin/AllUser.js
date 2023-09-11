@@ -55,7 +55,6 @@ export const AllUser = () => {
 
   return (
     <div className="allUser_container">
-      {/* <div> */}
       <div>
         <h2>All Blog User Here ...</h2>
       </div>

@@ -59,7 +59,6 @@ export const ContactForm = () => {
         <h2>Get in touch</h2>
         <div className="contact-info">
           <div className="item">
-            <i className="icon fas fa-home"></i>
             <AiOutlineHome />
             India
           </div>

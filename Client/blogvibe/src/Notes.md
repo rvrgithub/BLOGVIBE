@@ -40,3 +40,11 @@ https://mail.google.com/chat/u/0/#chat/dm/9PtiiUAAAAE
  - extra
  - 
  
+
+ * Target Task:- 
+  - table ui design
+  - pending page new ui design
+     -  pending state /  approve state /  reject state / :- show on perticular page 
+  - no Data show gif 
+  - Text style in blog cards
+  - search option
