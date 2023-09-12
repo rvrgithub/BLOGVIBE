@@ -6,9 +6,10 @@
 - - admin all side .... > pending
 - - style merg 2 code
 - - create google docs for study -> done
-- 
-- 
-##  admin section :--
+-
+-
+
+## admin section :--
 
 - Home page =>contains navbar images all blogs with edit and delete option footer
 - Login
@@ -23,28 +24,39 @@
 
 - ... remember -> user profle take name of user name -> user/profile ...
 
-
 https://mail.google.com/chat/u/0/#chat/dm/9PtiiUAAAAE
 
+## Task -
 
-##   Task - 
- - navbar :- fixed done 
- - footer  // done
- - allblog page // done  
- - edit page ?
- - category :-  sset cards , then fetch  data , create new cards -> to redirect to new page.  [at last]
- - header
- - cards
- - Authur
- - slider
- - extra
- - 
- 
+- navbar :- fixed done
+- footer // done
+- allblog page // done
+- edit page ?
+- category :- sset cards , then fetch data , create new cards -> to redirect to new page. [at last]
+- header
+- cards
+- Authur
+- slider
+- extra
+-
 
- * Target Task:- 
-  - table ui design
-  - pending page new ui design
-     -  pending state /  approve state /  reject state / :- show on perticular page 
-  - no Data show gif 
-  - Text style in blog cards
-  - search option
+* Target Task:-
+
+- table ui design
+- pending page new ui design
+  - pending state / approve state / reject state / :- show on perticular page
+- no Data show gif
+- Text style in blog cards
+- search option
+
+Home page :
+Adding Favicon and title
+
+Get In Touch page :
+left side content home call email fontsize increase
+add margin betweeen logo and content
+add background color of send button
+
+
+
+https://codepen.io/DeveloperZahid/pen/QWvKwmq?editors=1010

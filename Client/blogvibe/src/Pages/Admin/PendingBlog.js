@@ -57,7 +57,7 @@ export const PendingBlog = () => {
   console.log("blogData", blogData);
   return (
     <>
-      {!blogData?.length==0 ? (
+      {!blogData?.length == 0 ? (
         <div
           class="row d-flex justify-content-center"
           style={{ marginTop: "100px" }}
@@ -70,47 +70,32 @@ export const PendingBlog = () => {
               <div class="card-body p-4">
                 {blogData.map((el) => (
                   // <Link to={`/detail/Blog/${el._id}`} className="link">
-                    <div class="card mb-4">
-                      <div class="card-body">
-                        <p>{el.title}</p>
-                        <div class="d-flex justify-content-between">
-                          <div class="d-flex flex-row align-items-center">
-                            <img
-                              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
-                              alt="avatar"
-                              width="25"
-                              height="25"
-                            />
-                            <p class="small mb-0 ms-2">Name</p>
-                          </div>
-                          <div class="d-flex flex-row align-items-center">
-                            <p
-                              class="small text-muted mb-0"
-                              style={{
-                                backgroundColor: "red",
-                                padding: "5px",
-                                borderRadius: "10px",
-                                marginLeft: "5px",
-                              }}
-                              onClick={() => handleStatus(el)}
-                            >
-                              Approve?
-                            </p>
-                            <p
-                              class="small text-muted mb-0"
-                              style={{
-                                backgroundColor: "blue",
-                                padding: "5px",
-                                borderRadius: "10px",
-                                marginLeft: "5px",
-                              }}
-                            >
-                              Decline?
-                            </p>
-                          </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p style={{ fontSize: "21px" }}>{el.title}</p>
+                      <p style={{ fontSize: "19px" }}>{el.descriptions}</p>
+                      <div class="d-flex justify-content-between">
+                        <div                                          class="d-flex flex-row align-items-center">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
+                            alt="avatar"
+                            width="25"
+                            height="25"
+                          />
+                          <p class="small mb-0 ms-2">Name</p>
                         </div>
+                        {/* <div class="d-flex flex-row align-items-center"> */}
+                        <button
+                          type="button"
+                          class="btn btn-primary"
+                          onClick={() => handleStatus(el)}
+                        >
+                          Approve?
+                        </button>
+                        {/* </div> */}
                       </div>
                     </div>
+                  </div>
                   // </Link>
                 ))}
               </div>
@@ -118,8 +103,9 @@ export const PendingBlog = () => {
           </div>
         </div>
       ) : (
-        <img src="https://media.tenor.com/_u06pCtKHVkAAAAj/content-box.gif"  
-        style={{width:"100px",height:"200px" , margin:"auto"}}/>
+        <div className="emptyImage">
+          <img src="https://media.tenor.com/_u06pCtKHVkAAAAj/content-box.gif" />
+        </div>
       )}
     </>
   );

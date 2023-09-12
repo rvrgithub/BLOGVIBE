@@ -84,7 +84,7 @@ else{
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
-                    AUTHORS
+                    Authors
                   </Link>
                 </li>
                 <li className="nav-item">

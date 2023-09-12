@@ -6,7 +6,7 @@ import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 export const ContactForm = () => {
   const [contactValue, setContactValue] = useState({
     name: "",
-    email: "",
+    email: "", 
     message: "",
   });
   const handleInput = (e) => {
@@ -58,16 +58,15 @@ export const ContactForm = () => {
       <div className="contact-page main">
         <h2>Get in touch</h2>
         <div className="contact-info">
-          <div className="item">
-            <AiOutlineHome />
-            India
+          <div className="item" style={{ fontSize: "22px" }}>
+            <AiOutlineHome />{" "} India
           </div>
-          <div className="item">
-            <BsWhatsapp />
+          <div className="item" style={{ fontSize: "22px" }}>
+            <BsWhatsapp />{" "}
             +91 1234567890
           </div>
-          <div className="item">
-            <AiOutlineMail />
+          <div className="item" style={{ fontSize: "22px" }}>
+            <AiOutlineMail />{" "}
             blogvibe@gmail.com
           </div>
           {/* <div className="item">
@@ -76,10 +75,7 @@ export const ContactForm = () => {
             Mon - Fri 8:00 AM to 6:00 PM
           </div> */}
         </div>
-        <form
-          action=""
-          className="contact-form"
-        >
+        <form action="" className="contact-form">
           <input
             type="text"
             className="textb"
@@ -105,7 +101,12 @@ export const ContactForm = () => {
             onChange={(e) => handleInput(e)}
             required
           ></textarea>
-          <input type="submit"  onClick={(e) => handleSubmit(e)} className="btn" value="Send" />
+          <input
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+            className="btn"
+            value="Send"
+          />
         </form>
       </div>
     </>

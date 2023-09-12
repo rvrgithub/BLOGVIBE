@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.emptyImage{
+ 
+  width: 70%;
+  height: 80vh;
+margin-top: 200px;
+  /* position: absolute; */
+  justify-content: center;
+
+  border: 1px solid red;
+ margin: auto;
+}
+.emptyImage>img{
+  width: 50%;
+  height: 50%;
+  border: 1px solid blue;
+  margin: auto;
+  position: absolute;
+
+}

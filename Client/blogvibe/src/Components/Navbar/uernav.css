@@ -49,6 +49,7 @@
 }
 .logo{
  font-size: 2rem;
+ margin-top: -5px;
 }
 .nav-menu {
   display: flex;
@@ -78,11 +79,11 @@
   content: "";
   display: block;
   height: 3px;
-
   width: 0;
   background: transparent;
-  transition: width 0.7s ease, background-color 0.5s ease;
-}
+  transition: width 0.7s ease;
+   background-color :0.5s ease;
+} 
 
 .nav-item:hover:after {
   width: 100%;
@@ -108,7 +109,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-top: 1pxsolid #fff;
+    border-top: .5px solid #b0adad;
     position: absolute;
     top: 80px;
     left: -110%;
@@ -117,8 +118,10 @@
   }
 
   .nav-menu.active {
-    background: #1f5156;
-    left: 0px;
+    /* background: #1f5156; */
+    background-color: #323233;
+    left: 0px;    
+padding-bottom: 30px;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
@@ -128,7 +131,7 @@
     border: none;
   }
   .nav-links {
-    padding: 1.5rem;
+    padding: .8rem ;
     width: 100%;
     display: table;
   }
