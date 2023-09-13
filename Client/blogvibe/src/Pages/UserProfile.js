@@ -12,7 +12,7 @@ import { apiurl } from "../App";
 
 export const UserProfile = () => {
   const [getUser, setGetUser] = useState("");
-  const [getBlog, setGetBlog]= useState([]);
+  const [getBlog, setGetBlog] = useState([]);
   const { id } = useParams();
 
   const getDataById = () => {
@@ -36,47 +36,9 @@ export const UserProfile = () => {
   console.log("id", id);
   console.log("udar Data", getUser);
 
-  const profileData = [
-    {
-      title: "Lorem ipsum dolor sit amet",
-      time: "01-Jan-2045",
-      decription:
-        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet",
-      time: "01-Jan-2045",
-      decription:
-        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet",
-      time: "01-Jan-2045",
-      decription:
-        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet",
-      time: "01-Jan-2045",
-      decription:
-        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet",
-      time: "01-Jan-2045",
-      decription:
-        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet",
-      time: "01-Jan-2045",
-      decription:
-        " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu            suscipit orci velit id libero",
-    },
-  ];
   return (
     <div className="wrapper">
-      <div className="sidebar">
+      <div className="sidebar" style={{ height: "80vh" }}>
         <div className="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
           <img
             className="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-4 p-3"
@@ -124,9 +86,12 @@ export const UserProfile = () => {
           <i className="fas fa-2x fa-angle-double-right text-primary"></i>
         </div>
       </div>
-      <div className="content">
+      <div className="content example1" >
         {/* <!-- Blog List Start --> */}
-        <div className="container bg-white pt-5">
+        <div
+          className="container bg-white pt-5"
+          style={{ height: "70vh" ,overflowX:"hidden"}}
+        >
           {getBlog?.map((el, index) => (
             <div className="row blog-item px-3 pb-5" key={index}>
               <div className="col-md-5">
@@ -141,7 +106,6 @@ export const UserProfile = () => {
                   alt="error"
                 />
               </div>
-
               <div className="col-md-7">
                 <h3 className="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">
                   {el.title}
@@ -158,8 +122,9 @@ export const UserProfile = () => {
                   </small>
                 </div>
                 <p>{el.decription}</p>
-                <Link className="btn btn-link p-0" 
-                to={`/detail/Blog/${el._id}`}
+                <Link
+                  className="btn btn-link p-0"
+                  to={`/detail/Blog/${el._id}`}
                 >
                   Read More{" "}
                   <span>

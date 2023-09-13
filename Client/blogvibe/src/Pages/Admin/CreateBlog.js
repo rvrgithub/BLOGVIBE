@@ -296,7 +296,7 @@ export const CreateBlog = () => {
                           class="btn btn-success btn-send   pt-2 btn-block
                         "
                           onClick={(e) => handleSubmit(e)}
-                          value="Send Message"
+                          value="Create Blog"
                         />
                       </div>
                     </div>

@@ -59,15 +59,13 @@ export const ContactForm = () => {
         <h2>Get in touch</h2>
         <div className="contact-info">
           <div className="item" style={{ fontSize: "22px" }}>
-            <AiOutlineHome />{" "} India
+            <AiOutlineHome /> India
           </div>
           <div className="item" style={{ fontSize: "22px" }}>
-            <BsWhatsapp />{" "}
-            +91 1234567890
+            <BsWhatsapp /> +91 1234567890
           </div>
           <div className="item" style={{ fontSize: "22px" }}>
-            <AiOutlineMail />{" "}
-            blogvibe@gmail.com
+            <AiOutlineMail /> blogvibe@gmail.com
           </div>
           {/* <div className="item">
             <i className="icon fas fa-clock"></i>
@@ -101,12 +99,23 @@ export const ContactForm = () => {
             onChange={(e) => handleInput(e)}
             required
           ></textarea>
-          <input
+          {/* <input
             type="submit"
             onClick={(e) => handleSubmit(e)}
             className="btn"
             value="Send"
-          />
+          /> */}
+
+          <button
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+            className="btn"
+            value="Send"
+            class="btn btn-dark"
+            style={{marginTop:"15px"}}
+          >
+            Send
+          </button>
         </form>
       </div>
     </>

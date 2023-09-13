@@ -153,7 +153,7 @@ exports.approve = async (req, res) => {
 exports.pendingBlog = async(req,res)=>{
   console.log("jhsdfglsjkd")
 try{
-  const response =await Blog.find({status:"pending"})
+  const response =await Blog.find({status:"pending"}).populate("user")
   // console.log("response",response);
   return res.status(200).send({
     status:true,

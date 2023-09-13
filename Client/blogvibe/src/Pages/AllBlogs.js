@@ -10,13 +10,13 @@ export const AllBlogs = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [value, setVlaue] = useState("");
-  let role=localStorage.getItem("role")
+  let role = localStorage.getItem("role");
   // .........................modal ................
   const [blogData, setBlogData] = useState([]);
   let token = localStorage.getItem("Token");
-    function truncate(string, n) {
-      return string?.length > n ? string.substr(0, n - 1) + "..." : string;
-    }
+  function truncate(string, n) {
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+  }
   const getData = () => {
     fetch(apiurl)
       .then((res) => res.json())
@@ -41,6 +41,17 @@ export const AllBlogs = () => {
       .catch((error) => console.log("error", error));
   };
   // console.log("blogData", blogData.blogs);
+
+  // .................... capitalizeFirstLetter  ..........................
+  function capitalizeFirstLetter(text) {
+    // Check if the input text is empty or null
+    if (!text) {
+      return "";
+    }
+
+    // Convert the first letter to uppercase and the rest to lowercase
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
   return (
     <>
       {isOpen ? (
@@ -67,12 +78,18 @@ export const AllBlogs = () => {
                           <img src={`${apiurl}/images/${el.image}`} alt="" />
                         </div>
                         <div className="solu_title">
-                         
-                          <h3>{truncate(el.title, 30)} ...</h3>
+                          <h3>
+                            {truncate(capitalizeFirstLetter(el.title), 20)}
+                          </h3>
                         </div>
                         <div className="solu_description">
                           {/* <p>{el.descriptions}</p> */}
-                          <p>{truncate(el.descriptions, 30)} ...</p>
+                          <p>
+                            {truncate(
+                              capitalizeFirstLetter(el.descriptions),
+                              30
+                            )}{" "}
+                          </p>
                           <div
                             className="row"
                             style={{

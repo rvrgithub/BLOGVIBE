@@ -33,6 +33,17 @@ export const Profile = () => {
   useEffect(() => {
     getProfile();
   }, []);
+
+  // .................... capitalizeFirstLetter  ..........................
+  function capitalizeFirstLetter(text) {
+    // Check if the input text is empty or null
+    if (!text) {
+      return "";
+    }
+
+    // Convert the first letter to uppercase and the rest to lowercase
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
   return (
     <section
       style={{ backgroundColor: "#eee", width: "100%", marginTop: "60px" }}
@@ -48,7 +59,7 @@ export const Profile = () => {
                   className="rounded-circle img-fluid"
                   style={{ width: "150px" }}
                 /> */}
-                <h5 className="my-3">{data.name}</h5>
+                <h5 className="my-3"> {capitalizeFirstLetter(data.name)}</h5>
                 <p className="text-muted mb-1">Full Stack Developer</p>
                 <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
                 <div className="d-flex justify-content-center mb-2">
@@ -73,7 +84,9 @@ export const Profile = () => {
                     <p className="mb-0">Name </p>
                   </div>
                   <div className="col-sm-9">
-                    <p className="text-muted mb-0">{data.name}</p>
+                    <p className="text-muted mb-0">
+                      {capitalizeFirstLetter(data.name)}
+                    </p>
                   </div>
                 </div>
                 <hr />

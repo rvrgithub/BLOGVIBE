@@ -72,6 +72,17 @@ export const MyBlog = () => {
       .then((data) => getMyBlog())
       .catch((error) => console.log("error", error));
   };
+
+  // .................... capitalizeFirstLetter  ..........................
+  function capitalizeFirstLetter(text) {
+    // Check if the input text is empty or null
+    if (!text) {
+      return "";
+    }
+
+    // Convert the first letter to uppercase and the rest to lowercase
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
   return (
     <>
       {isOpen ? (
@@ -99,10 +110,18 @@ export const MyBlog = () => {
                             <img src={`${apiurl}/images/${el.image}`} alt="" />
                           </div>
                           <div className="solu_title">
-                            <h3>{truncate(el.title, 25)}...</h3>
+                            <h3>
+                              {truncate(capitalizeFirstLetter(el.title), 20)}
+                            </h3>
                           </div>
                           <div className="solu_description">
-                            <p>{truncate(el.descriptions, 30)} ...</p>
+                            <p>
+                              {truncate(
+                                capitalizeFirstLetter(el.descriptions),
+                                30
+                              )}
+                            </p>
+
                             <p>
                               {" "}
                               Status:

@@ -54,6 +54,16 @@ export const PendingBlog = () => {
     getData();
   }, []);
 
+  // .................... capitalizeFirstLetter  ..........................
+  function capitalizeFirstLetter(text) {
+    // Check if the input text is empty or null
+    if (!text) {
+      return "";
+    }
+
+    // Convert the first letter to uppercase and the rest to lowercase
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
   console.log("blogData", blogData);
   return (
     <>
@@ -72,10 +82,15 @@ export const PendingBlog = () => {
                   // <Link to={`/detail/Blog/${el._id}`} className="link">
                   <div class="card mb-4">
                     <div class="card-body">
-                      <p style={{ fontSize: "21px" }}>{el.title}</p>
-                      <p style={{ fontSize: "19px" }}>{el.descriptions}</p>
+                      <p style={{ fontSize: "21px" }}>
+                        {truncate(capitalizeFirstLetter(el.title), 15)}
+                      </p>
+                      <p style={{ fontSize: "19px" }}>
+                       
+                        {truncate(capitalizeFirstLetter(el.descriptions), 20)}
+                      </p>
                       <div class="d-flex justify-content-between">
-                        <div                                          class="d-flex flex-row align-items-center">
+                        <div class="d-flex flex-row align-items-center">
                           <img
                             src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
                             alt="avatar"
