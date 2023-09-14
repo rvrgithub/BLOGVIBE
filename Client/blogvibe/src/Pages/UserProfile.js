@@ -38,21 +38,21 @@ export const UserProfile = () => {
 
   return (
     <div className="wrapper">
-      <div className="sidebar" style={{ height: "80vh" }}>
+      <div className="sidebar" style={{ height: "70vh" }}>
         <div className="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
           <img
-            className="mx-auto d-block w-75 bg-primary img-fluid rounded-circle mb-4 p-3"
+            className="mx-auto d-block w-75 h-10 bg-primary img-fluid rounded-circle mb-4 p-3"
             src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
             alt="img_error"
           />
-          <h1 className="font-weight-bold">_{getUser.name}</h1>
-          <p className="mb-4">
+          <h1 className="font-weight-bold">_{getUser?.name}</h1>
+          <p className="mb-1">
             <p>{getUser.email}</p>
-            Justo stet no accusam stet invidunt sanctus magna clita vero eirmod,
+            {/* Justo stet no accusam stet invidunt sanctus magna clita vero eirmod,
             sit sit labore dolores lorem. Lorem at sit dolor dolores sed diam
-            justo
+            justo */}
           </p>
-          <div className="d-flex justify-content-center mb-5">
+          <div className="d-flex justify-content-center mb-3">
             <li
               className="btn btn-outline-primary mr-2"
               style={{ fontSize: "20px" }}
@@ -78,30 +78,30 @@ export const UserProfile = () => {
               <IoLogoWhatsapp />
             </li>
           </div>
-          <li className="btn btn-lg btn-block btn-primary mt-10px">
+          {/* <li className="btn btn-lg btn-block btn-primary mt-10px">
             Fowllow Me
-          </li>
+          </li> */}
         </div>
         <div className="sidebar-icon d-flex flex-column h-100 justify-content-center text-right">
           <i className="fas fa-2x fa-angle-double-right text-primary"></i>
         </div>
       </div>
-      <div className="content example1" >
+      <div className="content example1">
         {/* <!-- Blog List Start --> */}
         <div
-          className="container bg-white pt-5"
-          style={{ height: "70vh" ,overflowX:"hidden"}}
+          className="container bg-white pt-1  newBox"
+          style={{ height: "55vh", overflowX: "hidden" }}
         >
           {getBlog?.map((el, index) => (
-            <div className="row blog-item px-3 pb-5" key={index}>
-              <div className="col-md-5">
+            <div className="row blog-item px-3 pb-2 pro_box" key={index}>
+              <div className="col-md-5 ">
                 {/* <img
                   className="img-fluid mb-4 mb-md-0"
                   src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
                   alt="img_error"
                 /> */}
                 <img
-                  className="img-fluid mb-4 mb-md-0"
+                  className="img-fluid mb-4 mb-md-0 user_pro_img"
                   src={`${apiurl}/images/${el.image}`}
                   alt="error"
                 />

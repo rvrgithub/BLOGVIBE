@@ -40,14 +40,17 @@ export const DetailBlog = () => {
       <div className="row mt-5">
         <p className="detailDesc"> {singleData.descriptions}</p>
       </div>
-      <div className="DetailFeedback">
-        <p className="">
-          <BiSolidQuoteAltLeft /> {"  "} We value your thoughts and opinions! If
-          you have any suggestions, questions, or ideas on how we can improve
-          your experience on our blog, please don't hesitate to reach out. Your
-          feedback is incredibly important to us. {"  "}
-          <BiSolidQuoteAltRight />
-        </p>
+
+      <div className="DetailFeedback card ">
+        {/* <div className=" card-body"> */}
+          <p className="">
+            <BiSolidQuoteAltLeft /> {"  "} We value your thoughts and opinions!
+            If you have any suggestions, questions, or ideas on how we can
+            improve your experience on our blog, please don't hesitate to reach
+            out. Your feedback is incredibly important to us. {"  "}
+            <BiSolidQuoteAltRight />
+          </p>
+        {/* </div> */}
         <div className="detailsUser">
           <img src="https://w7.pngwing.com/pngs/886/300/png-transparent-user-other-furniture-child-thumbnail.png" />
           <div>
