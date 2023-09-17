@@ -1,50 +1,3 @@
-// const express = require("express");
-// require("dotenv").config();
-// const app = express();
-// app.use(express.json());
-// const { route } = require("./route/route");
-// const { Connection } = require("./Connection/Connetion");
-// const bodyParser=require("body-parser")
-// const path = require("path");
-// const multer = require("multer");
-// const { createBlog } = require("./Controller/userController");
-// const { auth } = require("./middleware/middleware");
-// app.use(multer().any())
-// app.use(bodyParser.urlencoded({ extended: false }))
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "upload");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, Date.now() + path.extname(file.originalname));
-//   },
-// });
-
-// app.use("/uploads", express.static("uploads"));
-// let upload = multer({ storage });
-
-// app.use("/", route);
-// app.post("/create/blog",upload.single("image"), auth, createBlog)
-
-// // // multer route
-// app.post("/upload", upload.single("image"), (req, res) => {
-//   res.send("sucess");
-//   console.log("upload file ...", req.file);
-// });
-// app.get("/images/:filename", (req, res) => {
-//   const filename = req.params.filename;
-//   console.log("filename", filename);
-//   res.sendFile(path.join(__dirname, "upload", filename));
-// });
-
-// // ......................
-
-// app.listen(process.env.PORT, () => {
-//   Connection();
-//   console.log(`Listen At Port ${process.env.PORT}`);
-// });
-
 const cors = require("cors");
 const express = require("express");
 const app = express();
@@ -53,9 +6,17 @@ const path = require("path");
 var multer = require("multer");
 const { route } = require("./route/route");
 const { auth, authAdmin } = require("./middleware/middleware");
-const { createBlog, updateBlog } = require("./Controller/userController");
+const {
+  createBlog,
+  updateBlog,
+  uploadImage,
+} = require("./Controller/userController");
 const { Connection } = require("./Connection/Connetion");
-const { updateBlogByA } = require("./Controller/adminController");
+const {
+  updateBlogByA,
+  adminUploadImage,
+} = require("./Controller/adminController");
+
 app.use(cors());
 app.use(express.json());
 const storage = multer.diskStorage({
@@ -89,6 +50,14 @@ route.put(
   updateBlogByA
 );
 route.put("/updateBlog/:id", upload.single("image"), auth, updateBlog);
+
+route.put("/profile/image/upload/", upload.single("image"), auth, uploadImage);
+route.put(
+  "/admin/profile/image/upload/",
+  upload.single("image"),
+  authAdmin,
+  adminUploadImage
+);
 
 app.use("/", route);
 app.listen(4500, () => {

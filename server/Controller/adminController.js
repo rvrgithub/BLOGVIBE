@@ -92,21 +92,28 @@ exports.adminRegister = async (req, res) => {
 // ........................ update blog by admin..........................
 
 exports.updateBlogByA = async (req, res) => {
-  console.log(req.body,req.file)
+  console.log(req.body, req.file);
   const blogId = req.params.id;
   const findBlog = await Blog.findOne({ _id: blogId });
-  console.log("findBlog", findBlog); 
-  try {  
+  console.log("findBlog", findBlog);
+  try {
     const { title, descriptions } = req.body;
-    const checkValueImage = req.file ? req.file.filename : findBlog.image; 
-    const checkValueTitle = title ? title : findBlog.title; 
-    const checkValueDescriptions = descriptions ? descriptions : findBlog.descriptions; 
-  
+    const checkValueImage = req.file ? req.file.filename : findBlog.image;
+    const checkValueTitle = title ? title : findBlog.title;
+    const checkValueDescriptions = descriptions
+      ? descriptions
+      : findBlog.descriptions;
+
     const updatBlog = await Blog.updateOne(
       { _id: blogId },
-      { $set: { title:checkValueTitle, descriptions:checkValueDescriptions, image: checkValueImage } }
+      {
+        $set: {
+          title: checkValueTitle,
+          descriptions: checkValueDescriptions,
+          image: checkValueImage,
+        },
+      }
     );
-
 
     // const response = await Blog.updateOne(
     //   { _id: blogId },
@@ -115,10 +122,9 @@ exports.updateBlogByA = async (req, res) => {
     return res.status(201).json({
       stauts: true,
       massage: "Something is Good !!",
-      
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return res.status(500).json({
       stauts: false,
       massage: "Something Wrong !!",
@@ -150,24 +156,23 @@ exports.approve = async (req, res) => {
   }
 };
 
-exports.pendingBlog = async(req,res)=>{
-  console.log("jhsdfglsjkd")
-try{
-  const response =await Blog.find({status:"pending"}).populate("user")
-  // console.log("response",response);
-  return res.status(200).send({
-    status:true,
-    response
-  })
-}catch(error){
-return res.status(500).send({
-  status:false,
-  massage:"somthine wrong !!",
-  error
-})
-}
-}
-
+exports.pendingBlog = async (req, res) => {
+  console.log("jhsdfglsjkd");
+  try {
+    const response = await Blog.find({ status: "pending" }).populate("user");
+    // console.log("response",response);
+    return res.status(200).send({
+      status: true,
+      response,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      status: false,
+      massage: "somthine wrong !!",
+      error,
+    });
+  }
+};
 
 // ............. update state ...............
 exports.approvAll = async (req, res) => {
@@ -176,6 +181,7 @@ exports.approvAll = async (req, res) => {
       { status: "pending" },
       { $set: { status: "approve" } }
     );
+    // console.log("update All", updateAll);
     return res.status(200).json({
       stauts: true,
       massage: "is good to know !!",
@@ -202,14 +208,14 @@ exports.deleteBlogByA = async (req, res) => {
     //     massage: "No Blog found here !!",
     //   });
     // } else {
-      const deleteBlog = await Blog.deleteOne({ _id: blogId });
-      console.log("delete blog", deleteBlog);
-      return res.status(500).json({
-        stauts: true,
-        massage: "delete Blog Succesfully !!",
-        deleteBlog,
-      });   
-    // }  
+    const deleteBlog = await Blog.deleteOne({ _id: blogId });
+    console.log("delete blog", deleteBlog);
+    return res.status(500).json({
+      stauts: true,
+      massage: "delete Blog Succesfully !!",
+      deleteBlog,
+    });
+    // }
     // const
   } catch (error) {
     return res.status(500).json({
@@ -233,6 +239,8 @@ exports.deleteUserByA = async (req, res) => {
       });
     } else {
       const deleteUser = await User.deleteOne({ _id: userId });
+      await Blog.deleteMany({ user: userId });
+
       console.log("delete blog", deleteUser);
       return res.status(500).json({
         stauts: true,
@@ -250,7 +258,6 @@ exports.deleteUserByA = async (req, res) => {
   }
 };
 
-
 exports.adminProfile = async (req, res) => {
   try {
     const getUserId = req.user;
@@ -266,18 +273,15 @@ exports.adminProfile = async (req, res) => {
       massage: "data not get",
     });
   }
-
-
-
 };
-
-
 
 exports.getAdminBlog = async (req, res) => {
   const findUser = req.user;
   console.log("findUser", findUser);
   try {
-    let response = await Blog.find({ user: req.user._id });
+    let response = await Blog.find({ user: req.user._id }).sort({
+      createdAt: -1,
+    });
     return res.status(201).send({
       status: true,
       response,
@@ -286,6 +290,24 @@ exports.getAdminBlog = async (req, res) => {
     return res.status(401).send({
       status: false,
       message: "Error in getting blog...",
+      error,
+    });
+  }
+};
+
+exports.adminUploadImage = async (req, res) => {
+  try {
+    let profileImage = req.file.filename;
+
+    let updateUserProfile = await Admin.updateOne(
+      { _id: req.user._id },
+      { $set: { profileImage: profileImage } }
+    );
+
+    res.status(200).json({ status: true, message: "Profile Image updated" });
+  } catch (error) {
+    return res.status(400).send({
+      status: false,
       error,
     });
   }

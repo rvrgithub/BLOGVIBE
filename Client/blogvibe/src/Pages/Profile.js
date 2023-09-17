@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { apiurl } from "../App";
+import { AiFillCamera, AiOutlineCloudUpload } from "react-icons/ai";
 
 export const Profile = () => {
   const [data, setData] = useState("");
+  const [image, setImage] = useState();
+  const inputRef = useRef();
 
   let token = localStorage.getItem("Token");
 
@@ -34,6 +37,30 @@ export const Profile = () => {
     getProfile();
   }, []);
 
+  const updateProfilePic = () => {
+    let fdata = new FormData();
+    let api;
+    if (role == "user") {
+      api = "profile/image/upload";
+    } else {
+      api = "admin/profile/image/upload/";
+    }
+    fdata.append("image", image);
+    fetch(`${apiurl}/${api}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: fdata,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setImage();
+        getProfile();
+        console.log(data);
+      });
+  };
+
   // .................... capitalizeFirstLetter  ..........................
   function capitalizeFirstLetter(text) {
     // Check if the input text is empty or null
@@ -53,12 +80,33 @@ export const Profile = () => {
           <div className="col-lg-4">
             <div className="card mb-4">
               <div className="card-body text-center">
-                {/* <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                  alt="avatar"
-                  className="rounded-circle img-fluid"
-                  style={{ width: "150px" }}
-                /> */}
+                {!image ? (
+                  <img
+                    src={`${apiurl}/images/${data.profileImage}`}
+                    alt="avatar"
+                    className="rounded-circle img-fluid"
+                    style={{ width: "120px" , height:"100px"}}
+                  />
+                ) : (
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="avatar"
+                    className="rounded-circle img-fluid"
+                    style={{ width: "150px" }}
+                  />
+                )}
+                <div>
+                  <input
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    style={{ display: "none" }}
+                    ref={inputRef}
+                  />
+                  <AiFillCamera onClick={() => inputRef.current.click()} />{" "}
+                  {image && (
+                    <button onClick={() => updateProfilePic()}>Upload</button>
+                  )}
+                </div>
                 <h5 className="my-3"> {capitalizeFirstLetter(data.name)}</h5>
                 <p className="text-muted mb-1">Full Stack Developer</p>
                 <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>

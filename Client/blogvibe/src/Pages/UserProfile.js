@@ -38,7 +38,7 @@ export const UserProfile = () => {
 
   return (
     <div className="wrapper">
-      <div className="sidebar" style={{ height: "70vh" }}>
+      <div className="sidebar" style={{ height: "62.8vh",marginTop:"10px" }}>
         <div className="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
           <img
             className="mx-auto d-block w-75 h-10 bg-primary img-fluid rounded-circle mb-4 p-3"
@@ -104,6 +104,7 @@ export const UserProfile = () => {
                   className="img-fluid mb-4 mb-md-0 user_pro_img"
                   src={`${apiurl}/images/${el.image}`}
                   alt="error"
+                  style={{height:"500px !important"}}
                 />
               </div>
               <div className="col-md-7">

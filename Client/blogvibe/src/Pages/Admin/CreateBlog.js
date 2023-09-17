@@ -279,7 +279,7 @@ export const CreateBlog = () => {
                             id="form_message"
                             name="description"
                             class="form-control"
-                            placeholder="Write your message here."
+                            placeholder="Blog Descriptions..."
                             rows="4"
                             value={inputValue.description}
                             onChange={(e) => handleInput(e)}

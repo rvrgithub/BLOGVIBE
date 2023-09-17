@@ -5,6 +5,7 @@ import { FaEdit, FaEye } from "react-icons/fa";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { Display } from "../Components/modal/Modal";
+import { format } from "timeago.js";
 export const MyBlog = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setVlaue] = useState("");
@@ -121,20 +122,33 @@ export const MyBlog = () => {
                                 30
                               )}
                             </p>
+                            <hr />
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                              }}
+                            >
+                              <p>
+                                {" "}
+                                Status:
+                                <span
+                                  style={
+                                    `${el.status}` === "approve"
+                                      ? { color: "orange" }
+                                      : { color: "red" }
+                                  }
+                                >
+                                  {capitalizeFirstLetter(el.status)}
+                                </span>
+                              </p>
+                              <p>
+                                {format(
+                                  el.createdAt ? el.createdAt : "1days ago"
+                                )}
+                              </p>
+                            </div>
 
-                            <p>
-                              {" "}
-                              Status:
-                              <span
-                                style={
-                                  `${el.status}` === "approve"
-                                    ? { color: "orange" }
-                                    : { color: "red" }
-                                }
-                              >
-                                {el.status}
-                              </span>
-                            </p>
                             <div
                               className="row"
                               style={{

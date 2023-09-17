@@ -5,11 +5,15 @@ import { AiFillDelete } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import { apiurl } from "../../App";
 import { BsJustify } from "react-icons/bs";
+import { useTheme } from "styled-components";
 
 export function AllUser() {
   const [blogData, setBlogData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const Token = localStorage.getItem("Token");
+
+  const[search,setSearch]=useState()
+
   // console.log("token", Token);
   const getData = () => {
     fetch(`${apiurl}/getAll/user`)
@@ -19,7 +23,7 @@ export function AllUser() {
   };
   const deleteUser = (id) => {
     console.log("id", id);
-    fetch(`${apiurl}/admin/delete/user/:id`, {
+    fetch(`${apiurl}/admin/delete/user/${id}`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
@@ -27,21 +31,24 @@ export function AllUser() {
       },
     })
       .then((res) => res.json())
-      .then((data) => console.log("data", data));
+      .then((data) => {console.log("data", data)
+    getData()});
   };
 
   const searchInput = (e) => {
     // console.log("searchInput", e);
     // console.log("input in search ", inputValue);
     const filteredData = blogData.filter((item) => item.name === inputValue);
+    setSearch([...filteredData])
     console.log("filteredData", filteredData);
   };
 
-  // console.log("inputValue", inputValue);
+  console.log("blogData", blogData);
 
   useEffect(() => {
     getData();
   }, []);
+
 
   // .................... capitalizeFirstLetter  ..........................
   function capitalizeFirstLetter(text) {
@@ -103,59 +110,115 @@ export function AllUser() {
               </form>
 
               <div class="filter-result">
-                {blogData?.map((el, index) => (
-                  <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
-                    <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
-                      <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                        {/* {capitalizeFirstLetter(el.name)} */}
-                        <img
-                          src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
-                          className="userImage"
-                        />
-                      </div>
-                    </div>
-                    <div class="job-content">
-                      <h5 class="text-center text-md-left">
-                        {" "}
-                        {capitalizeFirstLetter(el.name)}
-                      </h5>
-                    </div>
-                    <div class="job-content">
-                      <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
-                        <li class="mr-md-4">
-                          <i class="zmdi zmdi-pin mr-2 "></i> {el.email}
-                        </li>
-                      </ul>
-                    </div>
+                {!search
+                  ? blogData?.map((el, index) => (
+                      <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                        <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                          <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                            {/* {capitalizeFirstLetter(el.name)} */}
+                            <img
+                              src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
+                              className="userImage"
+                            />
+                          </div>
+                        </div>
+                        <div class="job-content">
+                          <h5 class="text-center text-md-left">
+                            {" "}
+                            {capitalizeFirstLetter(el.name)}
+                          </h5>
+                        </div>
+                        <div class="job-content">
+                          <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                            <li class="mr-md-4">
+                              <i class="zmdi zmdi-pin mr-2 "></i> {el.email}
+                            </li>
+                          </ul>
+                        </div>
 
-                    <div class="job-content">
-                      <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
-                        <li class="mr-md-4">
-                          <i class="zmdi zmdi-money mr-2 "></i> {el.phoneNumber}
-                        </li>
-                      </ul>
-                    </div>
-                    <Link to={`/user/profile/${el._id}`} key={index}>
-                      <div class="job-right my-4 flex-shrink-0">
-                        <a
-                          href="#"
-                          class="btn d-block w-100 d-sm-inline-block btn-light"
-                        >
-                          Profile
-                        </a>
+                        <div class="job-content">
+                          <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                            <li class="mr-md-4">
+                              <i class="zmdi zmdi-money mr-2 "></i>{" "}
+                              {el.phoneNumber}
+                            </li>
+                          </ul>
+                        </div>
+                        <Link to={`/user/profile/${el._id}`} key={index}>
+                          <div class="job-right my-4 flex-shrink-0">
+                            <a
+                              href="#"
+                              class="btn d-block w-100 d-sm-inline-block btn-light"
+                            >
+                              Profile
+                            </a>
+                          </div>
+                        </Link>
+                        <div class="job-right my-4 flex-shrink-0">
+                          <a
+                            href="#"
+                            class="btn d-block w-100 d-sm-inline-block btn-light"
+                            onClick={() => deleteUser(el._id)}
+                          >
+                            Delete
+                          </a>
+                        </div>
                       </div>
-                    </Link>
-                    <div class="job-right my-4 flex-shrink-0">
-                      <a
-                        href="#"
-                        class="btn d-block w-100 d-sm-inline-block btn-light"
-                        onClick={() => deleteUser(el._id)}
-                      >
-                        Delete
-                      </a>
-                    </div>
-                  </div>
-                ))}
+                    ))
+                  : search?.map((el, index) => (
+                      <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                        <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                          <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                            {/* {capitalizeFirstLetter(el.name)} */}
+                            <img
+                              src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
+                              className="userImage"
+                            />
+                          </div>
+                        </div>
+                        <div class="job-content">
+                          <h5 class="text-center text-md-left">
+                            {" "}
+                            {capitalizeFirstLetter(el.name)}
+                          </h5>
+                        </div>
+                        <div class="job-content">
+                          <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                            <li class="mr-md-4">
+                              <i class="zmdi zmdi-pin mr-2 "></i> {el.email}
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div class="job-content">
+                          <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                            <li class="mr-md-4">
+                              <i class="zmdi zmdi-money mr-2 "></i>{" "}
+                              {el.phoneNumber}
+                            </li>
+                          </ul>
+                        </div>
+                        <Link to={`/user/profile/${el._id}`} key={index}>
+                          <div class="job-right my-4 flex-shrink-0">
+                            <a
+                              href="#"
+                              class="btn d-block w-100 d-sm-inline-block btn-light"
+                            >
+                              Profile
+                            </a>
+                          </div>
+                        </Link>
+                        <div class="job-right my-4 flex-shrink-0">
+                          <a
+                            href="#"
+                            class="btn d-block w-100 d-sm-inline-block btn-light"
+                            onClick={() => deleteUser(el._id)}
+                          >
+                            Delete
+                          </a>
+                        </div>
+                      </div>
+                    ))}
               </div>
             </div>
 

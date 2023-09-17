@@ -5,6 +5,7 @@ import { FaEdit, FaEye } from "react-icons/fa";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { apiurl } from "../App";
 import { Display } from "../Components/modal/Modal";
+import { format} from "timeago.js";
 export const AllBlogs = () => {
   // .........................madal.................
 
@@ -40,7 +41,7 @@ export const AllBlogs = () => {
       .then((data) => getData())
       .catch((error) => console.log("error", error));
   };
-  // console.log("blogData", blogData.blogs);
+  console.log("blogData", blogData.blogs);
 
   // .................... capitalizeFirstLetter  ..........................
   function capitalizeFirstLetter(text) {
@@ -90,6 +91,31 @@ export const AllBlogs = () => {
                               30
                             )}{" "}
                           </p>
+                          <hr />
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                          >
+                            <div
+                              style={{
+                                display: "flex",
+                              }}
+                            >
+                              <img
+                                src={`${apiurl}/images/${
+                                  el.user
+                                    ? el.user.profileImage
+                                    : "1693218613925.jpg"
+                                }`}
+                                height={"30px"}
+                                style={{ width: "30px" }}
+                              />
+                              <p>{el.user ? el.user.name : ""}</p>
+                            </div>
+                            <p>{format(el.createdAt ? el.createdAt :"1days ago")}</p>
+                          </div>
                           <div
                             className="row"
                             style={{

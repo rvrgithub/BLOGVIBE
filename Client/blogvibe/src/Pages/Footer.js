@@ -2,15 +2,15 @@ import React from "react";
 import { AiFillInstagram, AiFillLinkedin, AiTwotoneMail } from "react-icons/ai";
 import { BsFacebook, BsGithub } from "react-icons/bs";
 import { RiWhatsappFill } from "react-icons/ri";
-
+// import {FontAwesomeIcon} from "react-icons"
 export const Footer = () => {
   return (
     <div
-      // className=""
-      // style={{
-      //   width: "100%",
-      //   background: "red",
-      // }}
+    // className=""
+    // style={{
+    //   width: "100%",
+    //   background: "red",
+    // }}
     >
       <footer
         className="text-center text-white"
@@ -60,7 +60,7 @@ export const Footer = () => {
               style={{ fontSize: "35px", marginTop: "10px" }}
             >
               <AiFillLinkedin />
-              <i className="fab fa-instagram" style={{ marginTop: "10px" }}></i>
+              {/* <i className="fab fa-instagram" style={{ marginTop: "10px" }}></i> */}
             </a>
             <a
               className="btn btn-link btn-floating btn-lg text-dark m-2"
@@ -93,11 +93,9 @@ export const Footer = () => {
           <a className="text-dark" href="https://kishordeveloper.com/">
             Radhika{" "}
             <i
-              className="fa-solid fa-heart fa-flip"
-              style={{ color: "#dd0808" }}
-            >
-              {" "}
-            </i>{" "}
+              class="fa-solid fa-heart fa-flip"
+              style={{ color: "#e10e0e" }}
+            ></i>{" "}
             Verma
           </a>
         </div>

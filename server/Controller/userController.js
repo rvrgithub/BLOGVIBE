@@ -231,7 +231,9 @@ exports.getAllBlog = async (req, res) => {
   // console.log("getUSer", getuser);
 
   try {
-    const allBlog = await Blog.find({ user: getuser.id });
+    const allBlog = await Blog.find({ user: getuser.id }).sort({
+      createdAt: -1,
+    });
     console.log("allblog", allBlog);
     return res.status(201).send({
       status: true,
@@ -243,7 +245,7 @@ exports.getAllBlog = async (req, res) => {
       status: false,
       message: "Error in getting blog...",
       error,
-    });  
+    });
   }
 };
 
@@ -251,7 +253,9 @@ exports.getSelfBlog = async (req, res) => {
   const findUser = req.user;
   console.log("findUser", findUser);
   try {
-    let response = await Blog.find({ user: req.user._id });
+    let response = await Blog.find({ user: req.user._id }).sort({
+      createdAt: -1,
+    });
     return res.status(201).send({
       status: true,
       response,
@@ -345,7 +349,9 @@ exports.loginBoth = async (req, res) => {
 
 exports.approvalBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find({ status: "approve" });
+    const blogs = await Blog.find({ status: "approve" })
+      .populate("user")
+      .sort({ createdAt: -1 });
     return res.status(200).send({
       status: true,
       massage: "approve blogs ",
@@ -800,3 +806,20 @@ exports.deleteBlog = async (req, res) => {
 //     });
 //   }
 // };
+exports.uploadImage = async (req, res) => {
+  try {
+    let profileImage = req.file.filename;
+
+    let updateUserProfile = await User.updateOne(
+      { _id: req.user._id },
+      { $set: { profileImage: profileImage } }
+    );
+
+    res.status(200).json({ status: true, message: "Profile Image updated" });
+  } catch (error) {
+    return res.status(400).send({
+      status: false,
+      error,
+    });
+  }
+};
