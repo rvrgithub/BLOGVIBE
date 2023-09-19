@@ -24,7 +24,7 @@ export const AllRoutes = () => {
 
   let getData = async () => {
     let token = localStorage.getItem("Token");
-    console.log(token);
+    // console.log(token);
     if (!token) {
       navigate("/login");
     }

@@ -12,26 +12,27 @@ export const UserNav = () => {
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
 
-
-
   return (
-    <div class=" fixed-top">
+    <div className=" fixed-top">
       <div className={click ? "main-container" : ""} onClick={() => Close()} />
       <nav className="navbar" onClick={(e) => e.stopPropagation()}>
         <div className="nav-container">
-          <Link exact to="/" className="nav-logo">
+          <Link to="/" className="nav-logo">
             <h1 className="logo">
               {" "}
               BLOGVIBE
-              <LiaBlogSolid style={{marginBottom:"10px" ,fontSize:"30px"}} />
+              <LiaBlogSolid
+                style={{ marginBottom: "10px", fontSize: "30px" }}
+              />
             </h1>
           </Link>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Link
-                exact
+                
+                
                 to="/allblog"
-                activeClassName="active"
+                //  activeclassname="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
@@ -40,21 +41,23 @@ export const UserNav = () => {
             </li>
             <li className="nav-item">
               <Link
-                exact
+                
+                
                 to="/myblog"
-                activeClassName="active"
+                //  activeclassname="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
                 My Blog
               </Link>
             </li>
-            
+
             <li className="nav-item">
               <Link
-                exact
+                
+                
                 to="/admin/write/blog"
-                activeClassName="active"
+                //  activeclassname="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >
@@ -64,8 +67,9 @@ export const UserNav = () => {
 
             <li className="nav-item">
               <Link
-                exact
-                activeClassName="active"
+                
+                
+                //  activeclassname="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
                 target="#"
@@ -74,22 +78,13 @@ export const UserNav = () => {
                 Profile
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                exact
-                to="/contactus"
-                activeClassName="active"
-                className="nav-links"
-                onClick={click ? handleClick : null}
-              >
-                Contact Us
-              </Link>
-            </li>
+
             <li className="nav-item">
               <Link
                 to="/register"
-                exact
-                activeClassName="active"
+                
+                
+                //  activeclassname="active"
                 className="nav-links"
                 onClick={click ? handleClick : null}
               >

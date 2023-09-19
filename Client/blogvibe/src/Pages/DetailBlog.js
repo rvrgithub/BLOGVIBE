@@ -8,11 +8,10 @@ export const DetailBlog = () => {
   const token = localStorage.getItem("Token");
   const [singleData, setSingleData] = useState([]);
   const { id } = useParams();
-  console.log("id", id);
+  // console.log("id", id);
   const hanldeData = () => {
     fetch(`${apiurl}/single/blog/${id}`, {
       method: "GET",
-
       headers: {
         "Content-Type": "application/json",
       },
@@ -25,7 +24,7 @@ export const DetailBlog = () => {
   useEffect(() => {
     hanldeData();
   }, []);
-  console.log("singleData", singleData);
+  // console.log("singleData", singleData);
   return (
     <div className="container" style={{ marginTop: "100px", width: "100%" }}>
       <h1 className="detailTitle">{singleData.title}</h1>

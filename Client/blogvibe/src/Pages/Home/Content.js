@@ -2,12 +2,11 @@ import React from "react";
 import "../../Styles/content.css";
 export const Content = () => {
   return (
-    <section class="content">
-      <div class="container">
-        <div class="col-lg-12">
+    <section className="content">
+      <div className="container">
+        <div className="col-lg-12">
           {" "}
-
-          <div class="heading">
+          <div className="heading">
             <p>
               Meeting Catgories "Welcome to BlogVibe, where the energy of
               blogging comes alive. Our logo encapsulates the essence of our

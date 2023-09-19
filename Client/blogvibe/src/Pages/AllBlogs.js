@@ -29,7 +29,7 @@ export const AllBlogs = () => {
   }, []);
 
   const handleDeleteFunc = (e) => {
-    console.log("e", e._id);
+    // console.log("e", e._id);
     fetch(`${apiurl}/admin/delete/blog/${e._id}`, {
       method: "DELETE",
       headers: {
@@ -41,7 +41,7 @@ export const AllBlogs = () => {
       .then((data) => getData())
       .catch((error) => console.log("error", error));
   };
-  console.log("blogData", blogData.blogs);
+  // console.log("blogData", blogData.blogs);
 
   // .................... capitalizeFirstLetter  ..........................
   function capitalizeFirstLetter(text) {
@@ -107,12 +107,14 @@ export const AllBlogs = () => {
                                 src={`${apiurl}/images/${
                                   el.user
                                     ? el.user.profileImage
-                                    : "1693218613925.jpg"
+                                    : "1694688315354.jfif"
+                                    
+                                   
                                 }`}
                                 height={"30px"}
                                 style={{ width: "30px" }}
                               />
-                              <p>{el.user ? el.user.name : ""}</p>
+                              <p>{el.user ? el.user.name :"Admin"}</p>
                             </div>
                             <p>{format(el.createdAt ? el.createdAt :"1days ago")}</p>
                           </div>

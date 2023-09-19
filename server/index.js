@@ -31,7 +31,7 @@ app.use("/uploads", express.static("uploads"));
 let upload = multer({ storage });
 
 app.post("/upload", upload.single("image"), (req, res) => {
-  console.log(req.file);
+  // console.log(req.file);
   res.send("sucess");
 });
 
@@ -62,5 +62,5 @@ route.put(
 app.use("/", route);
 app.listen(4500, () => {
   Connection();
-  console.log("server");
+  // console.log("server");
 });

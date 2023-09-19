@@ -6,7 +6,7 @@ import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
 export const ContactForm = () => {
   const [contactValue, setContactValue] = useState({
     name: "",
-    email: "", 
+    email: "",
     message: "",
   });
   const handleInput = (e) => {
@@ -47,11 +47,10 @@ export const ContactForm = () => {
   //     }
   //   };
 
-
-  const handleSubmit =(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-  console.log("input value", contactValue);
-  }
+    // console.log("input value", contactValue);
+  };
   return (
     <>
       {/* <div style={{ height: "10vh" , marginTop:"0" , border: "5px solid red"}}></div> */}
@@ -111,8 +110,8 @@ export const ContactForm = () => {
             onClick={(e) => handleSubmit(e)}
             className="btn"
             value="Send"
-            class="btn btn-dark"
-            style={{marginTop:"15px"}}
+            className="btn btn-dark"
+            style={{ marginTop: "15px" }}
           >
             Send
           </button>

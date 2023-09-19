@@ -93,7 +93,7 @@ export const Footer = () => {
           <a className="text-dark" href="https://kishordeveloper.com/">
             Radhika{" "}
             <i
-              class="fa-solid fa-heart fa-flip"
+              className="fa-solid fa-heart fa-flip"
               style={{ color: "#e10e0e" }}
             ></i>{" "}
             Verma

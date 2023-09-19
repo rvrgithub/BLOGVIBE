@@ -28,11 +28,11 @@ export const Profile = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setData(data.getUserId);
       });
   };
-  console.log("datadddddd", data);
+  // console.log("datadddddd", data);
   useEffect(() => {
     getProfile();
   }, []);
@@ -57,7 +57,7 @@ export const Profile = () => {
       .then((data) => {
         setImage();
         getProfile();
-        console.log(data);
+        // console.log(data);
       });
   };
 
@@ -82,10 +82,12 @@ export const Profile = () => {
               <div className="card-body text-center">
                 {!image ? (
                   <img
-                    src={`${apiurl}/images/${data.profileImage}`}
+                    src={`${apiurl}/images/${
+                      data ? data.profileImage : "1694688315354.jfif"
+                    }`}
                     alt="avatar"
                     className="rounded-circle img-fluid"
-                    style={{ width: "120px" , height:"100px"}}
+                    style={{ width: "120px", height: "100px" }}
                   />
                 ) : (
                   <img
@@ -133,7 +135,7 @@ export const Profile = () => {
                   </div>
                   <div className="col-sm-9">
                     <p className="text-muted mb-0">
-                      {capitalizeFirstLetter(data.name)}
+                      {capitalizeFirstLetter(data? data.name : "")}
                     </p>
                   </div>
                 </div>

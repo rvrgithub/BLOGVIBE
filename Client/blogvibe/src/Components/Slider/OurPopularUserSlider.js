@@ -105,16 +105,16 @@ export const OurPopularUserSlider = () => {
               );
             })} */}
             <SwiperSlide>
-              <div class="review_card">
-                <div class="review_imgBox">
+              <div className="review_card">
+                <div className="review_imgBox">
                   <img
-                    class="review_img"
+                    className="review_img"
                     src={
                       "https://wallpapers.com/images/hd/cool-profile-picture-87h46gcobjl5e4xu.jpg"
                     }
                   />
                 </div>
-                <div class="review_content">
+                <div className="review_content">
                   <h2>name</h2>
                   <h3>company</h3>
                   <p>description</p>

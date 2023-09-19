@@ -8,7 +8,7 @@ import { apiurl } from "../../App";
 
 export const PendingBlog = () => {
   const Token = localStorage.getItem("Token");
-  console.log("token", Token);
+  // console.log("token", Token);
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(true);
   function truncate(string, n) {
@@ -25,7 +25,7 @@ export const PendingBlog = () => {
   };
 
   const handleStatus = (id) => {
-    console.log("id", id);
+    // console.log("id", id);
     fetch(`${apiurl}/admin/approve/${id._id} `, {
       method: "PUT",
       headers: {
@@ -39,7 +39,7 @@ export const PendingBlog = () => {
   };
   // ..........  delete function ..............
   const handleDelete = (e) => {
-    console.log("e", e._id);
+    // console.log("e", e._id);
     fetch(`${apiurl}/delete/blog/${e._id}`, {
       method: "DELETE",
       headers: {
@@ -67,36 +67,36 @@ export const PendingBlog = () => {
     // Convert the first letter to uppercase and the rest to lowercase
     return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
   }
-  console.log("blogData", blogData);
+  // console.log("blogData", blogData);
   return (
     <>
       {loading ? (
         <div style={{ height: "60vh", padding: "20% 50%" }}>
           <div
-            class="spinner-border text-primary"
+            className="spinner-border text-primary"
             style={{ margin: "auto" }}
             role="status"
           >
-            {/* <span class="sr-only">Loading...</span> */}
+            {/* <span className="sr-only">Loading...</span> */}
           </div>
         </div>
       ) : (
         <>
           {!blogData?.length == 0 ? (
             <div
-              class="row d-flex justify-content-center"
+              className="row d-flex justify-content-center"
               style={{ marginTop: "100px" }}
             >
-              <div class="col-md-8 col-lg-6">
+              <div className="col-md-8 col-lg-6">
                 <div
-                  class="card shadow-0 border"
+                  className="card shadow-0 border"
                   style={{ backgroundColor: "#f0f2f5" }}
                 >
-                  <div class="card-body p-4">
+                  <div className="card-body p-4">
                     {blogData.map((el) => (
                       // <Link to={`/detail/Blog/${el._id}`} className="link">
-                      <div class="card mb-4">
-                        <div class="card-body">
+                      <div className="card mb-4">
+                        <div className="card-body">
                           <p style={{ fontSize: "21px" }}>
                             {truncate(capitalizeFirstLetter(el.title), 15)}
                           </p>
@@ -106,8 +106,8 @@ export const PendingBlog = () => {
                               20
                             )}
                           </p>
-                          <div class="d-flex justify-content-between">
-                            <div class="d-flex flex-row align-items-center">
+                          <div className="d-flex justify-content-between">
+                            <div className="d-flex flex-row align-items-center">
                               {/* <img
                                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
                                 alt="avatar"
@@ -124,14 +124,14 @@ export const PendingBlog = () => {
                                 width="25"
                                 height="25"
                               />
-                              <p class="small mb-0 ms-2">
+                              <p className="small mb-0 ms-2">
                                 {el.user ? el.user.name : ""}
                               </p>
                             </div>
-                            {/* <div class="d-flex flex-row align-items-center"> */}
+                            {/* <div className="d-flex flex-row align-items-center"> */}
                             <button
                               type="button"
-                              class="btn btn-primary"
+                              className="btn btn-primary"
                               onClick={() => handleStatus(el)}
                             >
                               Approve?

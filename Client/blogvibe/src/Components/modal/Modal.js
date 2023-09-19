@@ -10,8 +10,8 @@ export const Display = ({ open, setIsOpen, data, func }) => {
   });
   let token = localStorage.getItem("Token");
 
-  console.log("data", data);
-  console.log("updateValue", updateValue);
+  // console.log("data", data);
+  // console.log("updateValue", updateValue);
   const handleInput = (e) => {
     const { name, value } = e.target;
     setUpdateValue({ ...updateValue, [name]: value });
@@ -41,13 +41,13 @@ export const Display = ({ open, setIsOpen, data, func }) => {
     alert("Your Blog Post Has Been Successfully Edited");
   };
 
-  console.log("update", updateValue);
+  // console.log("update", updateValue);
   if (!open) return null;
   return (
     <>
        <div className="container">
-      <div class="row p-5" style={{ marginTop: "85px" }}>
-        <div class="col-lg-7 mx-auto">
+      <div className="row p-5" style={{ marginTop: "85px" }}>
+        <div className="col-lg-7 mx-auto">
         <div className="card  mx-auto bg-light">
           <div className="card-body bg-light">
             <div className="container">

@@ -8,29 +8,28 @@ import "./uernav.css";
 import { LiaBlogSolid } from "react-icons/lia";
 export const AdminNav = () => {
   const [click, setClick] = React.useState(false);
-const [adminTime ,setAdminTime]  =useState(false);
-// const [userTime ,setUserTime]  =useState(false);
+  const [adminTime, setAdminTime] = useState(false);
+  // const [userTime ,setUserTime]  =useState(false);
 
   const handleClick = () => setClick(!click);
   const Close = () => setClick(false);
   const role = localStorage.getItem("role");
-  console.log("role",role)
-  useEffect(()=>{
-if(role === "admin"){
-  setAdminTime(true);
-// setUserTime(false)
-}
-else{
-  setAdminTime(false);
-  // setUserTime(true)
-}
-  },[role,adminTime])
+  // console.log("role",role)
+  useEffect(() => {
+    if (role === "admin") {
+      setAdminTime(true);
+      // setUserTime(false)
+    } else {
+      setAdminTime(false);
+      // setUserTime(true)
+    }
+  }, [role, adminTime]);
   return (
-    <div class=" fixed-top">
+    <div className=" fixed-top">
       <div className={click ? "main-container" : ""} onClick={() => Close()} />
       <nav className="navbar" onClick={(e) => e.stopPropagation()}>
         <div className="nav-container">
-          <Link exact to="/" className="nav-logo">
+          <Link to="/" className="nav-logo">
             <h1 className="logo">
               {" "}
               BLOGVIBE
@@ -45,9 +44,9 @@ else{
                 {" "}
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/allblog"
-                    activeClassName="active"
+                    // activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -56,9 +55,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/myblog"
-                    activeClassName="active"
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -67,9 +66,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/admin/pending/blog"
-                    activeClassName="active"
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -78,9 +77,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/admin/all-user"
-                    activeClassName="active"
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -89,9 +88,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/write/blog"
-                    activeClassName="active"
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -100,11 +99,10 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
-                    activeClassName="active"
+                    
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
-                   
                     to="/profile"
                   >
                     Profile
@@ -112,20 +110,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
-                    to="/contactus"
-                    activeClassName="active"
-                    className="nav-links"
-                    onClick={click ? handleClick : null}
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
                     to="/login"
-                    exact
-                    activeClassName="active"
+                    
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={() => localStorage.clear()}
                   >
@@ -138,9 +125,9 @@ else{
                 {" "}
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/allblog"
-                    activeClassName="active"
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -149,9 +136,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/myblog"
-                    activeClassName="active"
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -160,9 +147,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
+                    
                     to="/write/blog"
-                    activeClassName="active"
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
                   >
@@ -171,11 +158,10 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
-                    activeClassName="active"
+                    
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}
-                   
                     to="/profile"
                   >
                     Profile
@@ -183,20 +169,9 @@ else{
                 </li>
                 <li className="nav-item">
                   <Link
-                    exact
-                    to="/contactus"
-                    activeClassName="active"
-                    className="nav-links"
-                    onClick={click ? handleClick : null}
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
                     to="/login"
-                    exact
-                    activeClassName="active"
+                    
+                    //  activeclassname="active"
                     className="nav-links"
                     onClick={() => localStorage.clear()}
                   >

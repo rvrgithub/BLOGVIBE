@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 // dotenv.config({ path: "../config/config.env" });
 dotenv.config();
-console.log(process.env.MONGOOSE_URL)
+// console.log(process.env.MONGOOSE_URL)
 exports.Connection = () => {
   try {
     mongoose

@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import "../Styles/navbar.css"
 export const Navbar = () => {
     return (
-        <header class="header-area header-sticky">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <nav class="main-nav">
+        <header className="header-area header-sticky">
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <nav className="main-nav">
                   {/* <!-- ***** Logo Start ***** --> */}
                   <Link to="/" className="logo">
                     BLOGVIBE{" "}
                   </Link>
                   {/* <!-- ***** Logo End ***** --> */}
                   {/* <!-- ***** Menu Start ***** --> */}
-                  <ul class="nav">
-                    <li class="scroll-to-section">
+                  <ul className="nav">
+                    <li className="scroll-to-section">
                       <Link className="active" to="/">
                         {" "}
                         Home
@@ -24,12 +24,12 @@ export const Navbar = () => {
                     <li>
                       <Link to="/blog">Blog</Link>{" "}
                     </li>
-                    <li class="scroll-to-section">
+                    <li className="scroll-to-section">
                       <Link to="">My Blog</Link>
                     </li>
-                    {/* <li class="has-sub">
+                    {/* <li className="has-sub">
                       <a href="javascript:void(0)">Pages</a>
-                      <ul class="sub-menu">
+                      <ul className="sub-menu">
                         <li>
                           <a href="meetings.html">Upcoming Meetings</a>
                         </li>
@@ -38,14 +38,14 @@ export const Navbar = () => {
                         </li>
                       </ul>
                     </li> */}
-                    <li class="scroll-to-section">
+                    <li className="scroll-to-section">
                       <a href="#courses">Courses</a>
                     </li>
-                    <li class="scroll-to-section">
+                    <li className="scroll-to-section">
                       <Link to={"contact"}>Contact Us</Link>
                     </li>
                   </ul>
-                  <Link class="menu-trigger">
+                  <Link className="menu-trigger">
                     <span>Menu</span>
                   </Link>
                   {/* <!-- ***** Menu End ***** --> */}
@@ -267,8 +267,8 @@ export const Navbar = () => {
 //             x
 //           </div>
 
-//           <div class="d-flex justify-content-between gty">
-//             <div style={{ width: "50%", height: "100%" }} class="df" >
+//           <div className="d-flex justify-content-between gty">
+//             <div style={{ width: "50%", height: "100%" }} className="df" >
 //               <img src="https://i.gifer.com/IPNp.gif" />
 //             </div>
 //             <div style={{ width: "50%" }}>
@@ -286,34 +286,34 @@ export const Navbar = () => {
 //                 type="password"
 //                 onChange={(e) => setPassword(e.target.value)}
 //               />
-//               {errShow && <div><i class="fa-solid fa-circle-exclamation" style={{ color: "red" }}></i><span style={{ color: "red", marginLeft: "10px" }}>{loginError}</span></div>}
+//               {errShow && <div><i className="fa-solid fa-circle-exclamation" style={{ color: "red" }}></i><span style={{ color: "red", marginLeft: "10px" }}>{loginError}</span></div>}
 
-//               <div class="col d-flex justify-content-center">
-//                 <div class="form-check">
+//               <div className="col d-flex justify-content-center">
+//                 <div className="form-check">
 //                   <input
-//                     class="form-check-input"
+//                     className="form-check-input"
 //                     type="checkbox"
 //                     value=""
 //                     id="form2Example31"
 //                     checked
 //                   />
 
-//                   <label class="form-check-label" for="form2Example31">
+//                   <label className="form-check-label" for="form2Example31">
 //                     {" "}
 //                     Remember me{" "}
 //                   </label>
 //                 </div>
-//                 <div class="col">
+//                 <div className="col">
 //                   <a href="#!">Forgot password?</a>
 //                 </div>
 //               </div>
 
-//               <button class="btn btn-primary" 
+//               <button className="btn btn-primary" 
 //               // onClick={() => handleSubmit()}
 //                >
 //                 Login
 //               </button>
-//               <div class="text-center">
+//               <div className="text-center">
 //                 <p>
 //                   Not a member? <a onClick={() =>
                     
@@ -359,7 +359,7 @@ export const Navbar = () => {
 //             x
 //           </div>
 
-//           <div class="d-flex justify-content-between gty"  >
+//           <div className="d-flex justify-content-between gty"  >
 //             <div style={{ width: "50%" }}>
 //               <img src="https://cdn.dribbble.com/users/988448/screenshots/5240042/icon_cadastro_v5.gif" />
 //             </div>
@@ -397,11 +397,11 @@ export const Navbar = () => {
 //                 onChange={(e) => setRpassword(e.target.value)}
 //               />
 
-//               {rshow && <div><i class="fa-solid fa-circle-exclamation" style={{ color: "red" }}></i><span style={{ color: "red", marginLeft: "10px" }}>{rerror}</span></div>}
+//               {rshow && <div><i className="fa-solid fa-circle-exclamation" style={{ color: "red" }}></i><span style={{ color: "red", marginLeft: "10px" }}>{rerror}</span></div>}
 
-//               <div class="col d-flex justify-content-center"></div>
+//               <div className="col d-flex justify-content-center"></div>
 
-//               <button class="btn btn-primary" onClick={() => userRegister()}>
+//               <button className="btn btn-primary" onClick={() => userRegister()}>
 //                 Register
 //               </button>
 //               <br />

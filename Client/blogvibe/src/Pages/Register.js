@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "../Styles/login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { apiurl } from "../App";
 export const Register = () => {
   const [active, setActive] = useState(true);
-
+  const naviation = useNavigate();
   const [inputValue, setInputValue] = useState({
     name: "",
     email: "",
@@ -13,16 +14,16 @@ export const Register = () => {
 
   const handleInputValue = (e) => {
     const { name, value } = e.target;
-    console.log("e", value, name);
+    // console.log("e", value, name);
     setInputValue({
       ...inputValue,
       [name]: value,
     });
-  }; 
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("input Value", inputValue);
-    fetch("http://localhost:4500/register", {
+    // console.log("input Value", inputValue);
+    fetch(`${apiurl}/register`, {
       method: "POST",
       // mode: "cors", // no-cors, *cors, same-origin
       // cache: "no-cache",
@@ -39,7 +40,14 @@ export const Register = () => {
       body: JSON.stringify(inputValue),
     })
       .then((res) => res.json())
-      .then((data) => console.log("data", data))
+      .then((data) => {
+        if (data.stauts == true) {
+          alert("Register successfully");
+          naviation("/login");
+        } else {
+          alert(data.massage);
+        }
+      })
       .catch((error) => console.log("error", error));
   };
 
@@ -47,8 +55,8 @@ export const Register = () => {
     <div>
       <section className="login_section">
         <div className={active ? "container" : "active"}>
-          <div class="user signinBx">
-            <div class="formBx">
+          <div className="user signinBx">
+            <div className="formBx">
               <form
                 onSubmit={(e) => {
                   handleSubmit(e);
@@ -81,13 +89,13 @@ export const Register = () => {
                   placeholder="Phone Number"
                 />
                 <input type="submit" name="" value="Sign Up" />
-                <p class="signup">
+                <p className="signup">
                   Already have an account ?<Link to="/login">Sign in.</Link>
                 </p>
                 !
               </form>
             </div>
-            <div class="imgBx">
+            <div className="imgBx">
               <img
                 src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg"
                 alt=""

@@ -118,8 +118,8 @@ export const HeaderSlider = () => {
               className="mySwiper blogSlider"
             >
               {cardData?.map((el, index) => (
-                <SwiperSlide>
-                  <div className="swiper_div" key={index}>
+                <SwiperSlide key={index}>
+                  <div className="swiper_div">
                     <div className="icon">
                       <img
                         className="switper_img"

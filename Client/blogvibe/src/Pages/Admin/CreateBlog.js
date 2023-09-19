@@ -68,15 +68,15 @@
 //   };
 //   return (
 //     <div className="container">
-//       <div class="row p-5" style={{ marginTop: "85px" }}>
-//         <div class="col-lg-7 mx-auto">
-//           <div class="card mx-auto bg-light">
-//             <div class="card-body bg-light">
-//               <div class="container">
+//       <div className="row p-5" style={{ marginTop: "85px" }}>
+//         <div className="col-lg-7 mx-auto">
+//           <div className="card mx-auto bg-light">
+//             <div className="card-body bg-light">
+//               <div className="container">
 //                 <form id="contact-form">
-//                   <div class="controls">
-//                     <div class="col-md-12">
-//                       <div class="form-group">
+//                   <div className="controls">
+//                     <div className="col-md-12">
+//                       <div className="form-group">
 //                         {/* <label for="form_name">Title *</label> */}
 //                         <input
 //                           id="form_name"
@@ -84,15 +84,15 @@
 //                           name="title"
 //                           value={inputValue.title}
 //                           onChange={(e) => handleInput(e)}
-//                           class="form-control"
+//                           className="form-control"
 //                           placeholder="Write Your Title*"
 //                           required="required"
 //                           data-error="Firstname is required."
 //                         />
 //                       </div>
 //                     </div>
-//                     <div class="col-md-12">
-//                       <div class="form-group" style={{ margin: "20px 0" }}>
+//                     <div className="col-md-12">
+//                       <div className="form-group" style={{ margin: "20px 0" }}>
 //                         <input
 //                           type="file"
 //                           src="img_submit.gif"
@@ -100,7 +100,7 @@
 //                           id="form_lastname"
 //                           name="image"
 //                           // value={inputValue.image}
-//                           class="form-control"
+//                           className="form-control"
 //                           onChange={(e) =>
 //                             setInputValue({
 //                               ...inputValue,
@@ -114,14 +114,14 @@
 //                       </div>
 //                     </div>
 
-//                     <div class="row">
-//                       <div class="col-md-12">
-//                         <div class="form-group">
+//                     <div className="row">
+//                       <div className="col-md-12">
+//                         <div className="form-group">
 //                           {/* <label for="form_message">Message *</label> */}
 //                           <textarea
 //                             id="form_message"
 //                             name="description"
-//                             class="form-control"
+//                             className="form-control"
 //                             placeholder="Write your message here."
 //                             rows="4"
 //                             value={inputValue.description}
@@ -132,11 +132,11 @@
 //                         </div>
 //                       </div>
 
-//                       <div class="col-md-12">
+//                       <div className="col-md-12">
 //                         <input
 //                           style={{ width: "100%", margin: "10px 0" }}
 //                           type="submit"
-//                           class="btn btn-success btn-send   pt-2 btn-block
+//                           className="btn btn-success btn-send   pt-2 btn-block
 //                         "
 //                           onClick={(e) => handleSubmit(e)}
 //                           value="Send Message"
@@ -167,7 +167,7 @@ export const CreateBlog = () => {
   });
   const handleInput = (e) => {
     const { name, value } = e.target;
-    console.log("name", name, value);
+    // console.log("name", name, value);
     setInputValue({ ...inputValue, [name]: value });
   };
   // console.log("input _ image", inputValue);
@@ -195,7 +195,7 @@ export const CreateBlog = () => {
     data.set("title", inputValue.title);
     data.set("image", inputValue.image);
     data.set("descriptions", inputValue.description);
-    console.log("data", data);
+    // console.log("data", data);
 
     fetch(`${apiurl}/${writeBlogApi}`, {
       method: "POST",
@@ -224,15 +224,15 @@ export const CreateBlog = () => {
   };
   return (
     <div className="container">
-      <div class="row p-5" style={{ marginTop: "85px" }}>
-        <div class="col-lg-7 mx-auto">
-          <div class="card mx-auto bg-light">
-            <div class="card-body bg-light">
-              <div class="container">
+      <div className="row p-5" style={{ marginTop: "85px" }}>
+        <div className="col-lg-7 mx-auto">
+          <div className="card mx-auto bg-light">
+            <div className="card-body bg-light">
+              <div className="container">
                 <form id="contact-form">
-                  <div class="controls">
-                    <div class="col-md-12">
-                      <div class="form-group">
+                  <div className="controls">
+                    <div className="col-md-12">
+                      <div className="form-group">
                         {/* <label for="form_name">Title *</label> */}
                         <input
                           id="form_name"
@@ -240,15 +240,15 @@ export const CreateBlog = () => {
                           name="title"
                           value={inputValue.title}
                           onChange={(e) => handleInput(e)}
-                          class="form-control"
+                          className="form-control"
                           placeholder="Write Your Title*"
                           required="required"
                           data-error="Firstname is required."
                         />
                       </div>
                     </div>
-                    <div class="col-md-12">
-                      <div class="form-group" style={{ margin: "20px 0" }}>
+                    <div className="col-md-12">
+                      <div className="form-group" style={{ margin: "20px 0" }}>
                         <input
                           type="file"
                           src="img_submit.gif"
@@ -257,7 +257,7 @@ export const CreateBlog = () => {
                           name="image"
                           // value={inputValue.image}
                           ref={fileInputRef}
-                          class="form-control"
+                          className="form-control"
                           onChange={(e) =>
                             setInputValue({
                               ...inputValue,
@@ -271,14 +271,14 @@ export const CreateBlog = () => {
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
+                    <div className="row">
+                      <div className="col-md-12">
+                        <div className="form-group">
                           {/* <label for="form_message">Message *</label> */}
                           <textarea
                             id="form_message"
                             name="description"
-                            class="form-control"
+                            className="form-control"
                             placeholder="Blog Descriptions..."
                             rows="4"
                             value={inputValue.description}
@@ -289,11 +289,11 @@ export const CreateBlog = () => {
                         </div>
                       </div>
 
-                      <div class="col-md-12">
+                      <div className="col-md-12">
                         <input
                           style={{ width: "100%", margin: "10px 0" }}
                           type="submit"
-                          class="btn btn-success btn-send   pt-2 btn-block
+                          className="btn btn-success btn-send   pt-2 btn-block
                         "
                           onClick={(e) => handleSubmit(e)}
                           value="Create Blog"

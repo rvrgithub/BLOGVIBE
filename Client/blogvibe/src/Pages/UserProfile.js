@@ -21,7 +21,7 @@ export const UserProfile = () => {
       .then((data) => setGetBlog(data.response))
       .catch((error) => console.log("error", error));
   };
-  console.log("getBlog", getBlog);
+  // console.log("getBlog", getBlog);
   const getSngleUSerByd = () => {
     fetch(`${apiurl}/single/uesr/${id}`)
       .then((res) => res.json())
@@ -33,25 +33,25 @@ export const UserProfile = () => {
     getDataById();
     getSngleUSerByd();
   }, []);
-  console.log("id", id);
-  console.log("udar Data", getUser);
+  // console.log("id", id);
+  // console.log("udar Data", getUser);
 
   return (
     <div className="wrapper">
-      <div className="sidebar" style={{ height: "62.8vh",marginTop:"10px" }}>
+      <div className="sidebar" style={{ height: "62.8vh", marginTop: "10px" }}>
         <div className="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
           <img
             className="mx-auto d-block w-75 h-10 bg-primary img-fluid rounded-circle mb-4 p-3"
-            src="https://images2.fanpop.com/images/photos/5900000/Randomness-random-5997130-1280-800.jpg"
+            src={`${apiurl}/images/${getUser?.profileImage}`}
             alt="img_error"
           />
           <h1 className="font-weight-bold">_{getUser?.name}</h1>
-          <p className="mb-1">
+          <div className="mb-1">
             <p>{getUser.email}</p>
             {/* Justo stet no accusam stet invidunt sanctus magna clita vero eirmod,
             sit sit labore dolores lorem. Lorem at sit dolor dolores sed diam
             justo */}
-          </p>
+          </div>
           <div className="d-flex justify-content-center mb-3">
             <li
               className="btn btn-outline-primary mr-2"
@@ -104,7 +104,7 @@ export const UserProfile = () => {
                   className="img-fluid mb-4 mb-md-0 user_pro_img"
                   src={`${apiurl}/images/${el.image}`}
                   alt="error"
-                  style={{height:"500px !important"}}
+                  style={{ height: "500px !important" }}
                 />
               </div>
               <div className="col-md-7">

@@ -1,26 +1,26 @@
 import React from "react";
+import { apiurl } from "../../App";
+import { Link } from "react-router-dom";
 // import "./user.css";
-export const OurPopularUserCards = ({ cardDetails, imageData }) => {
+export const OurPopularUserCards = ({ cardDetails }) => {
   // console.log("imageData", imageData[0].img);
-  const { name, email } = cardDetails;
-  // console.log("testiMonialDetail" + cardDetails);
-  console.log("namea", name, email);
+  const { _id,name, email, profileImage } = cardDetails;
   return (
-    <div class="review_card">
-      <div class="review_imgBox">
-        <img
-          class="review_img"
-          alt="erorr"
-          src={
-            "https://wallpapers.com/images/hd/cool-profile-picture-87h46gcobjl5e4xu.jpg"
-          }
-        />
-      </div>
-      <div class="review_content">
-        <h2>{name}</h2>
-        <h3>{email}</h3>
-        <p>{"hbdhdfbjdfjdfjhdfjdfhddjdhdhdh"}</p>
-      </div>
+    <div className="review_card">
+      <Link to={`/user/profile/${_id}`}>
+        <div className="review_imgBox">
+          <img
+            className="review_img"
+            alt="erorr"
+            src={`${apiurl}/images/${profileImage}`}
+          />
+        </div>
+        <div className="review_content">
+          <h2>{name}</h2>
+          <h3>{email}</h3>
+          {/* <p>{"hbdhdfbjdfjdfjhdfjdfhddjdhdhdh"}</p> */}
+        </div>
+      </Link>
     </div>
   );
 };

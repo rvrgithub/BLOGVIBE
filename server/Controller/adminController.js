@@ -5,10 +5,10 @@ const { isValidName, isValidEmail, isValidPwd } = require("../Util/validation");
 const bcrypt = require("bcrypt");
 exports.adminRegister = async (req, res) => {
   const { email, name, password, phoneNumber } = req.body;
-  console.log("req.body ", req.body);
+  // console.log("req.body ", req.body);
   try {
     if (Object.keys(req.body).length === 0) {
-      console.log("req.body");
+      // console.log("req.body");
       return res.status(401).send({
         stauts: false,
         massage: "All Credientials Are Required.. !!",
@@ -17,7 +17,7 @@ exports.adminRegister = async (req, res) => {
 
     // .......................All Credientials Are Required....................
     if (!name || !email || !password) {
-      console.log("all are required");
+      // console.log("all are required");
       return res.status(401).send({
         stauts: false,
         massage: "All Credientials Are Required.. !!",
@@ -25,7 +25,7 @@ exports.adminRegister = async (req, res) => {
     }
     //.......................error inside name.......................
     if (!isValidName(name)) {
-      console.log("all are required");
+      // console.log("all are required");
       return res.status(401).send({
         stauts: false,
         massage: "Only String valid !!",
@@ -34,7 +34,7 @@ exports.adminRegister = async (req, res) => {
 
     //  .......................error inside email .......................
     if (!isValidEmail(email)) {
-      console.log("all are required");
+      // console.log("all are required");
       return res.status(401).send({
         stauts: false,
         massage: "email is not valid !!",
@@ -43,7 +43,7 @@ exports.adminRegister = async (req, res) => {
 
     // ....................... error inside password .......................
     if (!isValidPwd(password)) {
-      console.log("all are required");
+      // console.log("all are required");
       return res.status(401).send({
         stauts: false,
         massage: "password is not valid !!",
@@ -63,7 +63,7 @@ exports.adminRegister = async (req, res) => {
     } else {
       // .......................create password strong ......
       const hasmapPassword = await bcrypt.hash(password, 10);
-      console.log("hasjhg ", hasmapPassword);
+      // console.log("hasjhg ", hasmapPassword);
       const response = new Admin({
         name,
         password: hasmapPassword,

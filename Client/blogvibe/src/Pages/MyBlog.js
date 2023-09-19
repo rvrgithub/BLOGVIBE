@@ -33,7 +33,7 @@ export const MyBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data jbjbjkb ", data);
+        // console.log("data jbjbjkb ", data);
         setMyblog(data.response);
       })
       .catch((error) => console.log("error", error));
@@ -99,10 +99,10 @@ export const MyBlog = () => {
       ) : (
         <div className="container" style={{ marginTop: "90px" }}>
           <div className="section_our_solution">
-            <div class="container mt-5 mb-3">
-              <div class="row">
+            <div className="container mt-5 mb-3">
+              <div className="row">
                 {myblog?.map((el) => (
-                  <div class="col-md-4">
+                  <div className="col-md-4">
                     <div className="our_solution_category">
                       <div className="solution_cards_box">
                         <div className="solution_card">
