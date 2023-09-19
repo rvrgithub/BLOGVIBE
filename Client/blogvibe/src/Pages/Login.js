@@ -52,7 +52,7 @@ export const Login = () => {
           alert(data.massage);
         }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
 
   return (
@@ -64,7 +64,7 @@ export const Login = () => {
               <img
                 src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg"
                 alt=""
-                onClick={() => console.log("image clicked")}
+                
               />
             </div>
             <div className="formBx">

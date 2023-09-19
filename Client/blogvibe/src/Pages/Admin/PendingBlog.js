@@ -21,7 +21,7 @@ export const PendingBlog = () => {
         setBlogData(data.response);
         setLoading(false);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
 
   const handleStatus = (id) => {
@@ -35,7 +35,7 @@ export const PendingBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => getData())
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
   // ..........  delete function ..............
   const handleDelete = (e) => {
@@ -49,7 +49,7 @@ export const PendingBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => getData())
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
     alert("Success: Your Blog Post Has Been Deleted!");
   };
 
@@ -93,9 +93,9 @@ export const PendingBlog = () => {
                   style={{ backgroundColor: "#f0f2f5" }}
                 >
                   <div className="card-body p-4">
-                    {blogData.map((el) => (
+                    {blogData.map((el,index) => (
                       // <Link to={`/detail/Blog/${el._id}`} className="link">
-                      <div className="card mb-4">
+                      <div className="card mb-4" key={index}>
                         <div className="card-body">
                           <p style={{ fontSize: "21px" }}>
                             {truncate(capitalizeFirstLetter(el.title), 15)}

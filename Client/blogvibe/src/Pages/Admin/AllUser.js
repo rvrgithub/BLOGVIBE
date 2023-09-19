@@ -19,7 +19,7 @@ export function AllUser() {
     fetch(`${apiurl}/getAll/user`)
       .then((res) => res.json())
       .then((data) => setBlogData(data.response))
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
   const deleteUser = (id) => {
     // console.log("id", id);
@@ -32,7 +32,6 @@ export function AllUser() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data);
         getData();
       });
   };
@@ -147,12 +146,12 @@ export function AllUser() {
                         </div>
                         <Link to={`/user/profile/${el._id}`} >
                           <div className="job-right my-4 flex-shrink-0">
-                            <a
+                            <div
                               href="#"
                               className="btn d-block w-100 d-sm-inline-block btn-light"
                             >
                               Profile
-                            </a>
+                            </div>
                           </div>
                         </Link>
                         <div className="job-right my-4 flex-shrink-0">

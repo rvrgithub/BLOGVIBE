@@ -220,7 +220,7 @@ export const CreateBlog = () => {
           alert("Let Your Thoughts Flow - Start Writing Your Blog!");
         }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
   return (
     <div className="container">

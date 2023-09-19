@@ -79,7 +79,6 @@ exports.adminRegister = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log("error", error);
     return res.status(401).json({
       stauts: false,
 
@@ -92,10 +91,8 @@ exports.adminRegister = async (req, res) => {
 // ........................ update blog by admin..........................
 
 exports.updateBlogByA = async (req, res) => {
-  console.log(req.body, req.file);
   const blogId = req.params.id;
   const findBlog = await Blog.findOne({ _id: blogId });
-  console.log("findBlog", findBlog);
   try {
     const { title, descriptions } = req.body;
     const checkValueImage = req.file ? req.file.filename : findBlog.image;
@@ -124,7 +121,6 @@ exports.updateBlogByA = async (req, res) => {
       massage: "Something is Good !!",
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({
       stauts: false,
       massage: "Something Wrong !!",
@@ -135,12 +131,10 @@ exports.updateBlogByA = async (req, res) => {
 
 exports.approve = async (req, res) => {
   const blogId = req.params.id;
-  console.log("id", blogId);
   const blog = await Blog.updateOne(
     { _id: blogId },
     { $set: { status: "approve" } }
   );
-  console.log("req");
   try {
     return res.status(200).json({
       stauts: true,
@@ -157,7 +151,6 @@ exports.approve = async (req, res) => {
 };
 
 exports.pendingBlog = async (req, res) => {
-  console.log("jhsdfglsjkd");
   try {
     const response = await Blog.find({ status: "pending" }).populate("user");
     // console.log("response",response);
@@ -199,7 +192,6 @@ exports.approvAll = async (req, res) => {
 exports.deleteBlogByA = async (req, res) => {
   try {
     const blogId = req.params.id;
-    console.log("blog id", blogId);
     // const findBlog = await Blog.findOne({ _id: blogId });
     // console.log("findBlog", findBlog);
     // if (!findBlog) {
@@ -209,7 +201,6 @@ exports.deleteBlogByA = async (req, res) => {
     //   });
     // } else {
     const deleteBlog = await Blog.deleteOne({ _id: blogId });
-    console.log("delete blog", deleteBlog);
     return res.status(500).json({
       stauts: true,
       massage: "delete Blog Succesfully !!",
@@ -229,9 +220,7 @@ exports.deleteBlogByA = async (req, res) => {
 exports.deleteUserByA = async (req, res) => {
   try {
     const userId = req.params.id;
-    console.log("blog id", userId);
     const findUser = await User.findOne({ _id: userId });
-    console.log("findUser", findUser);
     if (!findUser) {
       return res.status(500).json({
         stauts: false,
@@ -241,7 +230,6 @@ exports.deleteUserByA = async (req, res) => {
       const deleteUser = await User.deleteOne({ _id: userId });
       await Blog.deleteMany({ user: userId });
 
-      console.log("delete blog", deleteUser);
       return res.status(500).json({
         stauts: true,
         massage: "delete USer Succesfully !!",
@@ -261,7 +249,6 @@ exports.deleteUserByA = async (req, res) => {
 exports.adminProfile = async (req, res) => {
   try {
     const getUserId = req.user;
-    console.log("getUSer", getUserId);
     return res.status(201).send({
       status: true,
       massage: "data get",
@@ -277,7 +264,6 @@ exports.adminProfile = async (req, res) => {
 
 exports.getAdminBlog = async (req, res) => {
   const findUser = req.user;
-  console.log("findUser", findUser);
   try {
     let response = await Blog.find({ user: req.user._id }).sort({
       createdAt: -1,

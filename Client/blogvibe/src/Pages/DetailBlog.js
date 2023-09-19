@@ -18,7 +18,7 @@ export const DetailBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => setSingleData(data.singleBlog))
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
 
   useEffect(() => {

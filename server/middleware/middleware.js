@@ -9,9 +9,7 @@ exports.auth = async (req, res, next) => {
     return res.status(400).json("Invalid token");
   }
   const token = req.headers.authorization.split(" ")[1];
-  console.log("token", token);
   const decode = jwt.verify(token, "radhika");
-  console.log("decode", decode);
   const findUser = await User.findOne({ _id: decode.id });
   
   if (findUser) {
@@ -40,9 +38,7 @@ exports.authAdmin = async (req, res, next) => {
     return res.status(400).json("Invalid token");
   }
   const token = req.headers.authorization.split(" ")[1];
-  console.log("token", token);
   const decode = jwt.verify(token, "radhika");
-  console.log("decode", decode);
   const findAdmin = await Admin.findOne({ _id: decode.id });
   if (!findAdmin) {
     return res.status(401).send({
@@ -50,7 +46,6 @@ exports.authAdmin = async (req, res, next) => {
       message: "Invalid Token",
     });
   } else {
-    console.log("findAdmin", findAdmin);
     req.user = findAdmin;
   }
   next();

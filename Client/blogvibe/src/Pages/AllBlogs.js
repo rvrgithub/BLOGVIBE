@@ -22,7 +22,7 @@ export const AllBlogs = () => {
     fetch(apiurl)
       .then((res) => res.json())
       .then((data) => setBlogData(data))
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
   useEffect(() => {
     getData();
@@ -39,7 +39,7 @@ export const AllBlogs = () => {
     })
       .then((res) => res.json())
       .then((data) => getData())
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
   // console.log("blogData", blogData.blogs);
 

@@ -48,7 +48,7 @@ export const Register = () => {
           alert(data.massage);
         }
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
 
   return (

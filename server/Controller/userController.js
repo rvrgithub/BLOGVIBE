@@ -7,12 +7,10 @@ const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
 const { Admin } = require("../Model/adminModel");
 exports.register = async (req, res) => {
-  console.log("req.body ", req.body);
 
   const { email, name, password, phoneNumber } = req.body;
   try {
     if (Object.keys(req.body).length === 0) {
-      console.log("req.body");
       return res.status(401).send({
         stauts: false,
         massage: "All Credientials Are Required 1.. !!",
@@ -21,7 +19,6 @@ exports.register = async (req, res) => {
 
     // .......................All Credientials Are Required....................
     if (!name || !email || !password || !phoneNumber) {
-      console.log("all are required");
       return res.status(401).send({
         stauts: false,
         massage: "All Credientials Are Required.. !!",
@@ -29,7 +26,6 @@ exports.register = async (req, res) => {
     }
     //.......................error inside name.......................
     if (!isValidName(name)) {
-      console.log("all are required");
       return res.status(401).send({
         stauts: false,
         massage: "Only String valid !!",
@@ -67,7 +63,6 @@ exports.register = async (req, res) => {
     } else {
       // .......................create password strong ......
       const hasmapPassword = await bcrypt.hash(password, 10);
-      console.log("hasjhg ", hasmapPassword);
       const response = new User({
         name,
         password: hasmapPassword,
@@ -97,7 +92,6 @@ exports.getAllUser = async (req, res) => {
   try {
     // console.log("req.body")
     const response = await User.find();
-    console.log("response", response);
     // await response.save();
     return res.status(201).send({
       status: true,
@@ -115,7 +109,6 @@ exports.getAllUser = async (req, res) => {
 exports.profile = async (req, res) => {
   try {
     const getUserId = req.user;
-    console.log("getUSer", getUserId);
     return res.status(201).send({
       status: true,
       massage: "data get",
@@ -156,10 +149,8 @@ exports.updateProfile = async (req, res) => {
 // ..................  Blog Section...............................
 
 exports.createBlog = async (req, res) => {
-  console.log("asfg l", req.body, req.file);
   try {
     const user = req.user;
-    console.log("user", user._id);
     if (user.role == "admin") {
       const reponse = new Blog({
         title: req.body.title,
@@ -187,9 +178,7 @@ exports.createBlog = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
   const userFind = req.user;
-  console.log("userfind", userFind);
   const { title, descriptions } = req.body;
-  console.log("title", title, descriptions);
   const id = req.params.id;
   const findBlog = await Blog.findOne({ _id: id, user: req.user._id });
   // console.log("findblog", findBlog);
@@ -234,7 +223,6 @@ exports.getAllBlog = async (req, res) => {
     const allBlog = await Blog.find({ user: getuser.id }).sort({
       createdAt: -1,
     });
-    console.log("allblog", allBlog);
     return res.status(201).send({
       status: true,
       // data: allBlog[0].blogs,
@@ -251,7 +239,6 @@ exports.getAllBlog = async (req, res) => {
 
 exports.getSelfBlog = async (req, res) => {
   const findUser = req.user;
-  console.log("findUser", findUser);
   try {
     let response = await Blog.find({ user: req.user._id }).sort({
       createdAt: -1,
@@ -272,10 +259,8 @@ exports.getSelfBlog = async (req, res) => {
 //  ........by id ....................
 exports.singleBlog = async (req, res) => {
   const id = req.params.id;
-  console.log("id....", id);
   try {
     const singleBlog = await Blog.findOne({ _id: id });
-    console.log("singleBlog", singleBlog);
     return res.status(201).send({
       status: true,
       singleBlog,
@@ -292,7 +277,6 @@ exports.singleBlog = async (req, res) => {
 // ................
 
 exports.loginBoth = async (req, res) => {
-  console.log("dfdfdf", req.body);
   const { email, password } = req.body;
 
   try {
@@ -390,7 +374,6 @@ exports.getBlogBySingleUser = async (req, res) => {
   try {
     const { id } = req.params;
     const response = await Blog.find({ user: id });
-    console.log("reposne", response);
     return res.status(200).send({
       status: true,
       response,
@@ -578,11 +561,9 @@ exports.checkBoth = async (req, res) => {
     // ....................
     const findEmailAdmin = await Admin.findOne({ email, password });
 
-    console.log("findemail", findEmailAdmin);
     // if we want only admin  .. data ...
     if (findEmailAdmin !== null) {
       const reposne = new Admin(req.body);
-      console.log("reposne", reposne);
       return res.status(201).send({
         status: true,
         findEmailAdmin,
@@ -591,7 +572,6 @@ exports.checkBoth = async (req, res) => {
       const findEmailUser = await User.findOne({ email, password });
       if (findEmailUser !== null) {
         const reposne = new User(req.body);
-        console.log("reposne", reposne);
         return res.status(201).send({
           status: true,
           findEmailUser,
@@ -620,7 +600,6 @@ exports.getAll = async (req, res) => {
   try {
     // console.log("req.body")
     const response = await User.find();
-    console.log("response", response);
 
     // await response.save();
     return res.status(201).send({

@@ -19,14 +19,14 @@ export const UserProfile = () => {
     fetch(`${apiurl}/sinlgeUser/blog/${id}`)
       .then((res) => res.json())
       .then((data) => setGetBlog(data.response))
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
   // console.log("getBlog", getBlog);
   const getSngleUSerByd = () => {
     fetch(`${apiurl}/single/uesr/${id}`)
       .then((res) => res.json())
       .then((data) => setGetUser(data.response))
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export const UserProfile = () => {
         <div className="sidebar-text d-flex flex-column h-100 justify-content-center text-center">
           <img
             className="mx-auto d-block w-75 h-10 bg-primary img-fluid rounded-circle mb-4 p-3"
-            src={`${apiurl}/images/${getUser?.profileImage}`}
+            src={`${apiurl}/images/${getUser?getUser.profileImage :"1694688315354.jfif"}`}
             alt="img_error"
           />
           <h1 className="font-weight-bold">_{getUser?.name}</h1>
@@ -102,7 +102,9 @@ export const UserProfile = () => {
                 /> */}
                 <img
                   className="img-fluid mb-4 mb-md-0 user_pro_img"
-                  src={`${apiurl}/images/${el.image}`}
+                  src={`${apiurl}/images/${
+                    el.image ? el.image : "1694688315354.jfif"
+                  }`}
                   alt="error"
                   style={{ height: "500px !important" }}
                 />

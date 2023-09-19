@@ -44,8 +44,7 @@ export const AdminNav = () => {
                 {" "}
                 <li className="nav-item">
                   <Link
-                    
-                    to="/allblog"
+                     to="/allblog"
                     // activeclassname="active"
                     className="nav-links"
                     onClick={click ? handleClick : null}

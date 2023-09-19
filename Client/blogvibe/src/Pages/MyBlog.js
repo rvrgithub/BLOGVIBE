@@ -36,7 +36,7 @@ export const MyBlog = () => {
         // console.log("data jbjbjkb ", data);
         setMyblog(data.response);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
   // console.log("myblog",myblog)
   useEffect(() => {
@@ -45,7 +45,6 @@ export const MyBlog = () => {
 
   // ..........  delete function ..............
   const handleDelete = (e) => {
-    console.log("e", e._id);
     fetch(`${apiurl}/delete/blog/${e._id}`, {
       method: "DELETE",
       headers: {
@@ -55,7 +54,7 @@ export const MyBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => getMyBlog())
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
     alert("Success: Your Blog Post Has Been Deleted!");
   };
 
@@ -71,7 +70,7 @@ export const MyBlog = () => {
     })
       .then((res) => res.json())
       .then((data) => getMyBlog())
-      .catch((error) => console.log("error", error));
+      .catch((error) => alert("error", error));
   };
 
   // .................... capitalizeFirstLetter  ..........................
@@ -101,8 +100,8 @@ export const MyBlog = () => {
           <div className="section_our_solution">
             <div className="container mt-5 mb-3">
               <div className="row">
-                {myblog?.map((el) => (
-                  <div className="col-md-4">
+                {myblog?.map((el,index) => (
+                  <div className="col-md-4" key={index}>
                     <div className="our_solution_category">
                       <div className="solution_cards_box">
                         <div className="solution_card">
