@@ -90,9 +90,9 @@ export const Register = () => {
                 />
                 <input type="submit" name="" value="Sign Up" />
                 <p className="signup">
-                  Already have an account ?<Link to="/login">Sign in.</Link>
+                  Already have an account ?<Link to="/login">Sign in. !</Link>
                 </p>
-                !
+                
               </form>
             </div>
             <div className="imgBx">
