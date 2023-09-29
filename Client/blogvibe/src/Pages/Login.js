@@ -92,10 +92,19 @@ export const Login = () => {
                 />
                 <p className="signup">
                   Don't have an account ?<Link to="/register">Sign Up.</Link>
+
                 </p>
+                <span style={{color:"Black"}}>Admin Credentials</span><br/>
+                <span>admin@gmail.com</span>
+                <span>Pass-12345678</span>
+              <br/>
+                <span>For user you can register ?</span>
               </form>
+              
             </div>
+           
           </div>
+         
         </div>
       </section>
     </div>
